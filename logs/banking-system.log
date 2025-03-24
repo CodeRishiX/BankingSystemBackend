@@ -724,3 +724,87 @@ java.sql.SQLException: Data truncated for column 'status' at row 1
 2025-03-24 14:09:05 [main] DEBUG com.Rishi.OTPService - Fetched OTP: 508355 and timestamp: 2025-03-24T14:08:52.000+0530 for account: 123456789012345
 2025-03-24 14:09:05 [main] INFO  com.Rishi.OTPService - OTP verified successfully for account: 123456789012345
 2025-03-24 14:09:05 [main] INFO  com.Rishi.Registration - OTP verified successfully for account: 123456789012345
+2025-03-24 15:33:06 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-24 15:33:06 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-24 15:33:06 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-24 15:33:06 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-24 15:33:18 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-24 15:33:24 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 123456789012345
+2025-03-24 15:33:24 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-24 15:33:29 [main] DEBUG com.Rishi.OTPService - Generated OTP: 828361
+2025-03-24 15:33:29 [main] DEBUG com.Rishi.OTPService - Generating OTP for forgotPassword, account: 123456789012345
+2025-03-24 15:33:29 [main] INFO  com.Rishi.OTPService - OTP stored in users table for account: 123456789012345
+2025-03-24 15:33:35 [main] INFO  com.Rishi.OTPService - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-24 15:33:35 [main] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 15:33:35 [main] INFO  com.Rishi.Login - Enter the OTP received on your email: 
+2025-03-24 15:33:38 [main] DEBUG com.Rishi.OTPService - Fetched OTP: 828361 and timestamp: 2025-03-24T15:33:29.000+0530 for account: 123456789012345
+2025-03-24 15:33:38 [main] INFO  com.Rishi.OTPService - OTP verified successfully for account: 123456789012345
+2025-03-24 15:33:38 [main] INFO  com.Rishi.Login - OTP Verified Successfully!
+2025-03-24 15:33:38 [main] INFO  com.Rishi.Login - Login Successful!
+2025-03-24 15:33:38 [main] INFO  com.Rishi.Login - === Account Details ===
+2025-03-24 15:33:38 [main] INFO  com.Rishi.Login - Name: Gopal
+2025-03-24 15:33:38 [main] INFO  com.Rishi.Login - Account Number: 123456789012345
+2025-03-24 15:33:38 [main] INFO  com.Rishi.Login - Email: gopal6291441556@gmail.com
+2025-03-24 15:33:38 [main] INFO  com.Rishi.Login - Phone: 8296408040
+2025-03-24 15:33:38 [main] INFO  com.Rishi.Login - Balance: 2495.0
+2025-03-24 15:33:38 [main] INFO  com.Rishi.Banking_system - Login successful for account: 123456789012345. Proceeding to transactions...
+2025-03-24 15:33:38 [main] DEBUG com.Rishi.Login - Retrieved email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 15:33:38 [main] DEBUG com.Rishi.Login - Retrieved balance: 2495.0 for account: 123456789012345
+2025-03-24 15:33:42 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 2
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Banking_system - Viewing transaction history for account: 123456789012345
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - Transaction History:
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - Transaction ID  Sender              Receiver            Transaction Type     Type       Amount          Date                 Status      
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - -----------------------------------------------------------------------------------------------------
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 55              123456789012345     987654321014364     Fund Transfer        Debit      2495.00         2025-03-24 14:06:53  Failed (Fraud)
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 54              123456789012345     987654321014364     Fund Transfer        Debit      5.00            2025-03-24 13:53:38  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 53              123456789012345     987654321014364     Fund Transfer        Debit      2500.00         2025-03-24 12:44:08  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 52              123456789012345     987654321012345     Fund Transfer        Debit      300.00          2025-03-23 10:46:22  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 51              123456789012345     123456789012345     Fund Transfer        Debit      250.00          2025-03-23 09:55:59  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 50              123456789012345     987654321012345     Fund Transfer        Debit      10.00           2025-03-22 15:12:40  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 49              123456789012345     987654321014364     Fund Transfer        Debit      50.00           2025-03-21 21:41:33  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 48              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-21 19:44:35  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 47              123456789012345     987654321012345     Fund Transfer        Debit      500.00          2025-03-13 13:20:45  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 46              123456789012345     987654321012345     Fund Transfer        Debit      1000.00         2025-03-13 13:11:40  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 42              987654321098765     123456789012345     Fund Transfer        Credit     4000.00         2025-03-13 10:54:01  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 41              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-13 10:50:22  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 40              123456789012345     987654321012345     Fund Transfer        Debit      5000.00         2025-03-13 10:03:22  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 39              987654321098765     123456789012345     Fund Transfer        Credit     5000.00         2025-03-11 10:14:41  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 38              987654321014364     123456789012345     Fund Transfer        Credit     500.00          2025-03-10 21:50:03  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 37              987654321098765     123456789012345     Fund Transfer        Credit     250000.00       2025-03-10 19:39:04  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 36              987654321098765     123456789012345     Fund Transfer        Credit     5.00            2025-03-10 10:47:03  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 35              987654321098765     123456789012345     Fund Transfer        Credit     22970.00        2025-03-10 10:46:25  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 34              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 16:09:20  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 32              987654321098765     123456789012345     Fund Transfer        Credit     200.00          2025-03-09 11:44:01  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 31              987654321098765     123456789012345     Fund Transfer        Credit     300.00          2025-03-09 11:41:31  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 30              987654321098765     123456789012345     Fund Transfer        Credit     550.00          2025-03-09 11:29:21  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 29              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 11:27:53  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 28              987654321098765     123456789012345     Fund Transfer        Credit     1000.00         2025-03-09 11:25:06  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 27              987654321098765     123456789012345     Fund Transfer        Credit     5.00            2025-03-09 11:14:54  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 26              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 11:10:41  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 25              123456789012345     987654321098765     Fund Transfer        Debit      500.00          2025-03-09 10:45:08  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 22              123456789012345     987654321098765     Fund Transfer        Debit      500.00          2025-03-06 13:22:49  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 21              123456789012345     987654321098765     Fund Transfer        Debit      1000.00         2025-03-06 12:07:46  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 19              987654321098765     123456789012345     Fund Transfer        Credit     5000.00         2025-03-04 22:26:01  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 18              123456789012345     987654321098765     Fund Transfer        Debit      5.00            2025-03-04 10:54:31  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 17              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:52:32  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 16              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:50:12  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 15              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:48:43  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 14              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-04 10:28:55  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 13              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-04 10:17:22  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 12              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-03 16:28:26  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 11              123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 13:37:15  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 10              123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:36:40  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 9               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:30:23  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 8               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:24:33  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 7               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:19:31  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 6               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:17:30  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 5               123456789012345     987654321098765     Fund Transfer        Debit      10000.00        2025-03-03 12:15:34  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 4               123456789012345     987654321098765     Fund Transfer        Debit      10000.00        2025-03-03 10:57:02  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 3               987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-03 10:50:38  Completed   
+2025-03-24 15:33:42 [main] INFO  com.Rishi.Online_Transaction - 1               987654321098765     123456789012345     Fund Transfer        Credit     1.00            2025-02-12 19:44:33  Completed   
+2025-03-24 15:34:05 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 3
+2025-03-24 15:34:24 [main] INFO  com.Rishi.Banking_system - Generating PDF statement for account: 123456789012345 for month: 3, year: 2025
+2025-03-24 15:34:24 [main] INFO  com.Rishi.Banking_system - PDF statement generated successfully for account: 123456789012345. Path: C:\Users\Debangshu\Documents\bank_statements(project)\Statement_123456789012345_3_2025.pdf
+2025-03-24 15:34:35 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 4
+2025-03-24 15:34:38 [main] INFO  com.Rishi.Banking_system - Sending transaction history via email for account: 123456789012345 for month: 3, year: 2025
+2025-03-24 15:34:44 [main] INFO  com.Rishi.Banking_system - PDF statement sent to email: gopal6291441556@gmail.com for account: 123456789012345
