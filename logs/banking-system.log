@@ -1,0 +1,726 @@
+2025-03-22 21:13:52 [main] INFO  com.Rishi.Banking_system - Database Connected Successfully!
+2025-03-22 21:13:52 [main] INFO  com.Rishi.Banking_system - === Banking System ===
+2025-03-22 21:13:52 [main] INFO  com.Rishi.Banking_system - 1. Register
+2025-03-22 21:13:52 [main] INFO  com.Rishi.Banking_system - 2. Login
+2025-03-22 21:13:52 [main] INFO  com.Rishi.Banking_system - 3. Forgot Password
+2025-03-22 21:13:52 [main] INFO  com.Rishi.Banking_system - 4. Exit
+2025-03-22 21:13:52 [main] INFO  com.Rishi.Banking_system - Enter your choice: 
+2025-03-22 21:23:37 [main] INFO  com.Rishi.Registration - Enter your account number:
+2025-03-22 21:23:43 [main] INFO  com.Rishi.Registration - Enter your linked phone number:
+2025-03-22 21:24:19 [main] INFO  com.Rishi.OTPService - Email sent successfully to gopal6291441556@gmail.com
+2025-03-22 21:24:19 [main] INFO  com.Rishi.Registration - Enter the OTP received on your email: 
+2025-03-22 21:24:19 [main] ERROR com.Rishi.OTPService - Incorrect OTP! Please try again.
+2025-03-22 21:24:19 [main] ERROR com.Rishi.Registration - Incorrect or expired OTP! Password reset failed.
+2025-03-22 21:24:19 [main] INFO  com.Rishi.Banking_system - === Banking System ===
+2025-03-22 21:24:19 [main] INFO  com.Rishi.Banking_system - 1. Register
+2025-03-22 21:24:19 [main] INFO  com.Rishi.Banking_system - 2. Login
+2025-03-22 21:24:19 [main] INFO  com.Rishi.Banking_system - 3. Forgot Password
+2025-03-22 21:24:19 [main] INFO  com.Rishi.Banking_system - 4. Exit
+2025-03-22 21:24:19 [main] INFO  com.Rishi.Banking_system - Enter your choice: 
+2025-03-22 21:25:20 [main] INFO  com.Rishi.Banking_system - Database Connected Successfully!
+2025-03-22 21:25:20 [main] INFO  com.Rishi.Banking_system - === Banking System ===
+2025-03-22 21:25:20 [main] INFO  com.Rishi.Banking_system - 1. Register
+2025-03-22 21:25:20 [main] INFO  com.Rishi.Banking_system - 2. Login
+2025-03-22 21:25:20 [main] INFO  com.Rishi.Banking_system - 3. Forgot Password
+2025-03-22 21:25:20 [main] INFO  com.Rishi.Banking_system - 4. Exit
+2025-03-22 21:25:20 [main] INFO  com.Rishi.Banking_system - Enter your choice: 
+2025-03-22 21:25:34 [main] INFO  com.Rishi.Registration - Enter your account number:
+2025-03-22 21:25:40 [main] INFO  com.Rishi.Registration - Enter your linked phone number:
+2025-03-22 21:26:07 [main] INFO  com.Rishi.OTPService - Email sent successfully to gopal6291441556@gmail.com
+2025-03-22 21:26:07 [main] INFO  com.Rishi.Registration - Enter the OTP received on your email: 
+2025-03-22 21:26:07 [main] ERROR com.Rishi.OTPService - Incorrect OTP! Please try again.
+2025-03-22 21:26:07 [main] ERROR com.Rishi.Registration - Incorrect or expired OTP! Password reset failed.
+2025-03-22 21:26:07 [main] INFO  com.Rishi.Banking_system - === Banking System ===
+2025-03-22 21:26:07 [main] INFO  com.Rishi.Banking_system - 1. Register
+2025-03-22 21:26:07 [main] INFO  com.Rishi.Banking_system - 2. Login
+2025-03-22 21:26:07 [main] INFO  com.Rishi.Banking_system - 3. Forgot Password
+2025-03-22 21:26:07 [main] INFO  com.Rishi.Banking_system - 4. Exit
+2025-03-22 21:26:07 [main] INFO  com.Rishi.Banking_system - Enter your choice: 
+2025-03-22 21:43:42 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-22 21:43:42 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-22 21:43:42 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-22 21:43:43 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-22 21:43:45 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-22 21:43:52 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 123456789012345
+2025-03-22 21:43:52 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-22 21:44:24 [main] INFO  com.Rishi.Login - Enter the OTP received on your email: 
+2025-03-22 21:44:38 [main] INFO  com.Rishi.Login - OTP Verified Successfully!
+2025-03-22 21:44:38 [main] INFO  com.Rishi.Login - Login Successful!
+2025-03-22 21:44:38 [main] INFO  com.Rishi.Login - === Account Details ===
+2025-03-22 21:44:38 [main] INFO  com.Rishi.Login - Name: Gopal
+2025-03-22 21:44:38 [main] INFO  com.Rishi.Login - Account Number: 123456789012345
+2025-03-22 21:44:38 [main] INFO  com.Rishi.Login - Email: gopal6291441556@gmail.com
+2025-03-22 21:44:38 [main] INFO  com.Rishi.Login - Phone: 9876543210
+2025-03-22 21:44:38 [main] INFO  com.Rishi.Login - Balance: 390.0
+2025-03-22 21:44:38 [main] INFO  com.Rishi.Banking_system - Login successful for account: 123456789012345. Proceeding to transactions...
+2025-03-22 21:44:41 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 2
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Banking_system - Viewing transaction history for account: 123456789012345
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - Transaction History:
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - Transaction ID  Sender              Receiver            Transaction Type     Type       Amount          Date                
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - -----------------------------------------------------------------------------------------------------
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 50              123456789012345     987654321012345     Fund Transfer        Debit      10.00           2025-03-22 15:12:40 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 49              123456789012345     987654321014364     Fund Transfer        Debit      50.00           2025-03-21 21:41:33 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 48              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-21 19:44:35 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 47              123456789012345     987654321012345     Fund Transfer        Debit      500.00          2025-03-13 13:20:45 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 46              123456789012345     987654321012345     Fund Transfer        Debit      1000.00         2025-03-13 13:11:40 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 42              987654321098765     123456789012345     Fund Transfer        Credit     4000.00         2025-03-13 10:54:01 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 41              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-13 10:50:22 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 40              123456789012345     987654321012345     Fund Transfer        Debit      5000.00         2025-03-13 10:03:22 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 39              987654321098765     123456789012345     Fund Transfer        Credit     5000.00         2025-03-11 10:14:41 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 38              987654321014364     123456789012345     Fund Transfer        Credit     500.00          2025-03-10 21:50:03 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 37              987654321098765     123456789012345     Fund Transfer        Credit     250000.00       2025-03-10 19:39:04 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 36              987654321098765     123456789012345     Fund Transfer        Credit     5.00            2025-03-10 10:47:03 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 35              987654321098765     123456789012345     Fund Transfer        Credit     22970.00        2025-03-10 10:46:25 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 34              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 16:09:20 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 32              987654321098765     123456789012345     Fund Transfer        Credit     200.00          2025-03-09 11:44:01 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 31              987654321098765     123456789012345     Fund Transfer        Credit     300.00          2025-03-09 11:41:31 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 30              987654321098765     123456789012345     Fund Transfer        Credit     550.00          2025-03-09 11:29:21 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 29              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 11:27:53 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 28              987654321098765     123456789012345     Fund Transfer        Credit     1000.00         2025-03-09 11:25:06 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 27              987654321098765     123456789012345     Fund Transfer        Credit     5.00            2025-03-09 11:14:54 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 26              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 11:10:41 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 25              123456789012345     987654321098765     Fund Transfer        Debit      500.00          2025-03-09 10:45:08 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 22              123456789012345     987654321098765     Fund Transfer        Debit      500.00          2025-03-06 13:22:49 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 21              123456789012345     987654321098765     Fund Transfer        Debit      1000.00         2025-03-06 12:07:46 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 19              987654321098765     123456789012345     Fund Transfer        Credit     5000.00         2025-03-04 22:26:01 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 18              123456789012345     987654321098765     Fund Transfer        Debit      5.00            2025-03-04 10:54:31 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 17              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:52:32 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 16              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:50:12 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 15              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:48:43 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 14              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-04 10:28:55 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 13              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-04 10:17:22 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 12              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-03 16:28:26 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 11              123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 13:37:15 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 10              123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:36:40 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 9               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:30:23 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 8               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:24:33 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 7               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:19:31 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 6               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:17:30 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 5               123456789012345     987654321098765     Fund Transfer        Debit      10000.00        2025-03-03 12:15:34 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 4               123456789012345     987654321098765     Fund Transfer        Debit      10000.00        2025-03-03 10:57:02 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 3               987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-03 10:50:38 
+2025-03-22 21:44:41 [main] INFO  com.Rishi.Online_Transaction - 1               987654321098765     123456789012345     Fund Transfer        Credit     1.00            2025-02-12 19:44:33 
+2025-03-22 21:44:48 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 1
+2025-03-22 21:45:18 [main] INFO  com.Rishi.Banking_system - Initiating fund transfer from 123456789012345 to 987654321012345 for amount: 10.0
+2025-03-22 21:45:18 [main] INFO  com.Rishi.Online_Transaction - 💰 Your current balance: 390.0
+2025-03-22 21:45:18 [main] INFO  com.Rishi.Online_Transaction - Enter the amount you want to transfer: 
+2025-03-22 21:45:21 [main] ERROR com.Rishi.FraudDetectionService - Error in Fraud Detection API call: Connection refused: connect
+java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.connect(Net.java:589) ~[?:?]
+	at java.base/sun.nio.ch.Net.connect(Net.java:578) ~[?:?]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583) ~[?:?]
+	at java.base/java.net.Socket.connect(Socket.java:751) ~[?:?]
+	at java.base/java.net.Socket.connect(Socket.java:686) ~[?:?]
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:183) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:531) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:636) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:280) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:386) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:408) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1304) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1237) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1123) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1052) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1446) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1417) ~[?:?]
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:35) [classes/:?]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:69) [classes/:?]
+	at com.Rishi.Banking_system.main(Banking_system.java:103) [classes/:?]
+2025-03-22 21:45:38 [main] INFO  com.Rishi.Online_Transaction - Enter the OTP received on your email: 
+2025-03-22 21:57:14 [main] ERROR com.Rishi.Online_Transaction - Incorrect or expired OTP! Transaction cancelled.
+2025-03-22 21:57:27 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 5
+2025-03-22 21:57:27 [main] INFO  com.Rishi.Banking_system - User exited transaction menu for account: 123456789012345
+2025-03-22 21:57:30 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-22 22:01:38 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-22 22:01:38 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-22 22:01:38 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-22 22:01:38 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-22 22:01:45 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-22 22:05:50 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-22 22:05:50 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-22 22:05:50 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-22 22:05:50 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-22 22:05:54 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-22 22:08:20 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-22 22:08:20 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-22 22:08:20 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-22 22:08:20 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-22 22:08:40 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-22 22:14:17 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-22 22:14:17 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-22 22:14:17 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-22 22:14:17 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-22 22:14:26 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 1
+2025-03-22 22:14:45 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-22 22:14:45 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-22 22:14:45 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-22 22:14:45 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-22 22:14:47 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-22 22:14:59 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-22 22:14:59 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-22 22:14:59 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-22 22:14:59 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-22 22:15:00 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-22 22:15:14 [main] INFO  com.Rishi.EncryptionUtil - Encryption key initialized successfully
+2025-03-22 22:15:14 [main] ERROR com.Rishi.EncryptionUtil - Decryption failed for data gopal6291441556@gmail.com: Illegal base64 character 40
+java.lang.IllegalArgumentException: Illegal base64 character 40
+	at java.base/java.util.Base64$Decoder.decode0(Base64.java:852) ~[?:?]
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:570) ~[?:?]
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:593) ~[?:?]
+	at com.Rishi.EncryptionUtil.decrypt(EncryptionUtil.java:54) [classes/:?]
+	at com.Rishi.OTPService.sendOTP(OTPService.java:83) [classes/:?]
+	at com.Rishi.Registration.forgotPassword(Registration.java:157) [classes/:?]
+	at com.Rishi.Banking_system.main(Banking_system.java:167) [classes/:?]
+2025-03-22 22:15:28 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-22 22:15:28 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-22 22:15:28 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-22 22:15:28 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-22 22:15:46 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-22 22:15:53 [main] INFO  com.Rishi.EncryptionUtil - Encryption key initialized successfully
+2025-03-22 22:15:53 [main] ERROR com.Rishi.EncryptionUtil - Decryption failed for data debangshu.bhattacharjee.fiem.cse21@teamfuture.in: Illegal base64 character 2e
+java.lang.IllegalArgumentException: Illegal base64 character 2e
+	at java.base/java.util.Base64$Decoder.decode0(Base64.java:852) ~[?:?]
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:570) ~[?:?]
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:593) ~[?:?]
+	at com.Rishi.EncryptionUtil.decrypt(EncryptionUtil.java:54) [classes/:?]
+	at com.Rishi.OTPService.sendOTP(OTPService.java:83) [classes/:?]
+	at com.Rishi.Registration.forgotPassword(Registration.java:157) [classes/:?]
+	at com.Rishi.Banking_system.main(Banking_system.java:167) [classes/:?]
+2025-03-22 22:17:08 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-22 22:17:12 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 123456789012345
+2025-03-22 22:17:12 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-22 22:17:18 [main] ERROR com.Rishi.EncryptionUtil - Decryption failed for data gopal6291441556@gmail.com: Illegal base64 character 40
+java.lang.IllegalArgumentException: Illegal base64 character 40
+	at java.base/java.util.Base64$Decoder.decode0(Base64.java:852) ~[?:?]
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:570) ~[?:?]
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:593) ~[?:?]
+	at com.Rishi.EncryptionUtil.decrypt(EncryptionUtil.java:54) [classes/:?]
+	at com.Rishi.OTPService.sendOTP(OTPService.java:83) [classes/:?]
+	at com.Rishi.Login.log(Login.java:55) [classes/:?]
+	at com.Rishi.Banking_system.main(Banking_system.java:59) [classes/:?]
+2025-03-22 22:17:18 [main] INFO  com.Rishi.Login - Enter the OTP received on your email: 
+2025-03-22 22:23:23 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-22 22:23:23 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-22 22:23:23 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-22 22:23:23 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-22 22:23:27 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-23 09:51:01 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-23 09:51:01 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-23 09:51:01 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-23 09:51:02 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-23 09:51:05 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-23 09:51:14 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 1234567890123445
+2025-03-23 09:51:14 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-23 09:51:20 [main] ERROR com.Rishi.Login - Account number not found!
+2025-03-23 09:51:20 [main] WARN  com.Rishi.Banking_system - Login failed for account: 1234567890123445
+2025-03-23 09:51:46 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 1
+2025-03-23 09:51:50 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-23 09:51:56 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 123456789012345
+2025-03-23 09:51:56 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-23 09:52:10 [main] INFO  com.Rishi.Login - Enter the OTP received on your email: 
+2025-03-23 09:52:48 [main] INFO  com.Rishi.Login - OTP Verified Successfully!
+2025-03-23 09:52:48 [main] INFO  com.Rishi.Login - Login Successful!
+2025-03-23 09:52:48 [main] INFO  com.Rishi.Login - === Account Details ===
+2025-03-23 09:52:48 [main] INFO  com.Rishi.Login - Name: Gopal
+2025-03-23 09:52:48 [main] INFO  com.Rishi.Login - Account Number: 123456789012345
+2025-03-23 09:52:48 [main] INFO  com.Rishi.Login - Email: gopal6291441556@gmail.com
+2025-03-23 09:52:48 [main] INFO  com.Rishi.Login - Phone: 9876543210
+2025-03-23 09:52:48 [main] INFO  com.Rishi.Login - Balance: 390.0
+2025-03-23 09:52:48 [main] INFO  com.Rishi.Banking_system - Login successful for account: 123456789012345. Proceeding to transactions...
+2025-03-23 09:52:54 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 2
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Banking_system - Viewing transaction history for account: 123456789012345
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - Transaction History:
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - Transaction ID  Sender              Receiver            Transaction Type     Type       Amount          Date                
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - -----------------------------------------------------------------------------------------------------
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 50              123456789012345     987654321012345     Fund Transfer        Debit      10.00           2025-03-22 15:12:40 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 49              123456789012345     987654321014364     Fund Transfer        Debit      50.00           2025-03-21 21:41:33 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 48              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-21 19:44:35 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 47              123456789012345     987654321012345     Fund Transfer        Debit      500.00          2025-03-13 13:20:45 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 46              123456789012345     987654321012345     Fund Transfer        Debit      1000.00         2025-03-13 13:11:40 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 42              987654321098765     123456789012345     Fund Transfer        Credit     4000.00         2025-03-13 10:54:01 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 41              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-13 10:50:22 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 40              123456789012345     987654321012345     Fund Transfer        Debit      5000.00         2025-03-13 10:03:22 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 39              987654321098765     123456789012345     Fund Transfer        Credit     5000.00         2025-03-11 10:14:41 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 38              987654321014364     123456789012345     Fund Transfer        Credit     500.00          2025-03-10 21:50:03 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 37              987654321098765     123456789012345     Fund Transfer        Credit     250000.00       2025-03-10 19:39:04 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 36              987654321098765     123456789012345     Fund Transfer        Credit     5.00            2025-03-10 10:47:03 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 35              987654321098765     123456789012345     Fund Transfer        Credit     22970.00        2025-03-10 10:46:25 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 34              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 16:09:20 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 32              987654321098765     123456789012345     Fund Transfer        Credit     200.00          2025-03-09 11:44:01 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 31              987654321098765     123456789012345     Fund Transfer        Credit     300.00          2025-03-09 11:41:31 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 30              987654321098765     123456789012345     Fund Transfer        Credit     550.00          2025-03-09 11:29:21 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 29              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 11:27:53 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 28              987654321098765     123456789012345     Fund Transfer        Credit     1000.00         2025-03-09 11:25:06 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 27              987654321098765     123456789012345     Fund Transfer        Credit     5.00            2025-03-09 11:14:54 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 26              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 11:10:41 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 25              123456789012345     987654321098765     Fund Transfer        Debit      500.00          2025-03-09 10:45:08 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 22              123456789012345     987654321098765     Fund Transfer        Debit      500.00          2025-03-06 13:22:49 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 21              123456789012345     987654321098765     Fund Transfer        Debit      1000.00         2025-03-06 12:07:46 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 19              987654321098765     123456789012345     Fund Transfer        Credit     5000.00         2025-03-04 22:26:01 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 18              123456789012345     987654321098765     Fund Transfer        Debit      5.00            2025-03-04 10:54:31 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 17              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:52:32 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 16              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:50:12 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 15              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:48:43 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 14              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-04 10:28:55 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 13              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-04 10:17:22 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 12              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-03 16:28:26 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 11              123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 13:37:15 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 10              123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:36:40 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 9               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:30:23 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 8               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:24:33 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 7               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:19:31 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 6               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:17:30 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 5               123456789012345     987654321098765     Fund Transfer        Debit      10000.00        2025-03-03 12:15:34 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 4               123456789012345     987654321098765     Fund Transfer        Debit      10000.00        2025-03-03 10:57:02 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 3               987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-03 10:50:38 
+2025-03-23 09:52:54 [main] INFO  com.Rishi.Online_Transaction - 1               987654321098765     123456789012345     Fund Transfer        Credit     1.00            2025-02-12 19:44:33 
+2025-03-23 09:53:28 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 4
+2025-03-23 09:53:38 [main] INFO  com.Rishi.Banking_system - Sending transaction history via email for account: 123456789012345 for month: 3, year: 2025
+2025-03-23 09:53:45 [main] INFO  com.Rishi.Banking_system - PDF statement sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-23 09:55:09 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 1
+2025-03-23 09:55:18 [main] INFO  com.Rishi.Banking_system - Initiating fund transfer from 123456789012345 to 123456789012345 for amount: 2.0
+2025-03-23 09:55:18 [main] INFO  com.Rishi.Online_Transaction - 💰 Your current balance: 390.0
+2025-03-23 09:55:18 [main] INFO  com.Rishi.Online_Transaction - Enter the amount you want to transfer: 
+2025-03-23 09:55:29 [main] ERROR com.Rishi.FraudDetectionService - Error in Fraud Detection API call: Connection refused: connect
+java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.connect(Net.java:589) ~[?:?]
+	at java.base/sun.nio.ch.Net.connect(Net.java:578) ~[?:?]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583) ~[?:?]
+	at java.base/java.net.Socket.connect(Socket.java:751) ~[?:?]
+	at java.base/java.net.Socket.connect(Socket.java:686) ~[?:?]
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:183) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:531) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:636) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:280) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:386) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:408) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1304) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1237) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1123) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1052) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1446) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1417) ~[?:?]
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:35) [classes/:?]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:69) [classes/:?]
+	at com.Rishi.Banking_system.main(Banking_system.java:103) [classes/:?]
+2025-03-23 09:55:34 [main] INFO  com.Rishi.Online_Transaction - Enter the OTP received on your email: 
+2025-03-23 09:55:59 [main] INFO  com.Rishi.Online_Transaction - OTP Verified Successfully!
+2025-03-23 09:55:59 [main] INFO  com.Rishi.Online_Transaction - Login Successful!
+2025-03-23 09:55:59 [main] INFO  com.Rishi.Online_Transaction - 📌 Transaction ID: 51
+2025-03-23 09:55:59 [main] INFO  com.Rishi.Online_Transaction - OTP verification updated in transaction.
+2025-03-23 09:55:59 [main] INFO  com.Rishi.Online_Transaction - Money Transferred Successfully!
+2025-03-23 09:55:59 [main] INFO  com.Rishi.Online_Transaction - Your current balance is 140.0
+2025-03-23 10:15:40 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-23 10:15:40 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-23 10:15:40 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-23 10:15:40 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-23 10:20:41 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-23 10:20:48 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 123456789012345
+2025-03-23 10:20:48 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-23 10:21:01 [main] INFO  com.Rishi.Login - Enter the OTP received on your email: 
+2025-03-23 10:21:15 [main] ERROR com.Rishi.Login - Incorrect or expired OTP! Login failed.
+2025-03-23 10:21:15 [main] WARN  com.Rishi.Banking_system - Login failed for account: 123456789012345
+2025-03-23 10:21:26 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-23 10:21:35 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 123456789012345
+2025-03-23 10:21:35 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-23 10:21:52 [main] INFO  com.Rishi.Login - Enter the OTP received on your email: 
+2025-03-23 10:22:15 [main] INFO  com.Rishi.Login - OTP Verified Successfully!
+2025-03-23 10:22:15 [main] INFO  com.Rishi.Login - Login Successful!
+2025-03-23 10:22:15 [main] INFO  com.Rishi.Login - === Account Details ===
+2025-03-23 10:22:15 [main] INFO  com.Rishi.Login - Name: Gopal
+2025-03-23 10:22:15 [main] INFO  com.Rishi.Login - Account Number: 123456789012345
+2025-03-23 10:22:15 [main] INFO  com.Rishi.Login - Email: gopal6291441556@gmail.com
+2025-03-23 10:22:15 [main] INFO  com.Rishi.Login - Phone: 9876543210
+2025-03-23 10:22:15 [main] INFO  com.Rishi.Login - Balance: 640.0
+2025-03-23 10:22:15 [main] INFO  com.Rishi.Banking_system - Login successful for account: 123456789012345. Proceeding to transactions...
+2025-03-23 10:22:20 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 1
+2025-03-23 10:22:28 [main] INFO  com.Rishi.Banking_system - Initiating fund transfer from 123456789012345 to 123456789012345 for amount: 5.0
+2025-03-23 10:24:29 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 5
+2025-03-23 10:24:29 [main] INFO  com.Rishi.Banking_system - User exited transaction menu for account: 123456789012345
+2025-03-23 10:24:32 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 1
+2025-03-23 10:44:46 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-23 10:44:46 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-23 10:44:46 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-23 10:44:46 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-23 10:44:50 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-23 10:44:54 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 123456789012345
+2025-03-23 10:44:54 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-23 10:45:05 [main] INFO  com.Rishi.Login - Enter the OTP received on your email: 
+2025-03-23 10:45:18 [main] INFO  com.Rishi.Login - OTP Verified Successfully!
+2025-03-23 10:45:18 [main] INFO  com.Rishi.Login - Login Successful!
+2025-03-23 10:45:18 [main] INFO  com.Rishi.Login - === Account Details ===
+2025-03-23 10:45:18 [main] INFO  com.Rishi.Login - Name: Gopal
+2025-03-23 10:45:18 [main] INFO  com.Rishi.Login - Account Number: 123456789012345
+2025-03-23 10:45:18 [main] INFO  com.Rishi.Login - Email: gopal6291441556@gmail.com
+2025-03-23 10:45:18 [main] INFO  com.Rishi.Login - Phone: 9876543210
+2025-03-23 10:45:18 [main] INFO  com.Rishi.Login - Balance: 640.0
+2025-03-23 10:45:18 [main] INFO  com.Rishi.Banking_system - Login successful for account: 123456789012345. Proceeding to transactions...
+2025-03-23 10:45:21 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 1
+2025-03-23 10:45:54 [main] INFO  com.Rishi.Banking_system - Initiating fund transfer from 123456789012345 to 987654321012345 for amount: 2.0
+2025-03-23 10:45:54 [main] INFO  com.Rishi.Online_Transaction - 💰 Your current balance: 640.0
+2025-03-23 10:45:54 [main] INFO  com.Rishi.Online_Transaction - Enter the amount you want to transfer: 
+2025-03-23 10:46:02 [main] ERROR com.Rishi.FraudDetectionService - Error in Fraud Detection API call: Connection refused: connect
+java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.connect(Net.java:589) ~[?:?]
+	at java.base/sun.nio.ch.Net.connect(Net.java:578) ~[?:?]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583) ~[?:?]
+	at java.base/java.net.Socket.connect(Socket.java:751) ~[?:?]
+	at java.base/java.net.Socket.connect(Socket.java:686) ~[?:?]
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:183) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:531) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:636) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:280) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:386) ~[?:?]
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:408) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1304) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1237) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1123) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1052) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1446) ~[?:?]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1417) ~[?:?]
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:35) [classes/:?]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:74) [classes/:?]
+	at com.Rishi.Banking_system.main(Banking_system.java:103) [classes/:?]
+2025-03-23 10:46:07 [main] INFO  com.Rishi.Online_Transaction - Enter the OTP received on your email: 
+2025-03-23 10:46:22 [main] INFO  com.Rishi.Online_Transaction - OTP Verified Successfully!
+2025-03-23 10:46:22 [main] INFO  com.Rishi.Online_Transaction - Login Successful!
+2025-03-23 10:46:22 [main] INFO  com.Rishi.Online_Transaction - 📌 Transaction ID: 52
+2025-03-23 10:46:22 [main] INFO  com.Rishi.Online_Transaction - OTP verification updated in transaction.
+2025-03-23 10:46:22 [main] INFO  com.Rishi.Online_Transaction - Money Transferred Successfully!
+2025-03-23 10:46:22 [main] INFO  com.Rishi.Online_Transaction - Your current balance is 340.0
+2025-03-23 10:46:27 [main] INFO  com.Rishi.Online_Transaction - Transaction alert sent to gopal6291441556@gmail.com
+2025-03-23 10:46:31 [main] INFO  com.Rishi.Online_Transaction - Transaction alert sent to debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-23 11:29:36 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-23 11:29:36 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-23 11:29:36 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-23 11:29:37 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-23 11:29:45 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-23 11:32:07 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-23 11:32:07 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-23 11:32:07 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-23 11:32:08 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-23 11:37:27 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-23 11:37:58 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-23 12:28:01 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 1
+2025-03-23 12:37:46 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-23 12:37:46 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-23 12:37:46 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-23 12:37:46 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-23 12:39:01 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 1
+2025-03-23 12:39:01 [main] INFO  com.Rishi.Registration - Starting registration process
+2025-03-23 12:39:13 [main] DEBUG com.Rishi.Registration - User entered account number: 123456789012345
+2025-03-23 12:39:13 [main] INFO  com.Rishi.Registration - Fetched email: gopal6291441556@gmail.com and phone: 9876543210 for account: 123456789012345
+2025-03-23 12:40:01 [main] DEBUG com.Rishi.Registration - User entered OTP: 947650
+2025-03-23 12:40:01 [main] WARN  com.Rishi.Registration - Incorrect OTP entered for account: 123456789012345
+2025-03-23 12:40:09 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 1
+2025-03-23 12:40:09 [main] INFO  com.Rishi.Registration - Starting registration process
+2025-03-23 12:40:14 [main] DEBUG com.Rishi.Registration - User entered account number: 123456789012345
+2025-03-23 12:40:14 [main] INFO  com.Rishi.Registration - Fetched email: gopal6291441556@gmail.com and phone: 9876543210 for account: 123456789012345
+2025-03-23 12:40:33 [main] DEBUG com.Rishi.Registration - User entered OTP: 361561
+2025-03-23 12:40:33 [main] INFO  com.Rishi.Registration - OTP verified successfully for account: 123456789012345
+2025-03-23 12:40:36 [main] DEBUG com.Rishi.Registration - User selected security question choice: 1
+2025-03-23 12:40:40 [main] DEBUG com.Rishi.Registration - User entered security answer for account: 123456789012345
+2025-03-23 12:40:56 [main] DEBUG com.Rishi.Registration - Password strength check result: true
+2025-03-23 12:40:56 [main] DEBUG com.Rishi.Registration - Password strength check result: true
+2025-03-23 12:40:56 [main] DEBUG com.Rishi.Registration - User entered passwords for account: 123456789012345
+2025-03-23 12:40:57 [main] ERROR com.Rishi.Registration - SQLException during registration: Duplicate entry '123456789012345' for key 'PRIMARY'
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '123456789012345' for key 'PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.Rishi.Registration.reg(Registration.java:121) [classes/:?]
+	at com.Rishi.Banking_system.main(Banking_system.java:49) [classes/:?]
+2025-03-23 13:15:31 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-23 13:15:31 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-23 13:15:31 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-23 13:15:31 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-23 13:17:37 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 1
+2025-03-23 13:17:37 [main] INFO  com.Rishi.Registration - Starting registration process
+2025-03-23 13:17:42 [main] DEBUG com.Rishi.Registration - User entered account number: 123456789012345
+2025-03-23 13:17:42 [main] ERROR com.Rishi.Registration - SQLException during registration: Table 'bank.user' doesn't exist
+java.sql.SQLSyntaxErrorException: Table 'bank.user' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.Rishi.Registration.reg(Registration.java:36) [classes/:?]
+	at com.Rishi.Banking_system.main(Banking_system.java:49) [classes/:?]
+2025-03-23 13:18:22 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-23 13:18:22 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-23 13:18:22 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-23 13:18:22 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-23 13:28:35 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 1
+2025-03-23 13:28:35 [main] INFO  com.Rishi.Registration - Starting registration process
+2025-03-23 13:28:41 [main] DEBUG com.Rishi.Registration - User entered account number: 123456789012345
+2025-03-23 13:28:41 [main] INFO  com.Rishi.Registration - Account number already registered, --> present in user table 
+2025-03-23 16:24:36 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-23 16:24:36 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-23 16:24:36 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-23 16:24:36 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-24 12:33:47 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-24 12:33:47 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-24 12:33:47 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-24 12:33:48 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-24 12:35:58 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 1
+2025-03-24 12:35:58 [main] INFO  com.Rishi.Registration - Starting registration process
+2025-03-24 12:36:40 [main] DEBUG com.Rishi.Registration - User entered account number: 123456789012345
+2025-03-24 12:36:40 [main] INFO  com.Rishi.Registration - Fetched email: gopal6291441556@gmail.com and phone: 8296408040 for account: 123456789012345
+2025-03-24 12:36:40 [main] DEBUG com.Rishi.OTPService - Generated OTP: 685806
+2025-03-24 12:36:45 [main] INFO  com.Rishi.OTPService - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-24 12:36:45 [main] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com
+2025-03-24 12:36:55 [main] DEBUG com.Rishi.Registration - User entered OTP: 685806
+2025-03-24 12:36:55 [main] INFO  com.Rishi.Registration - OTP verified successfully for account: 123456789012345
+2025-03-24 12:37:02 [main] DEBUG com.Rishi.Registration - User selected security question choice: 1
+2025-03-24 12:37:05 [main] DEBUG com.Rishi.Registration - User entered security answer for account: 123456789012345
+2025-03-24 12:37:19 [main] DEBUG com.Rishi.Registration - Password strength check result: true
+2025-03-24 12:37:19 [main] DEBUG com.Rishi.Registration - Password strength check result: true
+2025-03-24 12:37:19 [main] DEBUG com.Rishi.Registration - User entered passwords for account: 123456789012345
+2025-03-24 12:37:19 [main] INFO  com.Rishi.Registration - User data inserted into database for account: 123456789012345
+2025-03-24 12:37:19 [main] INFO  com.Rishi.Registration - OTP verification updated in bank_accounts for account: 123456789012345
+2025-03-24 12:37:19 [main] INFO  com.Rishi.Registration - Registration completed successfully for account: 123456789012345
+2025-03-24 12:38:35 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-24 12:38:41 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 12345678902345
+2025-03-24 12:38:41 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-24 12:38:48 [main] ERROR com.Rishi.Login - Account number not found!
+2025-03-24 12:38:48 [main] WARN  com.Rishi.Banking_system - Login failed for account: 12345678902345
+2025-03-24 12:39:01 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-24 12:39:08 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 123456789012345
+2025-03-24 12:39:08 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-24 12:39:14 [main] DEBUG com.Rishi.OTPService - Generated OTP: 728392
+2025-03-24 12:39:14 [main] DEBUG com.Rishi.OTPService - Generating OTP for forgotPassword, account: 123456789012345
+2025-03-24 12:39:14 [main] INFO  com.Rishi.OTPService - OTP stored in users table for account: 123456789012345
+2025-03-24 12:39:19 [main] INFO  com.Rishi.OTPService - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-24 12:39:19 [main] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 12:39:19 [main] INFO  com.Rishi.Login - Enter the OTP received on your email: 
+2025-03-24 12:39:29 [main] DEBUG com.Rishi.OTPService - Fetched OTP: 728392 and timestamp: 2025-03-24T12:39:14.000+0530 for account: 123456789012345
+2025-03-24 12:39:29 [main] INFO  com.Rishi.OTPService - OTP verified successfully for account: 123456789012345
+2025-03-24 12:39:29 [main] INFO  com.Rishi.Login - OTP Verified Successfully!
+2025-03-24 12:39:29 [main] INFO  com.Rishi.Login - Login Successful!
+2025-03-24 12:39:29 [main] INFO  com.Rishi.Login - === Account Details ===
+2025-03-24 12:39:29 [main] INFO  com.Rishi.Login - Name: Gopal
+2025-03-24 12:39:29 [main] INFO  com.Rishi.Login - Account Number: 123456789012345
+2025-03-24 12:39:29 [main] INFO  com.Rishi.Login - Email: gopal6291441556@gmail.com
+2025-03-24 12:39:29 [main] INFO  com.Rishi.Login - Phone: 8296408040
+2025-03-24 12:39:29 [main] INFO  com.Rishi.Login - Balance: 5000.0
+2025-03-24 12:39:29 [main] INFO  com.Rishi.Banking_system - Login successful for account: 123456789012345. Proceeding to transactions...
+2025-03-24 12:39:29 [main] DEBUG com.Rishi.Login - Retrieved email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 12:39:29 [main] DEBUG com.Rishi.Login - Retrieved balance: 5000.0 for account: 123456789012345
+2025-03-24 12:39:43 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 2
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Banking_system - Viewing transaction history for account: 123456789012345
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - Transaction History:
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - Transaction ID  Sender              Receiver            Transaction Type     Type       Amount          Date                
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - -----------------------------------------------------------------------------------------------------
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 52              123456789012345     987654321012345     Fund Transfer        Debit      300.00          2025-03-23 10:46:22 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 51              123456789012345     123456789012345     Fund Transfer        Debit      250.00          2025-03-23 09:55:59 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 50              123456789012345     987654321012345     Fund Transfer        Debit      10.00           2025-03-22 15:12:40 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 49              123456789012345     987654321014364     Fund Transfer        Debit      50.00           2025-03-21 21:41:33 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 48              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-21 19:44:35 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 47              123456789012345     987654321012345     Fund Transfer        Debit      500.00          2025-03-13 13:20:45 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 46              123456789012345     987654321012345     Fund Transfer        Debit      1000.00         2025-03-13 13:11:40 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 42              987654321098765     123456789012345     Fund Transfer        Credit     4000.00         2025-03-13 10:54:01 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 41              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-13 10:50:22 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 40              123456789012345     987654321012345     Fund Transfer        Debit      5000.00         2025-03-13 10:03:22 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 39              987654321098765     123456789012345     Fund Transfer        Credit     5000.00         2025-03-11 10:14:41 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 38              987654321014364     123456789012345     Fund Transfer        Credit     500.00          2025-03-10 21:50:03 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 37              987654321098765     123456789012345     Fund Transfer        Credit     250000.00       2025-03-10 19:39:04 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 36              987654321098765     123456789012345     Fund Transfer        Credit     5.00            2025-03-10 10:47:03 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 35              987654321098765     123456789012345     Fund Transfer        Credit     22970.00        2025-03-10 10:46:25 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 34              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 16:09:20 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 32              987654321098765     123456789012345     Fund Transfer        Credit     200.00          2025-03-09 11:44:01 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 31              987654321098765     123456789012345     Fund Transfer        Credit     300.00          2025-03-09 11:41:31 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 30              987654321098765     123456789012345     Fund Transfer        Credit     550.00          2025-03-09 11:29:21 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 29              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 11:27:53 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 28              987654321098765     123456789012345     Fund Transfer        Credit     1000.00         2025-03-09 11:25:06 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 27              987654321098765     123456789012345     Fund Transfer        Credit     5.00            2025-03-09 11:14:54 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 26              987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-09 11:10:41 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 25              123456789012345     987654321098765     Fund Transfer        Debit      500.00          2025-03-09 10:45:08 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 22              123456789012345     987654321098765     Fund Transfer        Debit      500.00          2025-03-06 13:22:49 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 21              123456789012345     987654321098765     Fund Transfer        Debit      1000.00         2025-03-06 12:07:46 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 19              987654321098765     123456789012345     Fund Transfer        Credit     5000.00         2025-03-04 22:26:01 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 18              123456789012345     987654321098765     Fund Transfer        Debit      5.00            2025-03-04 10:54:31 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 17              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:52:32 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 16              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:50:12 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 15              123456789012345     987654321098765     Fund Transfer        Debit      10.00           2025-03-04 10:48:43 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 14              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-04 10:28:55 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 13              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-04 10:17:22 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 12              123456789012345     987654321098765     Fund Transfer        Debit      50.00           2025-03-03 16:28:26 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 11              123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 13:37:15 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 10              123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:36:40 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 9               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:30:23 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 8               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:24:33 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 7               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:19:31 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 6               123456789012345     987654321098765     Fund Transfer        Debit      100.00          2025-03-03 12:17:30 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 5               123456789012345     987654321098765     Fund Transfer        Debit      10000.00        2025-03-03 12:15:34 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 4               123456789012345     987654321098765     Fund Transfer        Debit      10000.00        2025-03-03 10:57:02 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 3               987654321098765     123456789012345     Fund Transfer        Credit     500.00          2025-03-03 10:50:38 
+2025-03-24 12:39:43 [main] INFO  com.Rishi.Online_Transaction - 1               987654321098765     123456789012345     Fund Transfer        Credit     1.00            2025-02-12 19:44:33 
+2025-03-24 12:39:52 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 1
+2025-03-24 12:40:05 [main] INFO  com.Rishi.Banking_system - Initiating fund transfer from 123456789012345 to 123456789012345 for amount: 2.0
+2025-03-24 12:40:05 [main] ERROR com.Rishi.Online_Transaction - 123456789012345 Transaction cancelled! --> Trying to transfer in own account (( SELF TRANSFER))
+2025-03-24 12:40:11 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 1
+2025-03-24 12:43:43 [main] INFO  com.Rishi.Banking_system - Initiating fund transfer from 123456789012345 to 987654321014364 for amount: 5.0
+2025-03-24 12:43:43 [main] INFO  com.Rishi.Online_Transaction - 💰 Your current balance: 5000.0
+2025-03-24 12:43:43 [main] INFO  com.Rishi.Online_Transaction - Enter the amount you want to transfer: 
+2025-03-24 12:43:48 [main] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.023
+2025-03-24 12:43:48 [main] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-24 12:43:48 [main] DEBUG com.Rishi.OTPService - Generated OTP: 884732
+2025-03-24 12:43:48 [main] DEBUG com.Rishi.OTPService - Generating OTP for forgotPassword, account: 123456789012345
+2025-03-24 12:43:48 [main] INFO  com.Rishi.OTPService - OTP stored in users table for account: 123456789012345
+2025-03-24 12:43:53 [main] INFO  com.Rishi.OTPService - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-24 12:43:53 [main] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 12:43:53 [main] INFO  com.Rishi.Online_Transaction - Enter the OTP received on your email: 
+2025-03-24 12:44:08 [main] DEBUG com.Rishi.OTPService - Fetched OTP: 884732 and timestamp: 2025-03-24T12:43:48.000+0530 for account: 123456789012345
+2025-03-24 12:44:08 [main] INFO  com.Rishi.OTPService - OTP verified successfully for account: 123456789012345
+2025-03-24 12:44:08 [main] INFO  com.Rishi.Online_Transaction - OTP Verified Successfully!
+2025-03-24 12:44:08 [main] INFO  com.Rishi.Online_Transaction - Login Successful!
+2025-03-24 12:44:08 [main] INFO  com.Rishi.Online_Transaction - 📌 Transaction ID: 53
+2025-03-24 12:44:08 [main] INFO  com.Rishi.Online_Transaction - OTP verification updated in transaction.
+2025-03-24 12:44:08 [main] INFO  com.Rishi.Online_Transaction - Money Transferred Successfully!
+2025-03-24 12:44:08 [main] INFO  com.Rishi.Online_Transaction - Your current balance is 2500.0
+2025-03-24 12:44:12 [main] INFO  com.Rishi.Online_Transaction - Transaction alert sent to gopal6291441556@gmail.com
+2025-03-24 12:44:17 [main] INFO  com.Rishi.Online_Transaction - Transaction alert sent to hawks4296@gmail.com
+2025-03-24 12:45:46 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 1
+2025-03-24 12:45:57 [main] INFO  com.Rishi.Banking_system - Initiating fund transfer from 123456789012345 to 987654321014364 for amount: -25.0
+2025-03-24 12:45:57 [main] INFO  com.Rishi.Online_Transaction - 💰 Your current balance: 2500.0
+2025-03-24 12:45:57 [main] INFO  com.Rishi.Online_Transaction - Enter the amount you want to transfer: 
+2025-03-24 12:46:00 [main] ERROR com.Rishi.Online_Transaction - Invalid transfer amount: -25.0. Amount must be greater than 0.
+2025-03-24 12:46:05 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 1
+2025-03-24 12:46:35 [main] INFO  com.Rishi.Banking_system - Initiating fund transfer from 123456789012345 to 987654321014364 for amount: 2500.0
+2025-03-24 12:46:35 [main] INFO  com.Rishi.Online_Transaction - 💰 Your current balance: 2500.0
+2025-03-24 12:46:35 [main] INFO  com.Rishi.Online_Transaction - Enter the amount you want to transfer: 
+2025-03-24 12:46:39 [main] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.4504
+2025-03-24 12:46:39 [main] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? true
+2025-03-24 12:46:39 [main] ERROR com.Rishi.Online_Transaction - 🚨 Transaction Blocked: Fraud Detected!
+2025-03-24 13:52:47 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-24 13:52:47 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-24 13:52:47 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-24 13:52:48 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-24 13:52:51 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-24 13:52:55 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 123456789012345
+2025-03-24 13:52:55 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-24 13:53:02 [main] DEBUG com.Rishi.OTPService - Generated OTP: 621528
+2025-03-24 13:53:02 [main] DEBUG com.Rishi.OTPService - Generating OTP for forgotPassword, account: 123456789012345
+2025-03-24 13:53:02 [main] INFO  com.Rishi.OTPService - OTP stored in users table for account: 123456789012345
+2025-03-24 13:53:07 [main] INFO  com.Rishi.OTPService - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-24 13:53:07 [main] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 13:53:07 [main] INFO  com.Rishi.Login - Enter the OTP received on your email: 
+2025-03-24 13:53:13 [main] DEBUG com.Rishi.OTPService - Fetched OTP: 621528 and timestamp: 2025-03-24T13:53:02.000+0530 for account: 123456789012345
+2025-03-24 13:53:13 [main] INFO  com.Rishi.OTPService - OTP verified successfully for account: 123456789012345
+2025-03-24 13:53:13 [main] INFO  com.Rishi.Login - OTP Verified Successfully!
+2025-03-24 13:53:13 [main] INFO  com.Rishi.Login - Login Successful!
+2025-03-24 13:53:13 [main] INFO  com.Rishi.Login - === Account Details ===
+2025-03-24 13:53:13 [main] INFO  com.Rishi.Login - Name: Gopal
+2025-03-24 13:53:13 [main] INFO  com.Rishi.Login - Account Number: 123456789012345
+2025-03-24 13:53:13 [main] INFO  com.Rishi.Login - Email: gopal6291441556@gmail.com
+2025-03-24 13:53:13 [main] INFO  com.Rishi.Login - Phone: 8296408040
+2025-03-24 13:53:13 [main] INFO  com.Rishi.Login - Balance: 2500.0
+2025-03-24 13:53:13 [main] INFO  com.Rishi.Banking_system - Login successful for account: 123456789012345. Proceeding to transactions...
+2025-03-24 13:53:13 [main] DEBUG com.Rishi.Login - Retrieved email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 13:53:13 [main] DEBUG com.Rishi.Login - Retrieved balance: 2500.0 for account: 123456789012345
+2025-03-24 13:53:16 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 1
+2025-03-24 13:53:24 [main] INFO  com.Rishi.Banking_system - Initiating fund transfer from 123456789012345 to 987654321014364 for amount: 2.0
+2025-03-24 13:53:24 [main] INFO  com.Rishi.Online_Transaction - 💰 Your current balance: 2500.0
+2025-03-24 13:53:24 [main] INFO  com.Rishi.Online_Transaction - Enter the amount you want to transfer: 
+2025-03-24 13:53:28 [main] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.0106
+2025-03-24 13:53:28 [main] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-24 13:53:28 [main] DEBUG com.Rishi.OTPService - Generated OTP: 509950
+2025-03-24 13:53:28 [main] DEBUG com.Rishi.OTPService - Generating OTP for forgotPassword, account: 123456789012345
+2025-03-24 13:53:28 [main] INFO  com.Rishi.OTPService - OTP stored in users table for account: 123456789012345
+2025-03-24 13:53:32 [main] INFO  com.Rishi.OTPService - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-24 13:53:32 [main] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 13:53:32 [main] INFO  com.Rishi.Online_Transaction - Enter the OTP received on your email: 
+2025-03-24 13:53:38 [main] DEBUG com.Rishi.OTPService - Fetched OTP: 509950 and timestamp: 2025-03-24T13:53:28.000+0530 for account: 123456789012345
+2025-03-24 13:53:38 [main] INFO  com.Rishi.OTPService - OTP verified successfully for account: 123456789012345
+2025-03-24 13:53:38 [main] INFO  com.Rishi.Online_Transaction - OTP Verified Successfully!
+2025-03-24 13:53:38 [main] INFO  com.Rishi.Online_Transaction - Login Successful!
+2025-03-24 13:53:38 [main] INFO  com.Rishi.Online_Transaction - 📌 Transaction ID: 54
+2025-03-24 13:53:38 [main] INFO  com.Rishi.Online_Transaction - OTP verification updated in transaction.
+2025-03-24 13:53:38 [main] INFO  com.Rishi.Online_Transaction - Money Transferred Successfully!
+2025-03-24 13:53:38 [main] INFO  com.Rishi.Online_Transaction - Your current balance is 2495.0
+2025-03-24 13:53:43 [main] INFO  com.Rishi.Online_Transaction - Transaction alert sent to gopal6291441556@gmail.com
+2025-03-24 13:53:48 [main] INFO  com.Rishi.Online_Transaction - Transaction alert sent to hawks4296@gmail.com
+2025-03-24 13:53:55 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 1
+2025-03-24 13:54:07 [main] INFO  com.Rishi.Banking_system - Initiating fund transfer from 123456789012345 to 987654321014364 for amount: 2.0
+2025-03-24 13:54:07 [main] INFO  com.Rishi.Online_Transaction - 💰 Your current balance: 2495.0
+2025-03-24 13:54:07 [main] INFO  com.Rishi.Online_Transaction - Enter the amount you want to transfer: 
+2025-03-24 13:54:11 [main] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.4504
+2025-03-24 13:54:11 [main] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? true
+2025-03-24 13:54:11 [main] ERROR com.Rishi.Online_Transaction - 🚨 Transaction Blocked: Fraud Detected!
+2025-03-24 13:54:11 [main] ERROR com.Rishi.Online_Transaction - Transaction failed. Rolled back changes.
+2025-03-24 13:54:11 [main] ERROR com.Rishi.Online_Transaction - SQLException in fundTransfer: Data truncated for column 'status' at row 1
+java.sql.SQLException: Data truncated for column 'status' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:92) [classes/:?]
+	at com.Rishi.Banking_system.main(Banking_system.java:98) [classes/:?]
+2025-03-24 14:06:13 [main] INFO  com.Rishi.Banking_system - Application started - Testing Log4j
+2025-03-24 14:06:13 [main] DEBUG com.Rishi.Banking_system - This is a debug message to test Log4j
+2025-03-24 14:06:13 [main] ERROR com.Rishi.Banking_system - This is an error message to test Log4j
+2025-03-24 14:06:13 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-24 14:06:19 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 2
+2025-03-24 14:06:23 [main] INFO  com.Rishi.Banking_system - Login attempt for account: 123456789012345
+2025-03-24 14:06:23 [main] INFO  com.Rishi.Login - Enter your password: 
+2025-03-24 14:06:28 [main] DEBUG com.Rishi.OTPService - Generated OTP: 887772
+2025-03-24 14:06:28 [main] DEBUG com.Rishi.OTPService - Generating OTP for forgotPassword, account: 123456789012345
+2025-03-24 14:06:28 [main] INFO  com.Rishi.OTPService - OTP stored in users table for account: 123456789012345
+2025-03-24 14:06:33 [main] INFO  com.Rishi.OTPService - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-24 14:06:33 [main] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 14:06:33 [main] INFO  com.Rishi.Login - Enter the OTP received on your email: 
+2025-03-24 14:06:37 [main] DEBUG com.Rishi.OTPService - Fetched OTP: 887772 and timestamp: 2025-03-24T14:06:28.000+0530 for account: 123456789012345
+2025-03-24 14:06:37 [main] INFO  com.Rishi.OTPService - OTP verified successfully for account: 123456789012345
+2025-03-24 14:06:37 [main] INFO  com.Rishi.Login - OTP Verified Successfully!
+2025-03-24 14:06:37 [main] INFO  com.Rishi.Login - Login Successful!
+2025-03-24 14:06:37 [main] INFO  com.Rishi.Login - === Account Details ===
+2025-03-24 14:06:37 [main] INFO  com.Rishi.Login - Name: Gopal
+2025-03-24 14:06:37 [main] INFO  com.Rishi.Login - Account Number: 123456789012345
+2025-03-24 14:06:37 [main] INFO  com.Rishi.Login - Email: gopal6291441556@gmail.com
+2025-03-24 14:06:37 [main] INFO  com.Rishi.Login - Phone: 8296408040
+2025-03-24 14:06:37 [main] INFO  com.Rishi.Login - Balance: 2495.0
+2025-03-24 14:06:37 [main] INFO  com.Rishi.Banking_system - Login successful for account: 123456789012345. Proceeding to transactions...
+2025-03-24 14:06:37 [main] DEBUG com.Rishi.Login - Retrieved email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 14:06:37 [main] DEBUG com.Rishi.Login - Retrieved balance: 2495.0 for account: 123456789012345
+2025-03-24 14:06:39 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 1
+2025-03-24 14:06:50 [main] INFO  com.Rishi.Banking_system - Initiating fund transfer from 123456789012345 to 987654321014364 for amount: 2.0
+2025-03-24 14:06:50 [main] INFO  com.Rishi.Online_Transaction - 💰 Your current balance: 2495.0
+2025-03-24 14:06:50 [main] INFO  com.Rishi.Online_Transaction - Enter the amount you want to transfer: 
+2025-03-24 14:06:53 [main] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.4504
+2025-03-24 14:06:53 [main] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? true
+2025-03-24 14:06:53 [main] ERROR com.Rishi.Online_Transaction - 🚨 Transaction Blocked: Fraud Detected!
+2025-03-24 14:06:53 [main] INFO  com.Rishi.Online_Transaction - 📌 Fraudulent Transaction ID: 55
+2025-03-24 14:07:47 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 4
+2025-03-24 14:08:00 [main] INFO  com.Rishi.Banking_system - Sending transaction history via email for account: 123456789012345 for month: 13, year: 1000
+2025-03-24 14:08:00 [main] ERROR com.Rishi.Banking_system - Failed to generate PDF statement for email sending for account: 123456789012345
+2025-03-24 14:08:13 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 4
+2025-03-24 14:08:19 [main] INFO  com.Rishi.Banking_system - Sending transaction history via email for account: 123456789012345 for month: 3, year: 2025
+2025-03-24 14:08:25 [main] INFO  com.Rishi.Banking_system - PDF statement sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 14:08:37 [main] DEBUG com.Rishi.Banking_system - User selected transaction menu option: 5
+2025-03-24 14:08:37 [main] INFO  com.Rishi.Banking_system - User exited transaction menu for account: 123456789012345
+2025-03-24 14:08:40 [main] DEBUG com.Rishi.Banking_system - User selected main menu option: 3
+2025-03-24 14:08:44 [main] INFO  com.Rishi.Registration - User entered account number for forgot password: 123456789012345
+2025-03-24 14:08:48 [main] DEBUG com.Rishi.Registration - User entered phone number: 8296408040
+2025-03-24 14:08:48 [main] INFO  com.Rishi.Registration - Fetched user data for account: 123456789012345 - phone: 8296408040, email: gopal6291441556@gmail.com
+2025-03-24 14:08:52 [main] DEBUG com.Rishi.Registration - User entered security answer for account: 123456789012345
+2025-03-24 14:08:52 [main] INFO  com.Rishi.Registration - Security answer verified successfully for account: 123456789012345
+2025-03-24 14:08:52 [main] INFO  com.Rishi.Registration - Phone number matched for account: 123456789012345
+2025-03-24 14:08:52 [main] DEBUG com.Rishi.OTPService - Generated OTP: 508355
+2025-03-24 14:08:52 [main] DEBUG com.Rishi.OTPService - Generating OTP for forgotPassword, account: 123456789012345
+2025-03-24 14:08:52 [main] INFO  com.Rishi.OTPService - OTP stored in users table for account: 123456789012345
+2025-03-24 14:08:57 [main] INFO  com.Rishi.OTPService - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-24 14:08:57 [main] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-24 14:08:57 [main] INFO  com.Rishi.Registration - OTP sent for account: 123456789012345
+2025-03-24 14:09:05 [main] DEBUG com.Rishi.Registration - User entered OTP: 508355
+2025-03-24 14:09:05 [main] DEBUG com.Rishi.OTPService - Fetched OTP: 508355 and timestamp: 2025-03-24T14:08:52.000+0530 for account: 123456789012345
+2025-03-24 14:09:05 [main] INFO  com.Rishi.OTPService - OTP verified successfully for account: 123456789012345
+2025-03-24 14:09:05 [main] INFO  com.Rishi.Registration - OTP verified successfully for account: 123456789012345
