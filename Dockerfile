@@ -1,17 +1,11 @@
-# Use OpenJDK 17 as base image
-FROM openjdk:17-jdk-slim
-
-# Set working directory inside the container
+FROM maven:3.8.3-openjdk-17 AS build
 WORKDIR /app
-
-# Copy everything from your project to the container
 COPY . .
+RUN mvn clean package -DskipTests
 
-# Build the application using Maven
-RUN ./mvnw clean package -DskipTests
-
-# Expose the port your Java app runs on (usually 8080)
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+COPY --from=build /app/target/banking-system-1.0-SNAPSHOT.jar app.jar
+ENV PORT=8080
 EXPOSE 8080
-
-# Start the application
-CMD ["java", "-jar", "target/Bankingsys-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
