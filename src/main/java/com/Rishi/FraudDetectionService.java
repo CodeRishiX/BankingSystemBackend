@@ -1,28 +1,33 @@
 package com.Rishi;
 
-import java.io.*;
-import java.net.*;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import org.json.JSONObject;
-import org.apache.logging.log4j.LogManager;  // Import Log4j2
-import org.apache.logging.log4j.Logger;      // Import Logger
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class FraudDetectionService {
-    // Initialize Logger
     private static final Logger logger = LogManager.getLogger(FraudDetectionService.class);
 
+    // Custom exception for fraud detection failures
+    public static class FraudDetectionException extends Exception {
+        public FraudDetectionException(String message, Throwable cause) {
+            super(message, cause);
+        }
+    }
+
     public static boolean isTransactionFraudulent(double amount, double oldbalanceOrg, double newbalanceOrig,
-                                                  double oldbalanceDest, double newbalanceDest, String transactionType) {
+                                                  double oldbalanceDest, double newbalanceDest, String transactionType) throws FraudDetectionException {
         try {
-            // ✅ Flask API URL
-            URL url = new URL("http://127.0.0.1:5000/predict");
+            // Use environment variable for Flask API URL, default to local for development
+            String flaskApiUrl = System.getenv("FLASK_API_URL") != null ? System.getenv("FLASK_API_URL") : "http://127.0.0.1:5000/predict";
 
-            // ✅ Open Connection
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setDoOutput(true);
+            // Create HttpClient
+            HttpClient client = HttpClient.newHttpClient();
 
-            // ✅ Create JSON Request
+            // Create JSON Request
             JSONObject json = new JSONObject();
             json.put("amount", amount);
             json.put("oldbalanceOrg", oldbalanceOrg);
@@ -31,35 +36,46 @@ public class FraudDetectionService {
             json.put("newbalanceDest", newbalanceDest);
             json.put("transaction_type", transactionType);
 
-            // ✅ Send JSON Request
-            OutputStream os = conn.getOutputStream();
-            os.write(json.toString().getBytes());
-            os.flush();
-            os.close();
+            // Build HTTP Request
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(flaskApiUrl))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json.toString()))
+                    .build();
 
-            // ✅ Read Response
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuilder response = new StringBuilder();
-            String line;
-            while ((line = in.readLine()) != null) {
-                response.append(line);
+            // Send HTTP Request and get response
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            // Check response status
+            if (response.statusCode() != 200) {
+                logger.error("Fraud Detection API returned non-OK status: {}", response.statusCode());
+                throw new FraudDetectionException("Fraud Detection API returned non-OK status: " + response.statusCode(), null);
             }
-            in.close();
 
-            // ✅ Parse Response
-            JSONObject jsonResponse = new JSONObject(response.toString());
+            // Parse Response
+            JSONObject jsonResponse = new JSONObject(response.body());
             boolean isFraud = jsonResponse.getBoolean("is_fraud");
             double fraudProbability = jsonResponse.getDouble("fraud_probability");
 
-            // ✅ Log API Response
+            // Log API Response
             logger.info("📌 Fraud Probability: {}", fraudProbability);
             logger.info("📌 Is Fraudulent? {}", isFraud);
 
-            return isFraud; // ✅ Return Fraud Detection Result
+            return isFraud; // Return Fraud Detection Result
 
+        } catch ( java.net.http.HttpTimeoutException e) {
+            logger.error("Timeout error in Fraud Detection API call: {}", e.getMessage(), e);
+            throw new FraudDetectionException("Timeout error in Fraud Detection API: " + e.getMessage(), e);
+        } catch (java.io.IOException e) {
+            logger.error("IO error in Fraud Detection API call: {}", e.getMessage(), e);
+            throw new FraudDetectionException("Failed to connect to Fraud Detection API: " + e.getMessage(), e);
+        } catch (InterruptedException e) {
+            logger.error("Interrupted error in Fraud Detection API call: {}", e.getMessage(), e);
+            Thread.currentThread().interrupt(); // Restore interrupted status
+            throw new FraudDetectionException("Interrupted during Fraud Detection API call: " + e.getMessage(), e);
         } catch (Exception e) {
-            logger.error("Error in Fraud Detection API call: {}", e.getMessage(), e);
-            return false; // Default to Non-Fraud if API Call Fails
+            logger.error("Unexpected error in Fraud Detection API call: {}", e.getMessage(), e);
+            throw new FraudDetectionException("Unexpected error in Fraud Detection API: " + e.getMessage(), e);
         }
     }
 }

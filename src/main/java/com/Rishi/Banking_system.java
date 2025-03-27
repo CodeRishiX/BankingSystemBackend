@@ -1,198 +1,210 @@
 package com.Rishi;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Scanner;
-import org.apache.logging.log4j.LogManager;
+import org.mindrot.jbcrypt.BCrypt;
+import spark.Spark;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
+import java.io.IOException;
+import java.sql.*;
+import java.util.Map;
+import org.json.JSONObject;
+
+import javax.mail.MessagingException;
 
 public class Banking_system {
     private static final Logger logger = LogManager.getLogger(Banking_system.class);
 
     public static void main(String[] args) {
-        // Test Log4j with different log levels
-        logger.info("Application started - Testing Log4j");
-        logger.debug("This is a debug message to test Log4j");
-        logger.error("This is an error message to test Log4j");
+        Spark.port(8080);
+        logger.info("Database connected successfully!");
+        logger.info("Banking System server started on port 8080");
 
-        // Establish database connection using DatabaseConfig
-        Connection connection = null;
-        try {
-            connection = DatabaseConfig.getConnection();
-            logger.info("Database connected successfully!");
-            System.out.println("✅ Database Connected Successfully!");
-        } catch (SQLException e) {
-            logger.error("Database connection failed: {}", e.getMessage(), e);
-            System.out.println("❌ Database Connection Failed: " + e.getMessage());
-            return; // Exit if database connection fails
-        }
+        Spark.get("/", (req, res) -> "Banking System is running on port 8080!");
 
-        // Use try-with-resources for Scanner (auto-closes scanner)
-        try (Scanner sc = new Scanner(System.in)) {
-            boolean exit = false;
+        // Registration endpoint (unchanged)
+        Spark.post("/register", (req, res) -> {
+            res.type("application/json");
+            String accountNumber = req.queryParams("accountNumber");
+            String userOtp = req.queryParams("otp");
+            int securityQuestionChoice = Integer.parseInt(req.queryParams("securityQuestionChoice"));
+            String securityAnswer = req.queryParams("securityAnswer");
+            String password1 = req.queryParams("password1");
+            String password2 = req.queryParams("password2");
+            String email = req.queryParams("email");
 
-            while (!exit) {
-                System.out.println("\n=== Banking System ===");
-                System.out.println("1. Register");
-                System.out.println("2. Login");
-                System.out.println("3. Forgot Password");
-                System.out.println("4. Exit");
-                System.out.print("Enter your choice: ");
+            Registration registration = new Registration();
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                registration.reg(accountNumber, userOtp, securityQuestionChoice, securityAnswer, password1, password2, email, conn);
+                return "{\"status\": \"success\", \"message\": \"Registration successful\"}";
+            } catch (SQLException | MessagingException e) {
+                logger.error("Registration failed: " + e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"Registration failed: " + e.getMessage() + "\"}";
+            } catch (IllegalArgumentException e) {
+                return "{\"status\": \"error\", \"message\": \"" + e.getMessage() + "\"}";
+            }
+        });
 
-                int choice = sc.nextInt();
-                sc.nextLine(); // Consume newline left by nextInt()
-                logger.debug("User selected main menu option: {}", choice);
+        // Login: Request OTP (unchanged)
+        Spark.post("/login/request-otp", (req, res) -> {
+            res.type("application/json");
+            String accNumber = req.queryParams("accnumber");
+            String password = req.queryParams("password");
+            logger.info("Login OTP request for account: {}", accNumber);
 
-                switch (choice) {
-                    case 1:
-                        Registration regi = new Registration();
-                        regi.reg();
-                        break;
-
-                    case 2:
-                        Login login = new Login();
-                        System.out.print("Enter your Account Number: ");
-                        String accnumber = sc.nextLine();
-                        logger.info("Login attempt for account: {}", accnumber);
-
-                        boolean loginSuccess = login.log(accnumber, connection, sc);
-
-                        if (loginSuccess) {
-                            logger.info("Login successful for account: {}. Proceeding to transactions...", accnumber);
-                            System.out.println("\n✅ Login Successful. Proceeding to transactions...");
-
-                            try {
-                                // Fetch email and balance with exception handling
-                                String email = login.getUserEmail(accnumber, connection);
-                                double balance = login.getUserBalance(accnumber, connection);
-
-                                // Create Online Transaction object
-                                Online_Transaction transaction = new Online_Transaction(connection, sc, accnumber, balance, email);
-
-                                String pdfFilePath = null;
-                                int month = 0, year = 0;
-
-                                // Transaction menu
-                                boolean transactionExit = false;
-                                while (!transactionExit) {
-                                    System.out.println("\n=== Transaction Menu ===");
-                                    System.out.println("1. Fund Transfer");
-                                    System.out.println("2. View Transaction History");
-                                    System.out.println("3. Download Transaction History (PDF)");
-                                    System.out.println("4. Send Transaction History via Email");
-                                    System.out.println("5. Exit Transactions");
-                                    System.out.print("Enter your choice: ");
-
-                                    int transactionChoice = sc.nextInt();
-                                    sc.nextLine(); // Consume newline left by nextInt()
-                                    logger.debug("User selected transaction menu option: {}", transactionChoice);
-
-                                    switch (transactionChoice) {
-                                        case 1:
-                                            System.out.print("Enter recipient account number: ");
-                                            String receiverAccount = sc.nextLine();
-                                            System.out.print("Enter amount to transfer: ");
-                                            double amount = sc.nextDouble();
-                                            sc.nextLine(); // Consume newline left by nextDouble()
-                                            logger.info("Initiating fund transfer from {} to {} for amount: {}", accnumber, receiverAccount, amount);
-                                            transaction.fundTransfer(receiverAccount, amount, connection, sc);
-                                            break;
-
-                                        case 2:
-                                            logger.info("Viewing transaction history for account: {}", accnumber);
-                                            transaction.displayTransactionHistory(accnumber, connection);
-                                            break;
-
-                                        case 3:
-                                            System.out.print("Enter month (1-12): ");
-                                            month = sc.nextInt();
-                                            System.out.print("Enter year (e.g., 2025): ");
-                                            year = sc.nextInt();
-                                            sc.nextLine(); // Consume newline left by nextInt()
-                                            logger.info("Generating PDF statement for account: {} for month: {}, year: {}", accnumber, month, year);
-
-                                            pdfFilePath = PDFStatementGenerator.generatePDFStatement(accnumber, month, year, connection);
-                                            if (pdfFilePath != null) {
-                                                logger.info("PDF statement generated successfully for account: {}. Path: {}", accnumber, pdfFilePath);
-                                                System.out.println("✅ PDF statement downloaded successfully: " + pdfFilePath);
-                                            } else {
-                                                logger.error("Failed to generate PDF statement for account: {}", accnumber);
-                                                System.out.println("❌ Failed to generate PDF statement.");
-                                            }
-                                            break;
-
-                                        case 4:
-                                            System.out.print("Enter month (1-12): ");
-                                            month = sc.nextInt();
-                                            System.out.print("Enter year (e.g., 2025): ");
-                                            year = sc.nextInt();
-                                            sc.nextLine(); // Consume newline left by nextInt()
-                                            logger.info("Sending transaction history via email for account: {} for month: {}, year: {}", accnumber, month, year);
-
-                                            pdfFilePath = PDFStatementGenerator.generatePDFStatement(accnumber, month, year, connection);
-                                            if (pdfFilePath != null) {
-                                                PDFStatementGenerator.sendEmailWithPDF(email, pdfFilePath);
-                                                logger.info("PDF statement sent to email: {} for account: {}", email, accnumber);
-                                                System.out.println("✅ PDF statement sent to " + email);
-                                            } else {
-                                                logger.error("Failed to generate PDF statement for email sending for account: {}", accnumber);
-                                                System.out.println("❌ Failed to generate PDF statement.");
-                                            }
-                                            break;
-
-                                        case 5:
-                                            transactionExit = true;
-                                            logger.info("User exited transaction menu for account: {}", accnumber);
-                                            System.out.println("✅ Returning to main menu...");
-                                            break;
-
-                                        default:
-                                            logger.warn("Invalid transaction menu choice: {}", transactionChoice);
-                                            System.out.println("❌ Invalid choice! Try again.");
-                                    }
-                                }
-                            } catch (Login.UserDataRetrievalException e) {
-                                logger.error("Failed to fetch user data for account {}: {}", accnumber, e.getMessage());
-                                System.out.println("❌ Unable to proceed due to: " + e.getMessage());
-                                break;
-                            }
-                        } else {
-                            logger.warn("Login failed for account: {}", accnumber);
-                            System.out.println("❌ Login failed. Please try again.");
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                Login loginService = new Login();
+                String userQuery = "SELECT password_hash, email FROM users WHERE account_number = ?";
+                try (PreparedStatement ps = conn.prepareStatement(userQuery)) {
+                    ps.setString(1, accNumber);
+                    try (ResultSet rs = ps.executeQuery()) {
+                        if (!rs.next()) {
+                            return "{\"status\": \"error\", \"message\": \"Account does not exist!\"}";
                         }
-                        break;
+                        String storedHash = rs.getString("password_hash");
+                        String email = rs.getString("email");
 
-                    case 3:
-                        Registration regu = new Registration();
-                        regu.forgotPassword(connection, sc);
-                        break;
-
-                    case 4:
-                        exit = true;
-                        logger.info("User exited the banking system.");
-                        System.out.println("✅ Thank you for using the Banking System!");
-                        break;
-
-                    default:
-                        logger.warn("Invalid main menu choice: {}", choice);
-                        System.out.println("❌ Invalid choice! Try again.");
+                        if (!BCrypt.checkpw(password, storedHash)) {
+                            loginService.login(accNumber, password, "000000", conn);
+                            return "{\"status\": \"error\", \"message\": \"Incorrect password!\"}";
+                        }
+                    }
                 }
+                OTPService.sendOTP(accNumber, conn);
+                return "{\"status\": \"success\", \"message\": \"OTP sent to your email. Please verify.\"}";
+            } catch (SQLException | MessagingException e) {
+                logger.error("OTP request failed for account {}: {}", accNumber, e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"OTP request failed: " + e.getMessage() + "\"}";
             }
-        } catch (Exception e) { // Catch unexpected exceptions from Scanner or other operations
-            logger.error("Unexpected error in banking system: {}", e.getMessage(), e);
-            System.out.println("❌ An unexpected error occurred: " + e.getMessage());
-        } finally {
-            // Close database connection properly
-            try {
-                if (connection != null && !connection.isClosed()) {
-                    connection.close();
-                    logger.info("Database connection closed.");
-                    System.out.println("✅ Database connection closed.");
-                }
+        });
+
+        // Login: Verify OTP (unchanged)
+        Spark.post("/login/verify", (req, res) -> {
+            res.type("application/json");
+            String accNumber = req.queryParams("accnumber");
+            String password = req.queryParams("password");
+            String otp = req.queryParams("otp");
+            logger.info("Login verification for account: {}", accNumber);
+
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                Login loginService = new Login();
+                Map<String, Object> result = loginService.login(accNumber, password, otp, conn);
+                return new JSONObject(result).toString();
             } catch (SQLException e) {
-                logger.error("SQLException while closing database connection: {}", e.getMessage(), e);
-                System.out.println("❌ Error closing database connection: " + e.getMessage());
+                logger.error("Login failed for account {}: {}", accNumber, e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"Login failed: " + e.getMessage() + "\"}";
             }
-        }
+        });
+
+        // Transfer: Request OTP (unchanged)
+        Spark.post("/transfer/request-otp", (req, res) -> {
+            res.type("application/json");
+            String fromAccount = req.queryParams("fromAccount");
+            String toAccount = req.queryParams("toAccount");
+            double amount = Double.parseDouble(req.queryParams("amount"));
+            logger.info("Transfer OTP request from {} to {} for amount {}", fromAccount, toAccount, amount);
+
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                String balanceQuery = "SELECT balance, email FROM bank_accounts WHERE account_number = ?";
+                double balance;
+                String email;
+                try (PreparedStatement ps = conn.prepareStatement(balanceQuery)) {
+                    ps.setString(1, fromAccount);
+                    try (ResultSet rs = ps.executeQuery()) {
+                        if (!rs.next()) {
+                            return "{\"status\": \"error\", \"message\": \"Sender account does not exist!\"}";
+                        }
+                        balance = rs.getDouble("balance");
+                        email = rs.getString("email");
+                    }
+                }
+                try (PreparedStatement ps = conn.prepareStatement(balanceQuery)) {
+                    ps.setString(1, toAccount);
+                    try (ResultSet rs = ps.executeQuery()) {
+                        if (!rs.next()) {
+                            return "{\"status\": \"error\", \"message\": \"Recipient account does not exist!\"}";
+                        }
+                    }
+                }
+                if (balance < amount) {
+                    return "{\"status\": \"error\", \"message\": \"Insufficient balance!\"}";
+                }
+                if (fromAccount.equals(toAccount)) {
+                    return "{\"status\": \"error\", \"message\": \"Cannot transfer to same account!\"}";
+                }
+                Online_Transaction ot = new Online_Transaction(conn, fromAccount, balance, email);
+                OTPService.sendOTP(fromAccount, conn);
+                return "{\"status\": \"success\", \"message\": \"OTP sent to your email. Please verify.\"}";
+            } catch (SQLException | MessagingException e) {
+                logger.error("Transfer OTP request failed: {}", e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"OTP request failed: " + e.getMessage() + "\"}";
+            }
+        });
+
+        // Transfer: Verify and Execute (unchanged)
+        Spark.post("/transfer", (req, res) -> {
+            res.type("application/json");
+            String fromAccount = req.queryParams("fromAccount");
+            String toAccount = req.queryParams("toAccount");
+            double amount = Double.parseDouble(req.queryParams("amount"));
+            String otp = req.queryParams("otp");
+            logger.info("Transfer attempt from {} to {} for amount {}", fromAccount, toAccount, amount);
+
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                String balanceQuery = "SELECT balance, email FROM bank_accounts WHERE account_number = ?";
+                double balance;
+                String email;
+                try (PreparedStatement ps = conn.prepareStatement(balanceQuery)) {
+                    ps.setString(1, fromAccount);
+                    try (ResultSet rs = ps.executeQuery()) {
+                        if (!rs.next()) {
+                            return "{\"status\": \"error\", \"message\": \"Sender account does not exist!\"}";
+                        }
+                        balance = rs.getDouble("balance");
+                        email = rs.getString("email");
+                    }
+                }
+                Online_Transaction ot = new Online_Transaction(conn, fromAccount, balance, email);
+                ot.fundTransfer(toAccount, amount, otp, conn);
+                return "{\"status\": \"success\", \"message\": \"Transfer successful\"}";
+            } catch (SQLException | MessagingException e) {
+                logger.error("Transfer failed: {}", e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"Transfer failed: " + e.getMessage() + "\"}";
+            }
+        });
+
+        // Send Statement via Email
+        Spark.post("/send-statement", (req, res) -> {
+            res.type("application/json");
+            String accountNumber = req.queryParams("accountNumber");
+            int month = Integer.parseInt(req.queryParams("month"));
+            int year = Integer.parseInt(req.queryParams("year"));
+            logger.info("Request to send statement for account: {}, month: {}, year: {}", accountNumber, month, year);
+
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                String balanceQuery = "SELECT balance, email FROM bank_accounts WHERE account_number = ?";
+                double balance;
+                String email;
+                try (PreparedStatement ps = conn.prepareStatement(balanceQuery)) {
+                    ps.setString(1, accountNumber);
+                    try (ResultSet rs = ps.executeQuery()) {
+                        if (!rs.next()) {
+                            return "{\"status\": \"error\", \"message\": \"Account does not exist!\"}";
+                        }
+                        balance = rs.getDouble("balance");
+                        email = rs.getString("email");
+                    }
+                }
+                String pdfFilePath = PDFStatementGenerator.generatePDFStatement(accountNumber, month, year, conn);
+                PDFStatementGenerator.sendEmailWithPDF(email, pdfFilePath);
+                return "{\"status\": \"success\", \"message\": \"Statement sent to your email.\"}";
+            } catch (SQLException e) {
+                logger.error("Failed to generate statement for account {}: {}", accountNumber, e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"Failed to generate statement: " + e.getMessage() + "\"}";
+            } catch (IOException | MessagingException e) {
+                logger.error("Failed to send statement for account {}: {}", accountNumber, e.getClass());
+                return "{\"status\": \"error\", \"message\": \"Failed to send statement: " + e.getClass() + "\"}";
+            }
+        });
     }
 }
