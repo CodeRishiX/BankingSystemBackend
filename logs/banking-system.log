@@ -3602,3 +3602,42 @@ java.lang.IllegalArgumentException: Incorrect OTP! Please try again.
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
 	at java.lang.Thread.run(Thread.java:1583) [?:?]
 2025-03-27 13:14:58 [qtp496390637-43] ERROR com.Rishi.Banking_system - Login failed for account 987654321012345: Unexpected error during login: Incorrect OTP! Please try again.
+2025-03-27 13:15:25 [qtp496390637-36] INFO  com.Rishi.Banking_system - Login verification for account: 987654321012345
+2025-03-27 13:15:25 [qtp496390637-36] INFO  com.Rishi.Login - Login attempt for account: 987654321012345
+2025-03-27 13:15:26 [qtp496390637-36] INFO  com.Rishi.Login - Password verified successfully for account: 987654321012345
+2025-03-27 13:15:26 [qtp496390637-36] WARN  com.Rishi.Login - OTP expired (elapsed time: 140197s)
+2025-03-27 13:15:26 [qtp496390637-36] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 856234
+2025-03-27 13:15:26 [qtp496390637-36] INFO  com.Rishi.Login - Generated OTP for login for account 987654321012345: 856234
+2025-03-27 13:15:26 [qtp496390637-36] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 387141
+2025-03-27 13:15:26 [qtp496390637-36] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 13:15:31 [qtp496390637-36] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 13:15:31 [qtp496390637-36] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 13:15:31 [qtp496390637-36] INFO  com.Rishi.Login - Stored new OTP for account: 987654321012345
+2025-03-27 13:15:31 [qtp496390637-36] WARN  com.Rishi.Login - Incorrect OTP entered for account: 987654321012345 (entered: 696985, stored: 856234)
+2025-03-27 13:15:31 [qtp496390637-36] ERROR com.Rishi.Login - Unexpected error during login for account 987654321012345: Incorrect OTP! Please try again.
+java.lang.IllegalArgumentException: Incorrect OTP! Please try again.
+	at com.Rishi.Login.login(Login.java:126) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$3(Banking_system.java:91) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 13:15:31 [qtp496390637-36] ERROR com.Rishi.Banking_system - Login failed for account 987654321012345: Unexpected error during login: Incorrect OTP! Please try again.
