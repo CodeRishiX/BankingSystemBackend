@@ -4,27 +4,27 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.mindrot.jbcrypt.BCrypt;
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
 
 public class Login {
     private static final Logger logger = LogManager.getLogger(Login.class);
 
-    public Map<String, Object> login(String account, String password, String userOtp, Connection con) throws SQLException {
+    public Map<String, Object> verifyLogin(String account, String password, String userOtp, Connection con) throws SQLException, MessagingException {
         Map<String, Object> response = new HashMap<>();
-        logger.info("Login attempt for account: {}", account);
+        logger.info("Login verification for account: {}", account);
 
         try {
-            // Start a transaction
             con.setAutoCommit(false);
 
-            // Fetch user details from the users table
-            String userQuery = "SELECT email, password_hash, failed_attempts, lock_time FROM users WHERE account_number = ?";
+            String userQuery = "SELECT email, password_hash, failed_attempts, lock_time, otp, otp_timestamp FROM users WHERE account_number = ?";
             String email = null;
             String storedPassword = null;
             int failedAttempts = 0;
             Timestamp lockTime = null;
+            String storedOtp = null;
+            Timestamp otpTimestamp = null;
 
             try (PreparedStatement userPs = con.prepareStatement(userQuery)) {
                 userPs.setString(1, account);
@@ -34,6 +34,8 @@ public class Login {
                         storedPassword = userRs.getString("password_hash");
                         failedAttempts = userRs.getInt("failed_attempts");
                         lockTime = userRs.getTimestamp("lock_time");
+                        storedOtp = userRs.getString("otp");
+                        otpTimestamp = userRs.getTimestamp("otp_timestamp");
                     } else {
                         logger.warn("Account number not found in users table: {}", account);
                         throw new SQLException("Account number not found!");
@@ -41,15 +43,13 @@ public class Login {
                 }
             }
 
-            // Check if account is locked
             if (lockTime != null) {
                 long currentTime = System.currentTimeMillis();
-                long lockDuration = (currentTime - lockTime.getTime()) / 1000; // in seconds
-                if (lockDuration < 300) { // 5 minutes lock
+                long lockDuration = (currentTime - lockTime.getTime()) / 1000;
+                if (lockDuration < 300) {
                     logger.warn("Account {} is locked. Time remaining: {} seconds", account, (300 - lockDuration));
                     throw new SQLException("Account is locked. Please try again after 5 minutes or reset your password.");
                 } else {
-                    // Unlock the account
                     String unlockQuery = "UPDATE users SET failed_attempts = 0, lock_time = NULL WHERE account_number = ?";
                     try (PreparedStatement unlockPs = con.prepareStatement(unlockQuery)) {
                         unlockPs.setString(1, account);
@@ -60,7 +60,6 @@ public class Login {
                 }
             }
 
-            // Verify password
             if (!BCrypt.checkpw(password, storedPassword)) {
                 failedAttempts++;
                 if (failedAttempts >= 3) {
@@ -87,48 +86,17 @@ public class Login {
 
             logger.info("Password verified successfully for account: {}", account);
 
-            // Retrieve the stored OTP from the users table
-            String otpQuery = "SELECT otp, otp_timestamp FROM users WHERE account_number = ?";
-            String storedOtp = null;
-            Timestamp otpTimestamp = null;
-            try (PreparedStatement otpPs = con.prepareStatement(otpQuery)) {
-                otpPs.setString(1, account);
-                try (ResultSet otpRs = otpPs.executeQuery()) {
-                    if (otpRs.next()) {
-                        storedOtp = otpRs.getString("otp");
-                        otpTimestamp = otpRs.getTimestamp("otp_timestamp");
-                    }
-                }
-            }
-
-            // If no OTP exists or it has expired, generate a new one
+            // Verify OTP (no generation here)
             if (storedOtp == null || otpTimestamp == null || isOtpExpired(otpTimestamp)) {
-                String generatedOtp = OTPService.generateOTP(account);
-                logger.info("Generated OTP for login for account {}: {}", account, generatedOtp);
-                OTPService.sendOTP(account, con); // This will store the OTP in the users table
-                storedOtp = generatedOtp;
-                otpTimestamp = new Timestamp(System.currentTimeMillis());
-
-                // Update the stored OTP and timestamp in the users table
-                String updateOtpQuery = "UPDATE users SET otp = ?, otp_timestamp = ? WHERE account_number = ?";
-                try (PreparedStatement updateOtpPs = con.prepareStatement(updateOtpQuery)) {
-                    updateOtpPs.setString(1, storedOtp);
-                    updateOtpPs.setTimestamp(2, otpTimestamp);
-                    updateOtpPs.setString(3, account);
-                    updateOtpPs.executeUpdate();
-                    logger.info("Stored new OTP for account: {}", account);
-                }
+                logger.warn("No valid OTP found for account: {}", account);
+                throw new SQLException("No valid OTP found. Please request a new OTP.");
             }
-
-            // Verify OTP
             if (!userOtp.equals(storedOtp)) {
                 logger.warn("Incorrect OTP entered for account: {} (entered: {}, stored: {})", account, userOtp, storedOtp);
                 throw new IllegalArgumentException("Incorrect OTP! Please try again.");
             }
-
             logger.info("OTP verified successfully for account: {}", account);
 
-            // Fetch balance from bank_accounts
             String balanceQuery = "SELECT balance FROM bank_accounts WHERE account_number = ?";
             double balance = 0.0;
             try (PreparedStatement balancePs = con.prepareStatement(balanceQuery)) {
@@ -162,16 +130,15 @@ public class Login {
                 logger.info("Generated and stored session token for account: {}", account);
             }
 
-            // Commit the transaction
             con.commit();
 
-            // Prepare success response with token
             response.put("status", "success");
             response.put("message", "Login successful");
             response.put("accnumber", account);
             response.put("email", email);
             response.put("balance", balance);
-            response.put("token", token); // Add token to response
+            response.put("token", token);
+
         } catch (SQLException e) {
             logger.error("SQLException during login for account {}: {}", account, e.getMessage(), e);
             con.rollback();
@@ -190,11 +157,47 @@ public class Login {
     private boolean isOtpExpired(Timestamp otpTimestamp) {
         long currentTime = System.currentTimeMillis();
         long otpTime = otpTimestamp.getTime();
-        long elapsedTime = (currentTime - otpTime) / 1000; // Time in seconds
-        if (elapsedTime > 300) { // 5 minutes = 300 seconds
+        long elapsedTime = (currentTime - otpTime) / 1000;
+        if (elapsedTime > 300) {
             logger.warn("OTP expired (elapsed time: {}s)", elapsedTime);
             return true;
         }
         return false;
+    }
+
+    // Added: Generate OTP method (made public for Banking_system.java)
+    public String generateOTP() {
+        Random random = new Random();
+        int otp = 100000 + random.nextInt(900000);
+        logger.info("Generated OTP: {}", otp);
+        return String.valueOf(otp);
+    }
+
+    // Added: Send email method (made public for Banking_system.java)
+    public void sendEmail(String to, String subject, String body) throws MessagingException {
+        final String senderEmail = "saltlakesisco@gmail.com";
+        final String senderPassword = "wgdl tlfz jmhf itrh";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(senderEmail, senderPassword);
+            }
+        });
+
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(senderEmail));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+        message.setSubject(subject);
+        message.setText(body);
+
+        Transport.send(message);
+        logger.info("Email sent successfully to: {}", to);
     }
 }

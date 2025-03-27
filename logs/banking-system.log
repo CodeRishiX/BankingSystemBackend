@@ -3641,3 +3641,821 @@ java.lang.IllegalArgumentException: Incorrect OTP! Please try again.
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
 	at java.lang.Thread.run(Thread.java:1583) [?:?]
 2025-03-27 13:15:31 [qtp496390637-36] ERROR com.Rishi.Banking_system - Login failed for account 987654321012345: Unexpected error during login: Incorrect OTP! Please try again.
+2025-03-27 17:26:00 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-27 17:26:00 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-27 17:29:28 [qtp496390637-43] INFO  com.Rishi.Banking_system - Login verification for account: 987654321012348
+2025-03-27 17:29:28 [qtp496390637-43] INFO  com.Rishi.Login - Login attempt for account: 987654321012348
+2025-03-27 17:29:28 [qtp496390637-43] WARN  com.Rishi.Login - Account number not found in users table: 987654321012348
+2025-03-27 17:29:28 [qtp496390637-43] ERROR com.Rishi.Login - SQLException during login for account 987654321012348: Account number not found!
+java.sql.SQLException: Account number not found!
+	at com.Rishi.Login.login(Login.java:41) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$3(Banking_system.java:91) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 17:29:28 [qtp496390637-43] ERROR com.Rishi.Banking_system - Login failed for account 987654321012348: Account number not found!
+2025-03-27 17:33:50 [qtp496390637-46] INFO  com.Rishi.Banking_system - Login verification for account: 987654321012348
+2025-03-27 17:33:50 [qtp496390637-46] INFO  com.Rishi.Login - Login attempt for account: 987654321012348
+2025-03-27 17:33:50 [qtp496390637-46] WARN  com.Rishi.Login - Account number not found in users table: 987654321012348
+2025-03-27 17:33:50 [qtp496390637-46] ERROR com.Rishi.Login - SQLException during login for account 987654321012348: Account number not found!
+java.sql.SQLException: Account number not found!
+	at com.Rishi.Login.login(Login.java:41) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$3(Banking_system.java:91) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 17:33:50 [qtp496390637-46] ERROR com.Rishi.Banking_system - Login failed for account 987654321012348: Account number not found!
+2025-03-27 17:34:08 [qtp496390637-35] INFO  com.Rishi.Banking_system - Login verification for account: 987654321014364
+2025-03-27 17:34:08 [qtp496390637-35] INFO  com.Rishi.Login - Login attempt for account: 987654321014364
+2025-03-27 17:34:09 [qtp496390637-35] WARN  com.Rishi.Login - Incorrect password for account: 987654321014364. Attempt 2 of 3
+2025-03-27 17:34:09 [qtp496390637-35] ERROR com.Rishi.Login - SQLException during login for account 987654321014364: Incorrect password! Attempt 2 of 3.
+java.sql.SQLException: Incorrect password! Attempt 2 of 3.
+	at com.Rishi.Login.login(Login.java:82) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$3(Banking_system.java:91) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 17:34:09 [qtp496390637-35] ERROR com.Rishi.Banking_system - Login failed for account 987654321014364: Incorrect password! Attempt 2 of 3.
+2025-03-27 17:37:02 [qtp496390637-48] INFO  com.Rishi.Banking_system - Login verification for account: 987654321012345
+2025-03-27 17:37:02 [qtp496390637-48] INFO  com.Rishi.Login - Login attempt for account: 987654321012345
+2025-03-27 17:37:02 [qtp496390637-48] INFO  com.Rishi.Login - Password verified successfully for account: 987654321012345
+2025-03-27 17:37:02 [qtp496390637-48] WARN  com.Rishi.Login - OTP expired (elapsed time: 155893s)
+2025-03-27 17:37:02 [qtp496390637-48] INFO  com.Rishi.Login - Stored new OTP for account: 987654321012345
+2025-03-27 17:37:08 [qtp496390637-48] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 17:37:08 [qtp496390637-48] INFO  com.Rishi.Login - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 17:37:08 [qtp496390637-48] ERROR com.Rishi.Login - Unexpected error during login for account 987654321012345: A new OTP has been sent to your email. Please use the latest OTP to login.
+java.lang.IllegalArgumentException: A new OTP has been sent to your email. Please use the latest OTP to login.
+	at com.Rishi.Login.login(Login.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$3(Banking_system.java:91) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 17:37:08 [qtp496390637-48] ERROR com.Rishi.Banking_system - Login failed for account 987654321012345: Unexpected error during login: A new OTP has been sent to your email. Please use the latest OTP to login.
+2025-03-27 17:38:23 [qtp496390637-37] INFO  com.Rishi.Banking_system - Login verification for account: 987654321012345
+2025-03-27 17:38:23 [qtp496390637-37] INFO  com.Rishi.Login - Login attempt for account: 987654321012345
+2025-03-27 17:38:23 [qtp496390637-37] INFO  com.Rishi.Login - Password verified successfully for account: 987654321012345
+2025-03-27 17:38:23 [qtp496390637-37] WARN  com.Rishi.Login - OTP expired (elapsed time: 155974s)
+2025-03-27 17:38:23 [qtp496390637-37] INFO  com.Rishi.Login - Stored new OTP for account: 987654321012345
+2025-03-27 17:38:28 [qtp496390637-37] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 17:38:28 [qtp496390637-37] INFO  com.Rishi.Login - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 17:38:28 [qtp496390637-37] ERROR com.Rishi.Login - Unexpected error during login for account 987654321012345: A new OTP has been sent to your email. Please use the latest OTP to login.
+java.lang.IllegalArgumentException: A new OTP has been sent to your email. Please use the latest OTP to login.
+	at com.Rishi.Login.login(Login.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$3(Banking_system.java:91) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 17:38:28 [qtp496390637-37] ERROR com.Rishi.Banking_system - Login failed for account 987654321012345: Unexpected error during login: A new OTP has been sent to your email. Please use the latest OTP to login.
+2025-03-27 17:39:18 [qtp496390637-33] INFO  com.Rishi.Banking_system - Login verification for account: 987654321012345
+2025-03-27 17:39:18 [qtp496390637-33] INFO  com.Rishi.Login - Login attempt for account: 987654321012345
+2025-03-27 17:39:18 [qtp496390637-33] INFO  com.Rishi.Login - Password verified successfully for account: 987654321012345
+2025-03-27 17:39:18 [qtp496390637-33] WARN  com.Rishi.Login - OTP expired (elapsed time: 156029s)
+2025-03-27 17:39:18 [qtp496390637-33] INFO  com.Rishi.Login - Stored new OTP for account: 987654321012345
+2025-03-27 17:39:23 [qtp496390637-33] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 17:39:23 [qtp496390637-33] INFO  com.Rishi.Login - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 17:39:23 [qtp496390637-33] ERROR com.Rishi.Login - Unexpected error during login for account 987654321012345: A new OTP has been sent to your email. Please use the latest OTP to login.
+java.lang.IllegalArgumentException: A new OTP has been sent to your email. Please use the latest OTP to login.
+	at com.Rishi.Login.login(Login.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$3(Banking_system.java:91) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 17:39:23 [qtp496390637-33] ERROR com.Rishi.Banking_system - Login failed for account 987654321012345: Unexpected error during login: A new OTP has been sent to your email. Please use the latest OTP to login.
+2025-03-27 18:40:59 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-27 18:40:59 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-27 18:42:24 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-27 18:42:24 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-27 18:42:55 [qtp967134823-43] INFO  com.Rishi.Banking_system - Login verification for account: 987654321012345
+2025-03-27 18:42:55 [qtp967134823-43] INFO  com.Rishi.Login - Login verification for account: 987654321012345
+2025-03-27 18:42:56 [qtp967134823-43] INFO  com.Rishi.Login - Password verified successfully for account: 987654321012345
+2025-03-27 18:42:56 [qtp967134823-43] WARN  com.Rishi.Login - OTP expired (elapsed time: 159847s)
+2025-03-27 18:42:56 [qtp967134823-43] WARN  com.Rishi.Login - No valid OTP found for account: 987654321012345
+2025-03-27 18:42:56 [qtp967134823-43] ERROR com.Rishi.Login - SQLException during login for account 987654321012345: No valid OTP found. Please request a new OTP.
+java.sql.SQLException: No valid OTP found. Please request a new OTP.
+	at com.Rishi.Login.verifyLogin(Login.java:92) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$3(Banking_system.java:124) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 18:42:56 [qtp967134823-43] ERROR com.Rishi.Banking_system - Login failed for account 987654321012345: No valid OTP found. Please request a new OTP.
+2025-03-27 18:43:51 [qtp967134823-34] INFO  com.Rishi.Banking_system - Login verification for account: 987654321012345
+2025-03-27 18:43:51 [qtp967134823-34] INFO  com.Rishi.Login - Login verification for account: 987654321012345
+2025-03-27 18:43:51 [qtp967134823-34] INFO  com.Rishi.Login - Password verified successfully for account: 987654321012345
+2025-03-27 18:43:51 [qtp967134823-34] WARN  com.Rishi.Login - OTP expired (elapsed time: 159902s)
+2025-03-27 18:43:51 [qtp967134823-34] WARN  com.Rishi.Login - No valid OTP found for account: 987654321012345
+2025-03-27 18:43:51 [qtp967134823-34] ERROR com.Rishi.Login - SQLException during login for account 987654321012345: No valid OTP found. Please request a new OTP.
+java.sql.SQLException: No valid OTP found. Please request a new OTP.
+	at com.Rishi.Login.verifyLogin(Login.java:92) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$3(Banking_system.java:124) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 18:43:51 [qtp967134823-34] ERROR com.Rishi.Banking_system - Login failed for account 987654321012345: No valid OTP found. Please request a new OTP.
+2025-03-27 18:44:19 [qtp967134823-36] INFO  com.Rishi.Banking_system - Login OTP request for account: 987654321012345
+2025-03-27 18:44:20 [qtp967134823-36] INFO  com.Rishi.Login - Generated OTP: 949081
+2025-03-27 18:44:20 [qtp967134823-36] INFO  com.Rishi.Banking_system - Stored new OTP for account: 987654321012345
+2025-03-27 18:44:28 [qtp967134823-36] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 18:44:28 [qtp967134823-36] INFO  com.Rishi.Banking_system - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 18:45:07 [qtp967134823-37] INFO  com.Rishi.Banking_system - Login verification for account: 987654321012345
+2025-03-27 18:45:07 [qtp967134823-37] INFO  com.Rishi.Login - Login verification for account: 987654321012345
+2025-03-27 18:45:08 [qtp967134823-37] INFO  com.Rishi.Login - Password verified successfully for account: 987654321012345
+2025-03-27 18:45:08 [qtp967134823-37] INFO  com.Rishi.Login - OTP verified successfully for account: 987654321012345
+2025-03-27 18:45:08 [qtp967134823-37] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 987654321012345
+2025-03-27 18:45:08 [qtp967134823-37] ERROR com.Rishi.Login - SQLException during login for account 987654321012345: Unknown column 'session_token' in 'field list'
+java.sql.SQLSyntaxErrorException: Unknown column 'session_token' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Login.verifyLogin(Login.java:129) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$3(Banking_system.java:124) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 18:45:08 [qtp967134823-37] ERROR com.Rishi.Banking_system - Login failed for account 987654321012345: Unknown column 'session_token' in 'field list'
+2025-03-27 18:53:32 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-27 18:53:32 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-27 18:55:09 [qtp59866476-43] INFO  com.Rishi.Banking_system - Login OTP request for account: 987654321012345
+2025-03-27 18:55:10 [qtp59866476-43] INFO  com.Rishi.Login - Generated OTP: 801729
+2025-03-27 18:55:10 [qtp59866476-43] INFO  com.Rishi.Banking_system - Stored new OTP for account: 987654321012345
+2025-03-27 18:55:16 [qtp59866476-43] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 18:55:16 [qtp59866476-43] INFO  com.Rishi.Banking_system - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 18:55:48 [qtp59866476-34] INFO  com.Rishi.Banking_system - Login verification for account: 987654321012345
+2025-03-27 18:55:48 [qtp59866476-34] INFO  com.Rishi.Login - Login verification for account: 987654321012345
+2025-03-27 18:55:49 [qtp59866476-34] INFO  com.Rishi.Login - Password verified successfully for account: 987654321012345
+2025-03-27 18:55:49 [qtp59866476-34] INFO  com.Rishi.Login - OTP verified successfully for account: 987654321012345
+2025-03-27 18:55:49 [qtp59866476-34] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 987654321012345
+2025-03-27 18:55:49 [qtp59866476-34] INFO  com.Rishi.Login - Generated and stored session token for account: 987654321012345
+2025-03-27 18:58:33 [qtp59866476-48] INFO  com.Rishi.Banking_system - Transfer OTP request from 987654321012345 to 987654321014364 for amount 100.0
+2025-03-27 18:58:33 [qtp59866476-48] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 425028
+2025-03-27 18:58:33 [qtp59866476-48] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 18:58:41 [qtp59866476-48] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 18:58:41 [qtp59866476-48] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 18:59:19 [qtp59866476-37] INFO  com.Rishi.Banking_system - Transfer attempt from 987654321012345 to 987654321014364 for amount 100.0
+2025-03-27 18:59:19 [qtp59866476-37] INFO  com.Rishi.Online_Transaction - 💰 Sender's current balance: 5710.0 for account: 987654321012345
+2025-03-27 18:59:20 [qtp59866476-37] ERROR com.Rishi.FraudDetectionService - IO error in Fraud Detection API call: null
+java.net.ConnectException: null
+	at jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:951) ~[java.net.http:?]
+	at jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133) ~[java.net.http:?]
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:47) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:65) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$5(Banking_system.java:204) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+Caused by: java.net.ConnectException
+	at jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1028) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238) ~[java.net.http:?]
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?]
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?]
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?]
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	... 1 more
+Caused by: java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:202) ~[?:?]
+	at sun.nio.ch.SocketChannelImpl.beginConnect(SocketChannelImpl.java:786) ~[?:?]
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:874) ~[?:?]
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210) ~[java.net.http:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:571) ~[?:?]
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238) ~[java.net.http:?]
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?]
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?]
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?]
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	... 1 more
+2025-03-27 18:59:20 [qtp59866476-37] ERROR com.Rishi.Online_Transaction - Fraud detection failed for account 987654321012345: Failed to connect to Fraud Detection API: null
+com.Rishi.FraudDetectionService$FraudDetectionException: Failed to connect to Fraud Detection API: null
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:71) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:65) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$5(Banking_system.java:204) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+Caused by: java.net.ConnectException
+	at jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:951) ~[java.net.http:?]
+	at jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133) ~[java.net.http:?]
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:47) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	... 24 more
+Caused by: java.net.ConnectException
+	at jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1028) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238) ~[java.net.http:?]
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?]
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?]
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?]
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	... 1 more
+Caused by: java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:202) ~[?:?]
+	at sun.nio.ch.SocketChannelImpl.beginConnect(SocketChannelImpl.java:786) ~[?:?]
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:874) ~[?:?]
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210) ~[java.net.http:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:571) ~[?:?]
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238) ~[java.net.http:?]
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?]
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?]
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?]
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	... 1 more
+2025-03-27 18:59:21 [qtp59866476-37] ERROR com.Rishi.Online_Transaction - SQLException in fundTransfer for account 987654321012345: Fraud detection failed: Failed to connect to Fraud Detection API: null
+java.sql.SQLException: Fraud detection failed: Failed to connect to Fraud Detection API: null
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:71) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$5(Banking_system.java:204) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+Caused by: com.Rishi.FraudDetectionService$FraudDetectionException: Failed to connect to Fraud Detection API: null
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:71) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:65) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	... 23 more
+Caused by: java.net.ConnectException
+	at jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:951) ~[java.net.http:?]
+	at jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133) ~[java.net.http:?]
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:47) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:65) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	... 23 more
+Caused by: java.net.ConnectException
+	at jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1028) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238) ~[java.net.http:?]
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?]
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?]
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?]
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	... 1 more
+Caused by: java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:202) ~[?:?]
+	at sun.nio.ch.SocketChannelImpl.beginConnect(SocketChannelImpl.java:786) ~[?:?]
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:874) ~[?:?]
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210) ~[java.net.http:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:571) ~[?:?]
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280) ~[java.net.http:?]
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238) ~[java.net.http:?]
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?]
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?]
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?]
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	... 1 more
+2025-03-27 18:59:21 [qtp59866476-37] ERROR com.Rishi.Banking_system - Transfer failed: Fraud detection failed: Failed to connect to Fraud Detection API: null
+2025-03-27 19:01:49 [qtp59866476-52] INFO  com.Rishi.Banking_system - Transfer OTP request from 987654321012345 to 987654321014364 for amount 100.0
+2025-03-27 19:01:49 [qtp59866476-52] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 860959
+2025-03-27 19:01:49 [qtp59866476-52] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 19:01:56 [qtp59866476-52] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 19:01:56 [qtp59866476-52] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 19:02:40 [qtp59866476-35] INFO  com.Rishi.Banking_system - Transfer attempt from 987654321012345 to 987654321014364 for amount 100.0
+2025-03-27 19:02:40 [qtp59866476-35] INFO  com.Rishi.Online_Transaction - 💰 Sender's current balance: 5710.0 for account: 987654321012345
+2025-03-27 19:02:41 [qtp59866476-35] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.0036
+2025-03-27 19:02:41 [qtp59866476-35] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-27 19:02:41 [qtp59866476-35] INFO  com.Rishi.Online_Transaction - OTP Verified Successfully for account: 987654321012345
+2025-03-27 19:02:41 [qtp59866476-35] INFO  com.Rishi.Online_Transaction - 📌 Transaction ID: 57 for account: 987654321012345
+2025-03-27 19:02:41 [qtp59866476-35] INFO  com.Rishi.Online_Transaction - Money Transferred Successfully for account: 987654321012345
+2025-03-27 19:02:41 [qtp59866476-35] INFO  com.Rishi.Online_Transaction - Your current balance is 5610.0 for account: 987654321012345
+2025-03-27 19:02:47 [qtp59866476-35] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 19:02:47 [qtp59866476-35] INFO  com.Rishi.Online_Transaction - Transaction alert sent to debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 19:02:52 [qtp59866476-35] INFO  com.Rishi.OTPService - Email sent to: hawks4296@gmail.com
+2025-03-27 19:02:52 [qtp59866476-35] INFO  com.Rishi.Online_Transaction - Transaction alert sent to hawks4296@gmail.com
+2025-03-27 19:07:22 [qtp59866476-58] INFO  com.Rishi.Banking_system - Request to send statement for account: 987654321012345, month: 3, year: 2025
+2025-03-27 19:07:24 [qtp59866476-58] INFO  com.Rishi.PDFStatementGenerator - PDF Account Statement Generated: /tmp/bank_statements/Statement_987654321012345_3_2025.pdf for account: 987654321012345
+2025-03-27 19:07:32 [qtp59866476-58] INFO  com.Rishi.PDFStatementGenerator - Email sent successfully with PDF attachment: /tmp/bank_statements/Statement_987654321012345_3_2025.pdf to debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 19:07:32 [qtp59866476-58] INFO  com.Rishi.PDFStatementGenerator - Deleted temporary PDF file: /tmp/bank_statements/Statement_987654321012345_3_2025.pdf
+2025-03-27 20:55:29 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-27 20:55:29 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-27 20:56:48 [qtp1990801068-43] INFO  com.Rishi.Banking_system - Forgot password OTP request for account: 987654321012345
+2025-03-27 20:56:49 [qtp1990801068-43] WARN  com.Rishi.Banking_system - Incorrect security answer for account: 987654321012345
+2025-03-27 20:57:44 [qtp1990801068-36] INFO  com.Rishi.Banking_system - Forgot password OTP request for account: 987654321012345
+2025-03-27 20:57:44 [qtp1990801068-36] WARN  com.Rishi.Banking_system - Incorrect security answer for account: 987654321012345
+2025-03-27 20:57:55 [qtp1990801068-33] INFO  com.Rishi.Banking_system - Forgot password OTP request for account: 987654321012345
+2025-03-27 20:57:55 [qtp1990801068-33] WARN  com.Rishi.Banking_system - Incorrect security answer for account: 987654321012345
+2025-03-27 21:00:34 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-27 21:00:34 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-27 21:01:13 [qtp1632124201-43] INFO  com.Rishi.Banking_system - Forgot password OTP request for account: 987654321012345
+2025-03-27 21:01:13 [qtp1632124201-43] WARN  com.Rishi.Banking_system - Incorrect phone number for account: 987654321012345
+2025-03-27 21:01:39 [qtp1632124201-35] INFO  com.Rishi.Banking_system - Forgot password OTP request for account: 987654321012345
+2025-03-27 21:01:39 [qtp1632124201-35] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 747639
+2025-03-27 21:01:39 [qtp1632124201-35] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 21:01:47 [qtp1632124201-35] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:01:47 [qtp1632124201-35] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 21:01:47 [qtp1632124201-35] INFO  com.Rishi.Banking_system - OTP sent for forgot password to account: 987654321012345
+2025-03-27 21:03:06 [qtp1632124201-40] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:03:07 [qtp1632124201-40] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:03:07 [qtp1632124201-40] INFO  com.Rishi.Registration - Fetched user data for account: 987654321012345 - phone: 829640804, email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:03:07 [qtp1632124201-40] WARN  com.Rishi.Registration - Incorrect security answer entered for account: 987654321012345
+2025-03-27 21:03:07 [qtp1632124201-40] ERROR com.Rishi.Registration - Unexpected error during forgot password for account 987654321012345: Incorrect security answer!
+java.lang.IllegalArgumentException: Incorrect security answer!
+	at com.Rishi.Registration.forgotPassword(Registration.java:177) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$8(Banking_system.java:301) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 21:03:07 [qtp1632124201-40] ERROR com.Rishi.Banking_system - Forgot password reset failed for account 987654321012345: Unexpected error during forgot password: Incorrect security answer!
+2025-03-27 21:03:55 [qtp1632124201-37] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:03:55 [qtp1632124201-37] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:03:55 [qtp1632124201-37] INFO  com.Rishi.Registration - Fetched user data for account: 987654321012345 - phone: 829640804, email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:03:55 [qtp1632124201-37] WARN  com.Rishi.Registration - Incorrect phone number entered for account: 987654321012345
+2025-03-27 21:03:55 [qtp1632124201-37] ERROR com.Rishi.Registration - Unexpected error during forgot password for account 987654321012345: Incorrect phone number!
+java.lang.IllegalArgumentException: Incorrect phone number!
+	at com.Rishi.Registration.forgotPassword(Registration.java:182) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$8(Banking_system.java:301) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 21:03:55 [qtp1632124201-37] ERROR com.Rishi.Banking_system - Forgot password reset failed for account 987654321012345: Unexpected error during forgot password: Incorrect phone number!
+2025-03-27 21:04:38 [qtp1632124201-38] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:04:38 [qtp1632124201-38] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:04:38 [qtp1632124201-38] INFO  com.Rishi.Registration - Fetched user data for account: 987654321012345 - phone: 829640804, email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:04:38 [qtp1632124201-38] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 582336
+2025-03-27 21:04:38 [qtp1632124201-38] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 21:04:45 [qtp1632124201-38] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:04:45 [qtp1632124201-38] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 21:04:45 [qtp1632124201-38] INFO  com.Rishi.Registration - OTP sent for account: 987654321012345
+2025-03-27 21:04:46 [qtp1632124201-38] INFO  com.Rishi.Registration - OTP verified successfully for account: 987654321012345
+2025-03-27 21:04:46 [qtp1632124201-38] DEBUG com.Rishi.Registration - Password strength check result: false
+2025-03-27 21:04:46 [qtp1632124201-38] WARN  com.Rishi.Registration - Weak password entered for account: 987654321012345
+2025-03-27 21:04:46 [qtp1632124201-38] ERROR com.Rishi.Registration - Unexpected error during forgot password for account 987654321012345: Password is weak. It must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.
+java.lang.IllegalArgumentException: Password is weak. It must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.
+	at com.Rishi.Registration.forgotPassword(Registration.java:197) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$8(Banking_system.java:301) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 21:04:46 [qtp1632124201-38] ERROR com.Rishi.Banking_system - Forgot password reset failed for account 987654321012345: Unexpected error during forgot password: Password is weak. It must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.
+2025-03-27 21:05:20 [qtp1632124201-34] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:05:20 [qtp1632124201-34] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:05:20 [qtp1632124201-34] INFO  com.Rishi.Registration - Fetched user data for account: 987654321012345 - phone: 829640804, email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:05:21 [qtp1632124201-34] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 871098
+2025-03-27 21:05:21 [qtp1632124201-34] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 21:05:27 [qtp1632124201-34] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:05:27 [qtp1632124201-34] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 21:05:27 [qtp1632124201-34] INFO  com.Rishi.Registration - OTP sent for account: 987654321012345
+2025-03-27 21:05:27 [qtp1632124201-34] ERROR com.Rishi.Registration - Unexpected error during forgot password for account 987654321012345: Incorrect OTP! Try again.
+java.lang.IllegalArgumentException: Incorrect OTP! Try again.
+	at com.Rishi.OTPService.verifyOTP(OTPService.java:83) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Registration.forgotPassword(Registration.java:188) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$8(Banking_system.java:301) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 21:05:27 [qtp1632124201-34] ERROR com.Rishi.Banking_system - Forgot password reset failed for account 987654321012345: Unexpected error during forgot password: Incorrect OTP! Try again.
+2025-03-27 21:05:58 [qtp1632124201-33] INFO  com.Rishi.Banking_system - Forgot password OTP request for account: 987654321012345
+2025-03-27 21:05:58 [qtp1632124201-33] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 565369
+2025-03-27 21:05:58 [qtp1632124201-33] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 21:06:04 [qtp1632124201-33] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:06:04 [qtp1632124201-33] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 21:06:04 [qtp1632124201-33] INFO  com.Rishi.Banking_system - OTP sent for forgot password to account: 987654321012345
+2025-03-27 21:06:28 [qtp1632124201-49] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:06:28 [qtp1632124201-49] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:06:28 [qtp1632124201-49] INFO  com.Rishi.Registration - Fetched user data for account: 987654321012345 - phone: 829640804, email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:06:28 [qtp1632124201-49] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 160955
+2025-03-27 21:06:28 [qtp1632124201-49] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 21:06:35 [qtp1632124201-49] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:06:35 [qtp1632124201-49] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 21:06:35 [qtp1632124201-49] INFO  com.Rishi.Registration - OTP sent for account: 987654321012345
+2025-03-27 21:06:35 [qtp1632124201-49] INFO  com.Rishi.Registration - OTP verified successfully for account: 987654321012345
+2025-03-27 21:06:35 [qtp1632124201-49] DEBUG com.Rishi.Registration - Password strength check result: false
+2025-03-27 21:06:35 [qtp1632124201-49] WARN  com.Rishi.Registration - Weak password entered for account: 987654321012345
+2025-03-27 21:06:35 [qtp1632124201-49] ERROR com.Rishi.Registration - Unexpected error during forgot password for account 987654321012345: Password is weak. It must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.
+java.lang.IllegalArgumentException: Password is weak. It must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.
+	at com.Rishi.Registration.forgotPassword(Registration.java:197) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$8(Banking_system.java:301) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 21:06:35 [qtp1632124201-49] ERROR com.Rishi.Banking_system - Forgot password reset failed for account 987654321012345: Unexpected error during forgot password: Password is weak. It must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.
+2025-03-27 21:07:14 [qtp1632124201-43] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:07:14 [qtp1632124201-43] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:07:14 [qtp1632124201-43] ERROR com.Rishi.Banking_system - Invalid input during forgot password reset for account 987654321012345: New passwords do not match!
+2025-03-27 21:07:38 [qtp1632124201-48] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:07:38 [qtp1632124201-48] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:07:38 [qtp1632124201-48] ERROR com.Rishi.Banking_system - Invalid input during forgot password reset for account 987654321012345: New passwords do not match!
+2025-03-27 21:08:43 [qtp1632124201-51] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:08:43 [qtp1632124201-51] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:08:43 [qtp1632124201-51] ERROR com.Rishi.Banking_system - Invalid input during forgot password reset for account 987654321012345: New passwords do not match!
+2025-03-27 21:10:35 [qtp1632124201-51] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:10:35 [qtp1632124201-51] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:10:35 [qtp1632124201-51] ERROR com.Rishi.Banking_system - Invalid input during forgot password reset for account 987654321012345: New passwords do not match!
+2025-03-27 21:10:59 [qtp1632124201-40] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:10:59 [qtp1632124201-40] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:10:59 [qtp1632124201-40] ERROR com.Rishi.Banking_system - Invalid input during forgot password reset for account 987654321012345: New passwords do not match!
+2025-03-27 21:11:17 [qtp1632124201-50] INFO  com.Rishi.Banking_system - Forgot password OTP request for account: 987654321012345
+2025-03-27 21:11:17 [qtp1632124201-50] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 505983
+2025-03-27 21:11:17 [qtp1632124201-50] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 21:11:26 [qtp1632124201-50] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:11:26 [qtp1632124201-50] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 21:11:26 [qtp1632124201-50] INFO  com.Rishi.Banking_system - OTP sent for forgot password to account: 987654321012345
+2025-03-27 21:12:18 [qtp1632124201-43] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:12:18 [qtp1632124201-43] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:12:18 [qtp1632124201-43] INFO  com.Rishi.Registration - Fetched user data for account: 987654321012345 - phone: 829640804, email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:12:18 [qtp1632124201-43] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 353873
+2025-03-27 21:12:18 [qtp1632124201-43] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 21:12:26 [qtp1632124201-43] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:12:26 [qtp1632124201-43] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 21:12:26 [qtp1632124201-43] INFO  com.Rishi.Registration - OTP sent for account: 987654321012345
+2025-03-27 21:12:26 [qtp1632124201-43] INFO  com.Rishi.Registration - OTP verified successfully for account: 987654321012345
+2025-03-27 21:12:26 [qtp1632124201-43] DEBUG com.Rishi.Registration - Password strength check result: false
+2025-03-27 21:12:26 [qtp1632124201-43] WARN  com.Rishi.Registration - Weak password entered for account: 987654321012345
+2025-03-27 21:12:26 [qtp1632124201-43] ERROR com.Rishi.Registration - Unexpected error during forgot password for account 987654321012345: Password is weak. It must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.
+java.lang.IllegalArgumentException: Password is weak. It must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.
+	at com.Rishi.Registration.forgotPassword(Registration.java:197) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$8(Banking_system.java:301) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:409) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 21:12:26 [qtp1632124201-43] ERROR com.Rishi.Banking_system - Forgot password reset failed for account 987654321012345: Unexpected error during forgot password: Password is weak. It must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.
+2025-03-27 21:12:45 [qtp1632124201-48] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:12:45 [qtp1632124201-48] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:12:45 [qtp1632124201-48] ERROR com.Rishi.Banking_system - Invalid input during forgot password reset for account 987654321012345: New passwords do not match!
+2025-03-27 21:13:07 [qtp1632124201-45] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:13:07 [qtp1632124201-45] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:13:07 [qtp1632124201-45] INFO  com.Rishi.Registration - Fetched user data for account: 987654321012345 - phone: 829640804, email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:13:07 [qtp1632124201-45] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 906375
+2025-03-27 21:13:07 [qtp1632124201-45] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 21:13:16 [qtp1632124201-45] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:13:16 [qtp1632124201-45] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 21:13:16 [qtp1632124201-45] INFO  com.Rishi.Registration - OTP sent for account: 987654321012345
+2025-03-27 21:13:16 [qtp1632124201-45] ERROR com.Rishi.Registration - Unexpected error during forgot password for account 987654321012345: Incorrect OTP! Try again.
+java.lang.IllegalArgumentException: Incorrect OTP! Try again.
+	at com.Rishi.OTPService.verifyOTP(OTPService.java:83) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Registration.forgotPassword(Registration.java:188) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at com.Rishi.Banking_system.lambda$main$8(Banking_system.java:301) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:409) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[Bankingsys-1.0-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-27 21:13:16 [qtp1632124201-45] ERROR com.Rishi.Banking_system - Forgot password reset failed for account 987654321012345: Unexpected error during forgot password: Incorrect OTP! Try again.
+2025-03-27 21:13:36 [qtp1632124201-36] INFO  com.Rishi.Banking_system - Forgot password OTP request for account: 987654321012345
+2025-03-27 21:13:36 [qtp1632124201-36] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 112628
+2025-03-27 21:13:36 [qtp1632124201-36] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 21:13:43 [qtp1632124201-36] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:13:43 [qtp1632124201-36] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 21:13:43 [qtp1632124201-36] INFO  com.Rishi.Banking_system - OTP sent for forgot password to account: 987654321012345
+2025-03-27 21:14:11 [qtp1632124201-40] INFO  com.Rishi.Banking_system - Forgot password reset attempt for account: 987654321012345
+2025-03-27 21:14:11 [qtp1632124201-40] INFO  com.Rishi.Registration - Forgot password attempt for account: 987654321012345
+2025-03-27 21:14:11 [qtp1632124201-40] INFO  com.Rishi.Registration - Fetched user data for account: 987654321012345 - phone: 829640804, email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:14:11 [qtp1632124201-40] INFO  com.Rishi.OTPService - Generated OTP for account 987654321012345: 949813
+2025-03-27 21:14:11 [qtp1632124201-40] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 987654321012345
+2025-03-27 21:14:19 [qtp1632124201-40] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-27 21:14:19 [qtp1632124201-40] INFO  com.Rishi.OTPService - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-27 21:14:19 [qtp1632124201-40] INFO  com.Rishi.Registration - OTP sent for account: 987654321012345
+2025-03-27 21:14:19 [qtp1632124201-40] INFO  com.Rishi.Registration - OTP verified successfully for account: 987654321012345
+2025-03-27 21:14:19 [qtp1632124201-40] DEBUG com.Rishi.Registration - Password strength check result: true
+2025-03-27 21:14:20 [qtp1632124201-40] INFO  com.Rishi.Registration - Password updated successfully for account: 987654321012345
+2025-03-27 21:14:20 [qtp1632124201-40] INFO  com.Rishi.Registration - Cleared OTP for account: 987654321012345
+2025-03-27 21:14:20 [qtp1632124201-40] INFO  com.Rishi.Registration - Forgot password successful for account: 987654321012345

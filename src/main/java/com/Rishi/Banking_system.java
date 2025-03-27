@@ -38,7 +38,7 @@ public class Banking_system {
                 registration.reg(accountNumber, userOtp, securityQuestionChoice, securityAnswer, password1, password2, email, conn);
                 return "{\"status\": \"success\", \"message\": \"Registration successful\"}";
             } catch (SQLException | MessagingException e) {
-                logger.error("Registration failed: " + e.getMessage());
+                logger.error("Registration failed: {}", e.getMessage());
                 return "{\"status\": \"error\", \"message\": \"Registration failed: " + e.getMessage() + "\"}";
             } catch (IllegalArgumentException e) {
                 return "{\"status\": \"error\", \"message\": \"" + e.getMessage() + "\"}";
@@ -55,22 +55,54 @@ public class Banking_system {
             try (Connection conn = DatabaseConfig.getConnection()) {
                 Login loginService = new Login();
                 String userQuery = "SELECT password_hash, email FROM users WHERE account_number = ?";
+                String email;
                 try (PreparedStatement ps = conn.prepareStatement(userQuery)) {
                     ps.setString(1, accNumber);
                     try (ResultSet rs = ps.executeQuery()) {
                         if (!rs.next()) {
+                            logger.warn("Account {} does not exist", accNumber);
                             return "{\"status\": \"error\", \"message\": \"Account does not exist!\"}";
                         }
                         String storedHash = rs.getString("password_hash");
-                        String email = rs.getString("email");
-
+                        email = rs.getString("email");
                         if (!BCrypt.checkpw(password, storedHash)) {
-                            loginService.login(accNumber, password, "000000", conn);
+                            String updateAttemptsQuery = "UPDATE users SET failed_attempts = failed_attempts + 1 WHERE account_number = ?";
+                            try (PreparedStatement updatePs = conn.prepareStatement(updateAttemptsQuery)) {
+                                updatePs.setString(1, accNumber);
+                                updatePs.executeUpdate();
+                            }
+                            String checkAttemptsQuery = "SELECT failed_attempts FROM users WHERE account_number = ?";
+                            try (PreparedStatement checkPs = conn.prepareStatement(checkAttemptsQuery)) {
+                                checkPs.setString(1, accNumber);
+                                try (ResultSet rs2 = checkPs.executeQuery()) {
+                                    if (rs2.next() && rs2.getInt("failed_attempts") >= 3) {
+                                        String lockQuery = "UPDATE users SET lock_time = ? WHERE account_number = ?";
+                                        try (PreparedStatement lockPs = conn.prepareStatement(lockQuery)) {
+                                            lockPs.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+                                            lockPs.setString(2, accNumber);
+                                            lockPs.executeUpdate();
+                                        }
+                                        logger.warn("Account {} locked due to too many failed attempts", accNumber);
+                                        return "{\"status\": \"error\", \"message\": \"Account locked due to too many failed attempts!\"}";
+                                    }
+                                }
+                            }
+                            logger.warn("Incorrect password for account: {}", accNumber);
                             return "{\"status\": \"error\", \"message\": \"Incorrect password!\"}";
                         }
                     }
                 }
-                OTPService.sendOTP(accNumber, conn);
+                String otp = loginService.generateOTP();
+                String updateOtpQuery = "UPDATE users SET otp = ?, otp_timestamp = ? WHERE account_number = ?";
+                try (PreparedStatement updateOtpPs = conn.prepareStatement(updateOtpQuery)) {
+                    updateOtpPs.setString(1, otp);
+                    updateOtpPs.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+                    updateOtpPs.setString(3, accNumber);
+                    updateOtpPs.executeUpdate();
+                    logger.info("Stored new OTP for account: {}", accNumber);
+                }
+                loginService.sendEmail(email, "Your OTP for login", "Your OTP is: " + otp + "\nThis OTP will expire in 5 minutes.");
+                logger.info("OTP sent to email: {} for account: {}", email, accNumber);
                 return "{\"status\": \"success\", \"message\": \"OTP sent to your email. Please verify.\"}";
             } catch (SQLException | MessagingException e) {
                 logger.error("OTP request failed for account {}: {}", accNumber, e.getMessage());
@@ -88,10 +120,13 @@ public class Banking_system {
 
             try (Connection conn = DatabaseConfig.getConnection()) {
                 Login loginService = new Login();
-                Map<String, Object> result = loginService.login(accNumber, password, otp, conn);
+                Map<String, Object> result = loginService.verifyLogin(accNumber, password, otp, conn);
                 return new JSONObject(result).toString();
             } catch (SQLException e) {
                 logger.error("Login failed for account {}: {}", accNumber, e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"Login failed: " + e.getMessage() + "\"}";
+            } catch (MessagingException e) {
+                logger.error("MessagingException during login for account {}: {}", accNumber, e.getMessage());
                 return "{\"status\": \"error\", \"message\": \"Login failed: " + e.getMessage() + "\"}";
             }
         });
@@ -173,7 +208,7 @@ public class Banking_system {
             }
         });
 
-        // Send Statement via Email
+        // Send Statement via Email (unchanged)
         Spark.post("/send-statement", (req, res) -> {
             res.type("application/json");
             String accountNumber = req.queryParams("accountNumber");
@@ -204,6 +239,76 @@ public class Banking_system {
             } catch (IOException | MessagingException e) {
                 logger.error("Failed to send statement for account {}: {}", accountNumber, e.getClass());
                 return "{\"status\": \"error\", \"message\": \"Failed to send statement: " + e.getClass() + "\"}";
+            }
+        });
+
+        // Forgot Password: Request OTP (new)
+        Spark.post("/forgot-password/request-otp", (req, res) -> {
+            res.type("application/json");
+            String accountNumber = req.queryParams("accountNumber");
+            String phoneNumber = req.queryParams("phoneNumber");
+            String securityAnswer = req.queryParams("securityAnswer");
+            logger.info("Forgot password OTP request for account: {}", accountNumber);
+
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                Registration registration = new Registration();
+                // Trigger OTP generation without resetting password yet
+                String query = "SELECT phone, security_answer_hash FROM users WHERE account_number = ?";
+                String registeredPhone;
+                String hashedAnswer;
+
+                try (PreparedStatement ps = conn.prepareStatement(query)) {
+                    ps.setString(1, accountNumber);
+                    try (ResultSet rs = ps.executeQuery()) {
+                        if (!rs.next()) {
+                            logger.warn("Account number not found: {}", accountNumber);
+                            return "{\"status\": \"error\", \"message\": \"Account number not found!\"}";
+                        }
+                        registeredPhone = rs.getString("phone");
+                        hashedAnswer = rs.getString("security_answer_hash");
+                        if (!BCrypt.checkpw(securityAnswer, hashedAnswer)) {
+                            logger.warn("Incorrect security answer for account: {}", accountNumber);
+                            return "{\"status\": \"error\", \"message\": \"Incorrect security answer!\"}";
+                        }
+                        if (!registeredPhone.equals(phoneNumber)) {
+                            logger.warn("Incorrect phone number for account: {}", accountNumber);
+                            return "{\"status\": \"error\", \"message\": \"Incorrect phone number!\"}";
+                        }
+                    }
+                }
+                OTPService.sendOTP(accountNumber, conn);
+                logger.info("OTP sent for forgot password to account: {}", accountNumber);
+                return "{\"status\": \"success\", \"message\": \"OTP sent to your email. Please verify.\"}";
+            } catch (SQLException | MessagingException e) {
+                logger.error("Forgot password OTP request failed for account {}: {}", accountNumber, e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"OTP request failed: " + e.getMessage() + "\"}";
+            }
+        });
+
+        // Forgot Password: Reset Password (new)
+        Spark.post("/forgot-password/reset", (req, res) -> {
+            res.type("application/json");
+            String accountNumber = req.queryParams("accountNumber");
+            String phoneNumber = req.queryParams("phoneNumber");
+            String securityAnswer = req.queryParams("securityAnswer");
+            String userOtp = req.queryParams("otp");
+            String newPassword1 = req.queryParams("newPassword1");
+            String newPassword2 = req.queryParams("newPassword2");
+            logger.info("Forgot password reset attempt for account: {}", accountNumber);
+
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                Registration registration = new Registration();
+                registration.forgotPassword(accountNumber, phoneNumber, securityAnswer, userOtp, newPassword1, newPassword2, conn);
+                return "{\"status\": \"success\", \"message\": \"Password reset successful\"}";
+            } catch (SQLException e) {
+                logger.error("Forgot password reset failed for account {}: {}", accountNumber, e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"Reset failed: " + e.getMessage() + "\"}";
+            } catch (MessagingException e) {
+                logger.error("MessagingException during forgot password reset for account {}: {}", accountNumber, e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"Reset failed: " + e.getMessage() + "\"}";
+            } catch (IllegalArgumentException e) {
+                logger.error("Invalid input during forgot password reset for account {}: {}", accountNumber, e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"" + e.getMessage() + "\"}";
             }
         });
     }
