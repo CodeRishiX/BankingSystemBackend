@@ -36,6 +36,7 @@ public class FraudDetectionService {
             json.put("oldbalanceDest", oldbalanceDest);
             json.put("newbalanceDest", newbalanceDest);
             json.put("transaction_type", transactionType);
+            logger.info("Sending JSON to Flask API: {}", json.toString()); // Add this to log the JSON payload
 
             // Build HTTP Request
             HttpRequest request = HttpRequest.newBuilder()
@@ -46,6 +47,10 @@ public class FraudDetectionService {
 
             // Send HTTP Request and get response
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            // Log response details
+            logger.info("Fraud Detection API response status: {}", response.statusCode()); // Add this
+            logger.info("Fraud Detection API response body: {}", response.body()); // Add this
 
             // Check response status
             if (response.statusCode() != 200) {
@@ -64,7 +69,7 @@ public class FraudDetectionService {
 
             return isFraud; // Return Fraud Detection Result
 
-        } catch ( java.net.http.HttpTimeoutException e) {
+        } catch (java.net.http.HttpTimeoutException e) {
             logger.error("Timeout error in Fraud Detection API call: {}", e.getMessage(), e);
             throw new FraudDetectionException("Timeout error in Fraud Detection API: " + e.getMessage(), e);
         } catch (java.io.IOException e) {
