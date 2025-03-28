@@ -4459,3 +4459,10 @@ java.lang.IllegalArgumentException: Incorrect OTP! Try again.
 2025-03-27 21:14:20 [qtp1632124201-40] INFO  com.Rishi.Registration - Password updated successfully for account: 987654321012345
 2025-03-27 21:14:20 [qtp1632124201-40] INFO  com.Rishi.Registration - Cleared OTP for account: 987654321012345
 2025-03-27 21:14:20 [qtp1632124201-40] INFO  com.Rishi.Registration - Forgot password successful for account: 987654321012345
+2025-03-28 10:47:45 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-28 10:47:45 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-28 10:48:31 [qtp1990801068-43] INFO  com.Rishi.Banking_system - Request to send statement for account: 987654321012348, month: 3, year: 2025
+2025-03-28 10:56:08 [qtp1990801068-46] INFO  com.Rishi.Banking_system - Request to send statement for account: 987654321012345, month: 3, year: 2025
+2025-03-28 10:56:09 [qtp1990801068-46] INFO  com.Rishi.PDFStatementGenerator - PDF Account Statement Generated: /tmp/bank_statements/Statement_987654321012345_3_2025.pdf for account: 987654321012345
+2025-03-28 10:56:26 [qtp1990801068-46] INFO  com.Rishi.PDFStatementGenerator - Email sent successfully with PDF attachment: /tmp/bank_statements/Statement_987654321012345_3_2025.pdf to debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-28 10:56:26 [qtp1990801068-46] INFO  com.Rishi.PDFStatementGenerator - Deleted temporary PDF file: /tmp/bank_statements/Statement_987654321012345_3_2025.pdf

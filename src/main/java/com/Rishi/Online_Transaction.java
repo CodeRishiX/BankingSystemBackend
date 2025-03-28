@@ -64,7 +64,7 @@ public class Online_Transaction extends Login {
                     try {
                         isFraud = FraudDetectionService.isTransactionFraudulent(
                                 amount, senderOldBalance, senderOldBalance - amount,
-                                receiverOldBalance, receiverOldBalance + amount, "Fund Transfer"
+                                receiverOldBalance, receiverOldBalance + amount, "TRANSFER"
                         );
                     } catch (FraudDetectionService.FraudDetectionException e) {
                         logger.error("Fraud detection failed for account {}: {}", accnumber, e.getMessage(), e);
