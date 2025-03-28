@@ -23,6 +23,7 @@ public class FraudDetectionService {
         try {
             // Use environment variable for Flask API URL, default to local for development
             String flaskApiUrl = System.getenv("FLASK_API_URL") != null ? System.getenv("FLASK_API_URL") : "http://127.0.0.1:5000/predict";
+            logger.info("Calling Fraud Detection API at: {}", flaskApiUrl);
 
             // Create HttpClient
             HttpClient client = HttpClient.newHttpClient();
