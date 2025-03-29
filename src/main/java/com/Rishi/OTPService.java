@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 public class OTPService {
     private static final Logger logger = LogManager.getLogger(OTPService.class);
 
-    // Generate a 6-digit OTP (unchanged)
+    // Generate a 6-digit OTP
     public static String generateOTP(String accountNumber) {
         Random random = new Random();
         int otp = 100000 + random.nextInt(900000);
@@ -19,24 +19,30 @@ public class OTPService {
         return String.valueOf(otp);
     }
 
-    // Unified sendOTP method (FIXED: Ensure OTP is committed immediately)
+    // Send OTP and store it in the database
     public static String sendOTP(String accnumber, String email, Connection con) throws SQLException, MessagingException {
         String otp = generateOTP(accnumber);
         Timestamp otpTimestamp = new Timestamp(System.currentTimeMillis());
 
-        // Store OTP in bank_accounts table (use a new connection to avoid transaction rollback)
+        // Store OTP in database with explicit transaction handling
         try (Connection localCon = DatabaseConfig.getConnection()) {
-            String updateQuery = "UPDATE bank_accounts SET otp = ?, otp_timestamp = ? WHERE account_number = ?";
+            localCon.setAutoCommit(false);  // Disable auto-commit
+
+            String updateQuery = "UPDATE users  SET otp = ?, otp_timestamp = ? WHERE account_number = ?";
             try (PreparedStatement ps = localCon.prepareStatement(updateQuery)) {
                 ps.setString(1, otp);
                 ps.setTimestamp(2, otpTimestamp);
                 ps.setString(3, accnumber);
                 ps.executeUpdate();
+                localCon.commit();  // Commit changes
                 logger.info("Stored OTP in bank_accounts for account: {}", accnumber);
+            } catch (SQLException e) {
+                localCon.rollback();  // Rollback in case of error
+                throw e;
             }
         }
 
-        // Send email (unchanged)
+        // Send OTP via email
         if (email != null && !email.trim().isEmpty()) {
             sendEmail(email, "🔐 Your OTP Code", "Your OTP is: " + otp + "\nThis OTP will expire in 5 minutes.");
             logger.info("OTP sent to email: {} for account: {}", email, accnumber);
@@ -48,7 +54,7 @@ public class OTPService {
         return otp;
     }
 
-    // Overloaded sendOTP (unchanged)
+    // Overloaded method to fetch email and send OTP
     public static void sendOTP(String accnumber, Connection con) throws SQLException, MessagingException {
         String emailQuery = "SELECT email FROM bank_accounts WHERE account_number = ?";
         String email = null;
@@ -63,25 +69,37 @@ public class OTPService {
         sendOTP(accnumber, email, con);
     }
 
-    // verifyOTP methods (unchanged)
+    // Verify OTP with additional debugging
     public static boolean verifyOTP(String accnumber, String userOtp, Connection con) throws SQLException {
-        String query = "SELECT otp, otp_timestamp FROM bank_accounts WHERE account_number = ?";
+        String query = "SELECT otp, otp_timestamp FROM users  WHERE account_number = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, accnumber);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     String storedOtp = rs.getString("otp");
                     Timestamp otpTimestamp = rs.getTimestamp("otp_timestamp");
+
                     if (storedOtp == null || otpTimestamp == null) {
                         throw new IllegalStateException("No OTP found! Request a new OTP.");
                     }
+
                     long elapsedTime = (System.currentTimeMillis() - otpTimestamp.getTime()) / 1000;
-                    if (elapsedTime > 300) {
+
+                    // Debugging timestamps
+                    System.out.println("OTP Timestamp from DB: " + otpTimestamp);
+                    System.out.println("Current Time: " + new java.util.Date());
+                    System.out.println("Elapsed Time: " + elapsedTime + " seconds");
+
+                    if (elapsedTime > 300) {  // OTP expires in 5 minutes
                         throw new IllegalStateException("OTP expired! Request a new one.");
                     }
                     if (!userOtp.equals(storedOtp)) {
                         throw new IllegalArgumentException("Incorrect OTP! Try again.");
                     }
+
+                    // Clear OTP after successful verification
+                    clearOTP(accnumber, con);
+
                     return true;
                 }
                 throw new SQLException("Account not found: " + accnumber);
@@ -89,7 +107,17 @@ public class OTPService {
         }
     }
 
-    // sendEmail (unchanged)
+    // Clears OTP after successful verification
+    private static void clearOTP(String accnumber, Connection con) throws SQLException {
+        String clearOTPQuery = "UPDATE users  SET otp = NULL, otp_timestamp = NULL WHERE account_number = ?";
+        try (PreparedStatement clearPs = con.prepareStatement(clearOTPQuery)) {
+            clearPs.setString(1, accnumber);
+            clearPs.executeUpdate();
+            logger.info("Cleared OTP for account: {}", accnumber);
+        }
+    }
+
+    // Send Email Function
     public static void sendEmail(String to, String subject, String body) throws MessagingException {
         final String senderEmail = "saltlakesisco@gmail.com";
         final String senderPassword = "wgdl tlfz jmhf itrh";
@@ -98,18 +126,21 @@ public class OTPService {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
+
         Session session = Session.getInstance(props, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(senderEmail, senderPassword);
             }
         });
+
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(senderEmail));
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
         message.setSubject(subject);
         message.setText(body);
         Transport.send(message);
+
         logger.info("Email sent to: {}", to);
     }
 }

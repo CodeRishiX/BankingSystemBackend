@@ -4466,3 +4466,168 @@ java.lang.IllegalArgumentException: Incorrect OTP! Try again.
 2025-03-28 10:56:09 [qtp1990801068-46] INFO  com.Rishi.PDFStatementGenerator - PDF Account Statement Generated: /tmp/bank_statements/Statement_987654321012345_3_2025.pdf for account: 987654321012345
 2025-03-28 10:56:26 [qtp1990801068-46] INFO  com.Rishi.PDFStatementGenerator - Email sent successfully with PDF attachment: /tmp/bank_statements/Statement_987654321012345_3_2025.pdf to debangshu.bhattacharjee.fiem.cse21@teamfuture.in
 2025-03-28 10:56:26 [qtp1990801068-46] INFO  com.Rishi.PDFStatementGenerator - Deleted temporary PDF file: /tmp/bank_statements/Statement_987654321012345_3_2025.pdf
+2025-03-29 10:22:26 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 10:22:26 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 10:23:40 [qtp1506212836-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 987654321012348
+2025-03-29 10:23:41 [qtp1506212836-48] WARN  com.Rishi.Banking_system - Account 987654321012348 does not exist
+2025-03-29 10:24:17 [qtp1506212836-40] INFO  com.Rishi.Banking_system - Login OTP request for account: 987654321012345
+2025-03-29 10:24:18 [qtp1506212836-40] WARN  com.Rishi.Banking_system - Incorrect password for account: 987654321012345
+2025-03-29 10:26:44 [qtp1506212836-53] INFO  com.Rishi.Banking_system - Login OTP request for account: 987654321012345
+2025-03-29 10:26:44 [qtp1506212836-53] INFO  com.Rishi.Login - Generated OTP: 876451
+2025-03-29 10:26:44 [qtp1506212836-53] INFO  com.Rishi.Banking_system - Stored new OTP for account: 987654321012345
+2025-03-29 10:26:50 [qtp1506212836-53] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 10:26:50 [qtp1506212836-53] INFO  com.Rishi.Banking_system - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-29 10:27:26 [qtp1506212836-41] INFO  com.Rishi.Banking_system - Login verification for account: 987654321012345
+2025-03-29 10:27:26 [qtp1506212836-41] INFO  com.Rishi.Login - Login verification for account: 987654321012345
+2025-03-29 10:27:26 [qtp1506212836-41] INFO  com.Rishi.Login - Password verified successfully for account: 987654321012345
+2025-03-29 10:27:26 [qtp1506212836-41] INFO  com.Rishi.Login - OTP verified successfully for account: 987654321012345
+2025-03-29 10:27:26 [qtp1506212836-41] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 987654321012345
+2025-03-29 10:27:26 [qtp1506212836-41] INFO  com.Rishi.Login - Generated and stored session token for account: 987654321012345
+2025-03-29 10:49:48 [qtp1506212836-55] INFO  com.Rishi.Banking_system - Login OTP request for account: 987654321012345
+2025-03-29 10:49:48 [qtp1506212836-55] INFO  com.Rishi.Login - Generated OTP: 700713
+2025-03-29 10:49:48 [qtp1506212836-55] INFO  com.Rishi.Banking_system - Stored new OTP for account: 987654321012345
+2025-03-29 10:49:54 [qtp1506212836-55] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 10:49:54 [qtp1506212836-55] INFO  com.Rishi.Banking_system - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-29 11:04:14 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 11:04:14 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 11:06:09 [qtp1506212836-49] INFO  com.Rishi.Banking_system - Login OTP request for account: 987654321012345
+2025-03-29 11:06:10 [qtp1506212836-49] INFO  com.Rishi.Login - Generated OTP: 981922
+2025-03-29 11:06:10 [qtp1506212836-49] INFO  com.Rishi.Banking_system - Stored new OTP for account: 987654321012345
+2025-03-29 11:06:16 [qtp1506212836-49] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 11:06:16 [qtp1506212836-49] INFO  com.Rishi.Banking_system - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-29 11:07:22 [qtp1506212836-43] INFO  com.Rishi.Banking_system - Transfer attempt from 987654321012345 to 987654321014364 for amount 100.0
+2025-03-29 11:07:22 [qtp1506212836-43] INFO  com.Rishi.Online_Transaction - 💰 Sender's current balance: 5610.0 for account: 987654321012345
+2025-03-29 11:07:22 [qtp1506212836-43] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 11:07:22 [qtp1506212836-43] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":100,"oldbalanceDest":56755,"newbalanceOrig":5510,"oldbalanceOrg":5610,"transaction_type":"TRANSFER","newbalanceDest":56855}
+2025-03-29 11:07:23 [qtp1506212836-43] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 400
+2025-03-29 11:07:23 [qtp1506212836-43] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {"error":"The feature names should match those that were passed during fit.\nFeature names seen at fit time, yet now missing:\n- balance_change_dest\n- balance_change_orig\n"}
+
+2025-03-29 11:07:23 [qtp1506212836-43] ERROR com.Rishi.FraudDetectionService - Fraud Detection API returned non-OK status: 400
+2025-03-29 11:07:23 [qtp1506212836-43] ERROR com.Rishi.FraudDetectionService - Unexpected error in Fraud Detection API call: Fraud Detection API returned non-OK status: 400
+com.Rishi.FraudDetectionService$FraudDetectionException: Fraud Detection API returned non-OK status: 400
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:58) ~[classes/:?]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:65) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$5(Banking_system.java:203) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 11:07:23 [qtp1506212836-43] ERROR com.Rishi.Online_Transaction - Fraud detection failed for account 987654321012345: Unexpected error in Fraud Detection API: Fraud Detection API returned non-OK status: 400
+com.Rishi.FraudDetectionService$FraudDetectionException: Unexpected error in Fraud Detection API: Fraud Detection API returned non-OK status: 400
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:84) ~[classes/:?]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:65) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$5(Banking_system.java:203) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+Caused by: com.Rishi.FraudDetectionService$FraudDetectionException: Fraud Detection API returned non-OK status: 400
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:58) ~[classes/:?]
+	... 20 more
+2025-03-29 11:07:23 [qtp1506212836-43] ERROR com.Rishi.Online_Transaction - SQLException in fundTransfer for account 987654321012345: Fraud detection failed: Unexpected error in Fraud Detection API: Fraud Detection API returned non-OK status: 400
+java.sql.SQLException: Fraud detection failed: Unexpected error in Fraud Detection API: Fraud Detection API returned non-OK status: 400
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:71) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$5(Banking_system.java:203) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+Caused by: com.Rishi.FraudDetectionService$FraudDetectionException: Unexpected error in Fraud Detection API: Fraud Detection API returned non-OK status: 400
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:84) ~[classes/:?]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:65) ~[classes/:?]
+	... 19 more
+Caused by: com.Rishi.FraudDetectionService$FraudDetectionException: Fraud Detection API returned non-OK status: 400
+	at com.Rishi.FraudDetectionService.isTransactionFraudulent(FraudDetectionService.java:58) ~[classes/:?]
+	at com.Rishi.Online_Transaction.fundTransfer(Online_Transaction.java:65) ~[classes/:?]
+	... 19 more
+2025-03-29 11:07:23 [qtp1506212836-43] ERROR com.Rishi.Banking_system - Transfer failed: Fraud detection failed: Unexpected error in Fraud Detection API: Fraud Detection API returned non-OK status: 400
+2025-03-29 11:08:39 [qtp1506212836-58] INFO  com.Rishi.Banking_system - Login OTP request for account: 987654321012345
+2025-03-29 11:08:40 [qtp1506212836-58] INFO  com.Rishi.Login - Generated OTP: 292106
+2025-03-29 11:08:40 [qtp1506212836-58] INFO  com.Rishi.Banking_system - Stored new OTP for account: 987654321012345
+2025-03-29 11:08:45 [qtp1506212836-58] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 11:08:45 [qtp1506212836-58] INFO  com.Rishi.Banking_system - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-29 11:09:01 [qtp1506212836-42] INFO  com.Rishi.Banking_system - Transfer attempt from 987654321012345 to 987654321014364 for amount 100.0
+2025-03-29 11:09:01 [qtp1506212836-42] INFO  com.Rishi.Online_Transaction - 💰 Sender's current balance: 5610.0 for account: 987654321012345
+2025-03-29 11:09:01 [qtp1506212836-42] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 11:09:01 [qtp1506212836-42] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":100,"oldbalanceDest":56755,"newbalanceOrig":5510,"oldbalanceOrg":5610,"transaction_type":"TRANSFER","newbalanceDest":56855}
+2025-03-29 11:09:01 [qtp1506212836-42] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 11:09:01 [qtp1506212836-42] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.01,
+  "is_fraud": false
+}
+
+2025-03-29 11:09:01 [qtp1506212836-42] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.01
+2025-03-29 11:09:01 [qtp1506212836-42] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 11:09:41 [qtp1506212836-41] INFO  com.Rishi.Banking_system - Transfer attempt from 987654321012345 to 987654321014364 for amount 100.0
+2025-03-29 11:09:41 [qtp1506212836-41] INFO  com.Rishi.Online_Transaction - 💰 Sender's current balance: 5610.0 for account: 987654321012345
+2025-03-29 11:09:41 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 11:09:41 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":100,"oldbalanceDest":56755,"newbalanceOrig":5510,"oldbalanceOrg":5610,"transaction_type":"TRANSFER","newbalanceDest":56855}
+2025-03-29 11:09:41 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 11:09:41 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.01,
+  "is_fraud": false
+}
+
+2025-03-29 11:09:41 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.01
+2025-03-29 11:09:41 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 11:25:24 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 11:25:24 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 11:25:32 [qtp1569448808-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 987654321012345
+2025-03-29 11:25:33 [qtp1569448808-48] INFO  com.Rishi.Login - Generated OTP: 844909
+2025-03-29 11:25:33 [qtp1569448808-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 987654321012345
+2025-03-29 11:25:39 [qtp1569448808-48] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 11:25:39 [qtp1569448808-48] INFO  com.Rishi.Banking_system - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-29 11:25:48 [qtp1569448808-39] INFO  com.Rishi.Banking_system - Transfer attempt from 987654321012345 to 987654321014364 for amount 100.0
+2025-03-29 11:25:48 [qtp1569448808-39] INFO  com.Rishi.Online_Transaction - 💰 Sender's current balance: 5610.0 for account: 987654321012345
+2025-03-29 11:25:48 [qtp1569448808-39] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 11:25:48 [qtp1569448808-39] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":100,"oldbalanceDest":56755,"newbalanceOrig":5510,"oldbalanceOrg":5610,"transaction_type":"TRANSFER","newbalanceDest":56855}
+2025-03-29 11:25:48 [qtp1569448808-39] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 11:25:48 [qtp1569448808-39] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.01,
+  "is_fraud": false
+}
+
+2025-03-29 11:25:48 [qtp1569448808-39] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.01
+2025-03-29 11:25:48 [qtp1569448808-39] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
