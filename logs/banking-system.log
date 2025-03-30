@@ -5477,3 +5477,270 @@ java.sql.SQLException: No valid OTP found. Please request a new OTP.
 2025-03-30 10:34:05 [qtp1882019091-48] INFO  com.Rishi.PDFStatementGenerator - PDF Account Statement Generated: /tmp/bank_statements/Statement_123456789012345_3_2025.pdf for account: 123456789012345
 2025-03-30 10:34:22 [qtp1882019091-48] INFO  com.Rishi.PDFStatementGenerator - Email sent successfully with PDF attachment: /tmp/bank_statements/Statement_123456789012345_3_2025.pdf to gopal6291441556@gmail.com
 2025-03-30 10:34:22 [qtp1882019091-48] INFO  com.Rishi.PDFStatementGenerator - Deleted temporary PDF file: /tmp/bank_statements/Statement_123456789012345_3_2025.pdf
+2025-03-30 11:54:54 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-30 11:54:54 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-30 12:04:37 [qtp863872043-48] INFO  com.Rishi.OTPService - Generated OTP for account 987654321098765: 565348
+2025-03-30 12:04:37 [qtp863872043-48] INFO  com.Rishi.OTPService - Stored OTP in pre_registration table for account: 987654321098765
+2025-03-30 12:04:53 [qtp863872043-48] INFO  com.Rishi.OTPService - Email sent to: debangshubhattacharya4@gmail.com
+2025-03-30 12:04:53 [qtp863872043-48] INFO  com.Rishi.OTPService - OTP sent to email: debangshubhattacharya4@gmail.com for account: 987654321098765
+2025-03-30 12:05:23 [qtp863872043-42] INFO  com.Rishi.Registration - Starting registration for account: 987654321098765
+2025-03-30 12:05:24 [qtp863872043-42] INFO  com.Rishi.Registration - Registration successful for account: 987654321098765
+2025-03-30 12:07:34 [qtp863872043-53] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-30 12:07:34 [qtp863872043-53] INFO  com.Rishi.Login - Generated OTP: 669235
+2025-03-30 12:07:34 [qtp863872043-53] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-30 12:07:49 [qtp863872043-53] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-30 12:07:49 [qtp863872043-53] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 12:08:01 [qtp863872043-43] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-30 12:08:01 [qtp863872043-43] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-30 12:08:02 [qtp863872043-43] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-30 12:08:02 [qtp863872043-43] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-30 12:08:02 [qtp863872043-43] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-30 12:08:02 [qtp863872043-43] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-30 12:08:32 [qtp863872043-40] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 10.0
+2025-03-30 12:08:32 [qtp863872043-40] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 426891
+2025-03-30 12:08:32 [qtp863872043-40] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-30 12:08:48 [qtp863872043-40] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-30 12:08:48 [qtp863872043-40] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 12:09:26 [qtp863872043-38] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-30 12:09:26 [qtp863872043-38] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-30 12:09:26 [qtp863872043-38] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-30 12:09:26 [qtp863872043-38] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-30 12:09:26 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-30 12:09:26 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":200,"oldbalanceDest":7110,"newbalanceOrig":48100,"oldbalanceOrg":48300,"transaction_type":"TRANSFER","newbalanceDest":7310}
+2025-03-30 12:09:26 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-30 12:09:26 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.0001,
+  "is_fraud": false
+}
+
+2025-03-30 12:09:26 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 1.0E-4
+2025-03-30 12:09:26 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-30 12:09:26 [qtp863872043-38] INFO  com.Rishi.TransferService - Transfer completed successfully: 123456789012345 to 987654321012345, Amount: 200.0
+2025-03-30 12:09:26 [qtp863872043-38] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-30 12:16:28 [qtp863872043-60] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 4800.0
+2025-03-30 12:16:28 [qtp863872043-60] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 177893
+2025-03-30 12:16:28 [qtp863872043-60] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-30 12:16:43 [qtp863872043-60] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-30 12:16:43 [qtp863872043-60] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 12:16:46 [qtp863872043-48] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-30 12:16:46 [qtp863872043-48] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-30 12:16:46 [qtp863872043-48] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-30 12:16:46 [qtp863872043-48] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-30 12:16:46 [qtp863872043-48] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-30 12:16:46 [qtp863872043-48] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":200,"oldbalanceDest":7310,"newbalanceOrig":47900,"oldbalanceOrg":48100,"transaction_type":"TRANSFER","newbalanceDest":7510}
+2025-03-30 12:16:46 [qtp863872043-48] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-30 12:16:46 [qtp863872043-48] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.0001,
+  "is_fraud": false
+}
+
+2025-03-30 12:16:46 [qtp863872043-48] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 1.0E-4
+2025-03-30 12:16:46 [qtp863872043-48] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-30 12:16:46 [qtp863872043-48] INFO  com.Rishi.TransferService - Transfer completed successfully: 123456789012345 to 987654321012345, Amount: 200.0
+2025-03-30 12:16:46 [qtp863872043-48] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-30 12:17:44 [qtp863872043-44] INFO  com.Rishi.Banking_system - Generating statement for account: 123456789012345, month: 3, year: 2025
+2025-03-30 12:17:45 [qtp863872043-44] INFO  com.Rishi.PDFStatementGenerator - PDF Account Statement Generated: /tmp/bank_statements/Statement_123456789012345_3_2025.pdf for account: 123456789012345
+2025-03-30 12:18:01 [qtp863872043-44] INFO  com.Rishi.PDFStatementGenerator - Email sent successfully with PDF attachment: /tmp/bank_statements/Statement_123456789012345_3_2025.pdf to gopal6291441556@gmail.com
+2025-03-30 12:18:01 [qtp863872043-44] INFO  com.Rishi.PDFStatementGenerator - Deleted temporary PDF file: /tmp/bank_statements/Statement_123456789012345_3_2025.pdf
+2025-03-30 12:20:47 [qtp863872043-67] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 4800.0
+2025-03-30 12:20:47 [qtp863872043-67] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 968877
+2025-03-30 12:20:47 [qtp863872043-67] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-30 12:21:02 [qtp863872043-67] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-30 12:21:02 [qtp863872043-67] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 12:21:06 [qtp863872043-37] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 4800.0
+2025-03-30 12:21:06 [qtp863872043-37] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-30 12:21:06 [qtp863872043-37] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-30 12:21:06 [qtp863872043-37] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-30 12:21:06 [qtp863872043-37] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-30 12:21:06 [qtp863872043-37] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":4800,"oldbalanceDest":7510,"newbalanceOrig":43100,"oldbalanceOrg":47900,"transaction_type":"TRANSFER","newbalanceDest":12310}
+2025-03-30 12:21:06 [qtp863872043-37] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-30 12:21:06 [qtp863872043-37] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.0,
+  "is_fraud": false
+}
+
+2025-03-30 12:21:06 [qtp863872043-37] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.0
+2025-03-30 12:21:06 [qtp863872043-37] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-30 12:21:06 [qtp863872043-37] INFO  com.Rishi.TransferService - Transfer completed successfully: 123456789012345 to 987654321012345, Amount: 4800.0
+2025-03-30 12:21:06 [qtp863872043-37] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-30 12:22:31 [qtp863872043-54] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 4800.0
+2025-03-30 12:22:31 [qtp863872043-54] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 537591
+2025-03-30 12:22:31 [qtp863872043-54] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-30 12:22:47 [qtp863872043-54] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-30 12:22:47 [qtp863872043-54] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 12:22:49 [qtp863872043-59] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 47800.0
+2025-03-30 12:22:49 [qtp863872043-59] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-30 12:22:49 [qtp863872043-59] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-30 12:22:49 [qtp863872043-59] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-30 12:22:49 [qtp863872043-59] ERROR com.Rishi.TransferService - Transfer failed: Insufficient funds
+2025-03-30 12:22:49 [qtp863872043-59] DEBUG com.Rishi.TransferService - Transaction rolled back successfully
+2025-03-30 12:22:49 [qtp863872043-59] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-30 12:25:21 [qtp863872043-74] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 4800.0
+2025-03-30 12:25:21 [qtp863872043-74] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 458139
+2025-03-30 12:25:21 [qtp863872043-74] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-30 12:25:36 [qtp863872043-74] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-30 12:25:36 [qtp863872043-74] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 12:25:42 [qtp863872043-44] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 43000.0
+2025-03-30 12:25:42 [qtp863872043-44] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-30 12:25:42 [qtp863872043-44] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-30 12:25:42 [qtp863872043-44] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-30 12:25:42 [qtp863872043-44] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-30 12:25:42 [qtp863872043-44] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":43000,"oldbalanceDest":12310,"newbalanceOrig":100,"oldbalanceOrg":43100,"transaction_type":"TRANSFER","newbalanceDest":55310}
+2025-03-30 12:25:42 [qtp863872043-44] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-30 12:25:42 [qtp863872043-44] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.0425,
+  "is_fraud": false
+}
+
+2025-03-30 12:25:42 [qtp863872043-44] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.0425
+2025-03-30 12:25:42 [qtp863872043-44] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-30 12:25:42 [qtp863872043-44] INFO  com.Rishi.TransferService - Transfer completed successfully: 123456789012345 to 987654321012345, Amount: 43000.0
+2025-03-30 12:25:42 [qtp863872043-44] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-30 13:06:26 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-30 13:06:26 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-30 13:07:14 [qtp998074219-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-30 13:07:14 [qtp998074219-48] INFO  com.Rishi.Login - Generated OTP: 167797
+2025-03-30 13:07:14 [qtp998074219-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-30 13:07:31 [qtp998074219-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-30 13:07:31 [qtp998074219-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 13:07:34 [qtp998074219-40] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-30 13:07:34 [qtp998074219-40] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-30 13:07:34 [qtp998074219-40] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-30 13:07:34 [qtp998074219-40] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-30 13:07:34 [qtp998074219-40] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-30 13:07:34 [qtp998074219-40] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-30 13:07:42 [qtp998074219-43] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 4800.0
+2025-03-30 13:07:55 [qtp998074219-41] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 4.0
+2025-03-30 13:07:55 [qtp998074219-41] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 572443
+2025-03-30 13:07:55 [qtp998074219-41] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-30 13:08:11 [qtp998074219-41] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-30 13:08:11 [qtp998074219-41] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 13:08:25 [qtp998074219-38] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 43000.0
+2025-03-30 13:08:25 [qtp998074219-38] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-30 13:08:25 [qtp998074219-38] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-30 13:08:25 [qtp998074219-38] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-30 13:08:25 [qtp998074219-38] ERROR com.Rishi.TransferService - Transfer failed: Insufficient funds
+2025-03-30 13:08:25 [qtp998074219-38] DEBUG com.Rishi.TransferService - Transaction rolled back successfully
+2025-03-30 13:08:25 [qtp998074219-38] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-30 13:11:13 [qtp998074219-53] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 4.0
+2025-03-30 13:11:13 [qtp998074219-53] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-30 13:11:13 [qtp998074219-53] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-30 13:11:13 [qtp998074219-53] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-30 13:11:13 [qtp998074219-53] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-30 13:11:14 [qtp998074219-53] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":4,"oldbalanceDest":55310,"newbalanceOrig":96,"oldbalanceOrg":100,"transaction_type":"TRANSFER","newbalanceDest":55314}
+2025-03-30 13:11:14 [qtp998074219-53] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-30 13:11:14 [qtp998074219-53] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.03,
+  "is_fraud": false
+}
+
+2025-03-30 13:11:14 [qtp998074219-53] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.03
+2025-03-30 13:11:14 [qtp998074219-53] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-30 13:11:14 [qtp998074219-53] INFO  com.Rishi.TransferService - Transfer completed successfully: 123456789012345 to 987654321012345, Amount: 4.0
+2025-03-30 13:11:14 [qtp998074219-53] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-30 13:18:16 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-30 13:18:16 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-30 13:20:16 [qtp2064054159-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-30 13:20:17 [qtp2064054159-48] INFO  com.Rishi.Login - Generated OTP: 717592
+2025-03-30 13:20:17 [qtp2064054159-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-30 13:20:32 [qtp2064054159-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-30 13:20:32 [qtp2064054159-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 13:20:34 [qtp2064054159-41] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-30 13:20:34 [qtp2064054159-41] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-30 13:20:35 [qtp2064054159-41] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-30 13:20:35 [qtp2064054159-41] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-30 13:20:35 [qtp2064054159-41] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-30 13:20:35 [qtp2064054159-41] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-30 13:22:52 [qtp2064054159-53] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 4.0
+2025-03-30 13:22:52 [qtp2064054159-53] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 870359
+2025-03-30 13:22:52 [qtp2064054159-53] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-30 13:23:09 [qtp2064054159-53] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-30 13:23:09 [qtp2064054159-53] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 13:23:27 [qtp2064054159-42] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 4.0
+2025-03-30 13:23:27 [qtp2064054159-42] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-30 13:23:27 [qtp2064054159-42] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-30 13:23:27 [qtp2064054159-42] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-30 13:23:27 [qtp2064054159-42] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-30 13:23:27 [qtp2064054159-42] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":4,"oldbalanceDest":55314,"newbalanceOrig":92,"oldbalanceOrg":96,"transaction_type":"TRANSFER","newbalanceDest":55318}
+2025-03-30 13:23:27 [qtp2064054159-42] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-30 13:23:27 [qtp2064054159-42] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.03,
+  "is_fraud": false
+}
+
+2025-03-30 13:23:27 [qtp2064054159-42] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.03
+2025-03-30 13:23:27 [qtp2064054159-42] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-30 13:23:27 [qtp2064054159-42] INFO  com.Rishi.TransferService - Transfer completed successfully: 123456789012345 to 987654321012345, Amount: 4.0
+2025-03-30 13:23:27 [qtp2064054159-42] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-30 13:37:47 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-30 13:37:47 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-30 13:40:06 [qtp863872043-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-30 13:40:06 [qtp863872043-48] INFO  com.Rishi.Login - Generated OTP: 613534
+2025-03-30 13:40:07 [qtp863872043-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-30 13:40:22 [qtp863872043-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-30 13:40:22 [qtp863872043-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 13:40:25 [qtp863872043-37] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-30 13:40:25 [qtp863872043-37] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-30 13:40:25 [qtp863872043-37] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-30 13:40:25 [qtp863872043-37] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-30 13:40:25 [qtp863872043-37] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-30 13:40:25 [qtp863872043-37] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-30 13:40:50 [qtp863872043-40] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 4.0
+2025-03-30 13:40:50 [qtp863872043-40] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 634111
+2025-03-30 13:40:50 [qtp863872043-40] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-30 13:41:05 [qtp863872043-40] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-30 13:41:05 [qtp863872043-40] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 13:41:51 [qtp863872043-38] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 4.0
+2025-03-30 13:41:51 [qtp863872043-38] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-30 13:41:51 [qtp863872043-38] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-30 13:41:51 [qtp863872043-38] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-30 13:41:51 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-30 13:41:51 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":4,"oldbalanceDest":55318,"newbalanceOrig":88,"oldbalanceOrg":92,"transaction_type":"TRANSFER","newbalanceDest":55322}
+2025-03-30 13:41:52 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-30 13:41:52 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.03,
+  "is_fraud": false
+}
+
+2025-03-30 13:41:52 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.03
+2025-03-30 13:41:52 [qtp863872043-38] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-30 13:41:52 [qtp863872043-38] INFO  com.Rishi.TransferService - Transfer completed successfully: 123456789012345 to 987654321012345, Amount: 4.0
+2025-03-30 13:41:52 [qtp863872043-38] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-30 14:07:29 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-30 14:07:29 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-30 14:07:35 [qtp139712631-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-30 14:07:36 [qtp139712631-48] INFO  com.Rishi.Login - Generated OTP: 674352
+2025-03-30 14:07:36 [qtp139712631-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-30 14:07:52 [qtp139712631-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-30 14:07:52 [qtp139712631-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 14:08:02 [qtp139712631-38] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-30 14:08:02 [qtp139712631-38] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-30 14:08:03 [qtp139712631-38] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-30 14:08:03 [qtp139712631-38] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-30 14:08:03 [qtp139712631-38] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-30 14:08:03 [qtp139712631-38] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-30 14:08:37 [qtp139712631-40] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 4.0
+2025-03-30 14:08:37 [qtp139712631-40] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 298246
+2025-03-30 14:08:37 [qtp139712631-40] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-30 14:08:53 [qtp139712631-40] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-30 14:08:53 [qtp139712631-40] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-30 14:08:56 [qtp139712631-41] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 4.0
+2025-03-30 14:08:56 [qtp139712631-41] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-30 14:08:56 [qtp139712631-41] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-30 14:08:56 [qtp139712631-41] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-30 14:08:56 [qtp139712631-41] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-30 14:08:56 [qtp139712631-41] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":4,"oldbalanceDest":55322,"newbalanceOrig":84,"oldbalanceOrg":88,"transaction_type":"TRANSFER","newbalanceDest":55326}
+2025-03-30 14:08:57 [qtp139712631-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-30 14:08:57 [qtp139712631-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.03,
+  "is_fraud": false
+}
+
+2025-03-30 14:08:57 [qtp139712631-41] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.03
+2025-03-30 14:08:57 [qtp139712631-41] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-30 14:08:57 [qtp139712631-41] INFO  com.Rishi.TransferService - Transfer completed successfully: 123456789012345 to 987654321012345, Amount: 4.0
+2025-03-30 14:09:12 [qtp139712631-41] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-30 14:09:12 [qtp139712631-41] INFO  com.Rishi.TransferService - Sent alert to sender: gopal6291441556@gmail.com
+2025-03-30 14:09:26 [qtp139712631-41] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-30 14:09:26 [qtp139712631-41] INFO  com.Rishi.TransferService - Sent alert to recipient: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-30 14:09:26 [qtp139712631-41] DEBUG com.Rishi.TransferService - Auto-commit reset to true

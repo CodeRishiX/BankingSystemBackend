@@ -105,7 +105,6 @@ public class Online_Transaction extends Login {
                         throw new SQLException("Not sufficient funds available to transfer money.");
                     }
 
-                    // OTP Verification (moved to endpoint level, just verify here)
                     if (!OTPService.verifyOTP(accnumber, userOtp, con)) {
                         logger.error("Incorrect or expired OTP! Transaction cancelled for account: {}", accnumber);
                         throw new SQLException("Incorrect or expired OTP! Transaction cancelled.");
@@ -170,20 +169,80 @@ public class Online_Transaction extends Login {
 
                     this.balance = senderNewBalance;
 
-                    sendalert(this.email, amount, receiverAccount, "Fund Transfer", senderNewBalance, "sender");
-                    sendalert(recipientEmail, amount, accnumber, "Fund Transfer", receiverNewBalance, "receiver");
+                    // Send alerts in a separate try-catch to ensure transaction completes even if alerts fail
+                    try {
+                        sendAlertsWithRetry(this.email, recipientEmail, amount, receiverAccount, accnumber,
+                                senderNewBalance, receiverNewBalance);
+                    } catch (Exception e) {
+                        logger.error("Alert sending failed but transaction completed: {}", e.getMessage());
+                    }
                 }
             }
         } catch (SQLException e) {
             con.rollback();
             logger.error("SQLException in fundTransfer for account {}: {}", accnumber, e.getMessage(), e);
             throw e;
-        } catch (MessagingException e) {
-            con.rollback();
-            logger.error("MessagingException in fundTransfer for account {}: {}", accnumber, e.getMessage(), e);
-            throw e;
         } finally {
             con.setAutoCommit(true);
+        }
+    }
+
+    private void sendAlertsWithRetry(String senderEmail, String recipientEmail, double amount,
+                                     String receiverAccount, String senderAccount,
+                                     double senderNewBalance, double receiverNewBalance) {
+        int maxRetries = 3;
+        int retryDelayMs = 1000;
+
+        // Send sender alert
+        if (senderEmail != null && !senderEmail.trim().isEmpty()) {
+            boolean senderAlertSent = false;
+            for (int i = 0; i < maxRetries && !senderAlertSent; i++) {
+                try {
+                    sendalert(senderEmail, amount, receiverAccount, "Fund Transfer", senderNewBalance, "sender");
+                    senderAlertSent = true;
+                } catch (MessagingException e) {
+                    logger.error("Attempt {}/{} - Failed to send sender alert to {}: {}",
+                            i+1, maxRetries, senderEmail, e.getMessage());
+                    if (i < maxRetries - 1) {
+                        try {
+                            Thread.sleep(retryDelayMs);
+                        } catch (InterruptedException ie) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+                }
+            }
+            if (!senderAlertSent) {
+                logger.error("CRITICAL: All attempts failed to send sender alert to {}", senderEmail);
+            }
+        } else {
+            logger.warn("No sender email available for account: {}", senderAccount);
+        }
+
+        // Send recipient alert
+        if (recipientEmail != null && !recipientEmail.trim().isEmpty()) {
+            boolean recipientAlertSent = false;
+            for (int i = 0; i < maxRetries && !recipientAlertSent; i++) {
+                try {
+                    sendalert(recipientEmail, amount, senderAccount, "Fund Transfer", receiverNewBalance, "receiver");
+                    recipientAlertSent = true;
+                } catch (MessagingException e) {
+                    logger.error("Attempt {}/{} - Failed to send recipient alert to {}: {}",
+                            i+1, maxRetries, recipientEmail, e.getMessage());
+                    if (i < maxRetries - 1) {
+                        try {
+                            Thread.sleep(retryDelayMs);
+                        } catch (InterruptedException ie) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+                }
+            }
+            if (!recipientAlertSent) {
+                logger.error("CRITICAL: All attempts failed to send recipient alert to {}", recipientEmail);
+            }
+        } else {
+            logger.warn("No recipient email available for account: {}", receiverAccount);
         }
     }
 
@@ -228,6 +287,10 @@ public class Online_Transaction extends Login {
     }
 
     public void sendalert(String recipientEmail, double amount, String otherParty, String type, double newBalance, String role) throws MessagingException {
+        if (recipientEmail == null || recipientEmail.trim().isEmpty()) {
+            throw new MessagingException("Recipient email cannot be null or empty");
+        }
+
         String subject, emailBody;
         if (role.equals("sender")) {
             subject = "🚨 Transaction Alert - You Sent Money";
@@ -249,7 +312,8 @@ public class Online_Transaction extends Login {
                     + "Best Regards,\n Jay Shree Ram";
         }
 
+        logger.info("Sending transaction alert to: {} | Amount: {} | Type: {}", recipientEmail, amount, type);
         OTPService.sendEmail(recipientEmail, subject, emailBody);
-        logger.info("Transaction alert sent to {}", recipientEmail);
+        logger.info("Successfully sent transaction alert to: {}", recipientEmail);
     }
 }

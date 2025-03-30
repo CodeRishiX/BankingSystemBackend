@@ -52,10 +52,18 @@ public class TransferService {
             // 8. Execute transfer
             executeTransfer(fromAccount, toAccount, amount, senderOldBalance, receiverOldBalance, con);
 
-            // 9. Commit transaction
+            // 9. Get emails for alerts
+            String senderEmail = getAccountEmail(fromAccount, con);
+            String recipientEmail = getAccountEmail(toAccount, con);
+
+            // 10. Commit transaction
             con.commit();
             logger.info("Transfer completed successfully: {} to {}, Amount: {}",
                     fromAccount, toAccount, amount);
+
+            // 11. Send alerts (outside transaction)
+            sendAlerts(fromAccount, toAccount, amount, senderEmail, recipientEmail,
+                    senderOldBalance - amount, receiverOldBalance + amount);
 
         } catch (SQLException | IllegalArgumentException e) {
             handleTransferFailure(con, e);
@@ -65,7 +73,54 @@ public class TransferService {
         }
     }
 
-    // ========== Helper Methods ========== //
+    // ========== NEW ALERT-RELATED METHODS ========== //
+
+    private String getAccountEmail(String accountNumber, Connection con) throws SQLException {
+        String query = "SELECT email FROM bank_accounts WHERE account_number = ?";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, accountNumber);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("email");
+                }
+                throw new SQLException("Email not found for account: " + accountNumber);
+            }
+        }
+    }
+
+    private void sendAlerts(String fromAccount, String toAccount, double amount,
+                            String senderEmail, String recipientEmail,
+                            double senderNewBalance, double receiverNewBalance) {
+        try {
+            // Send sender alert
+            if (senderEmail != null && !senderEmail.trim().isEmpty()) {
+                String senderSubject = "🚨 Transaction Alert - You Sent Money";
+                String senderBody = String.format(
+                        "Dear Customer,\n\nYou have transferred ₹%.2f to account %s.\n" +
+                                "New Balance: ₹%.2f\n\nBest Regards,\nYour Bank",
+                        amount, toAccount, senderNewBalance
+                );
+                OTPService.sendEmail(senderEmail, senderSubject, senderBody);
+                logger.info("Sent alert to sender: {}", senderEmail);
+            }
+
+            // Send recipient alert
+            if (recipientEmail != null && !recipientEmail.trim().isEmpty()) {
+                String recipientSubject = "💰 Transaction Alert - You Received Money";
+                String recipientBody = String.format(
+                        "Dear Customer,\n\nYou received ₹%.2f from account %s.\n" +
+                                "New Balance: ₹%.2f\n\nBest Regards,\nYour Bank",
+                        amount, fromAccount, receiverNewBalance
+                );
+                OTPService.sendEmail(recipientEmail, recipientSubject, recipientBody);
+                logger.info("Sent alert to recipient: {}", recipientEmail);
+            }
+        } catch (MessagingException e) {
+            logger.error("Failed to send alerts (transaction still succeeded): {}", e.getMessage());
+        }
+    }
+
+    // ========== EXISTING HELPER METHODS (UNCHANGED) ========== //
 
     private void verifyOTP(String accountNumber, String otp, Connection con) throws SQLException {
         if (!OTPService.verifyOTP(accountNumber, otp, con)) {
@@ -144,7 +199,7 @@ public class TransferService {
         }
     }
 
-    // ========== Database Operations ========== //
+    // ========== EXISTING DATABASE OPERATIONS (UNCHANGED) ========== //
 
     private boolean verifyToken(String accountNumber, String token, Connection con) throws SQLException {
         String query = "SELECT 1 FROM user_sessions WHERE account_number = ? AND token = ? AND expires_at > NOW()";
