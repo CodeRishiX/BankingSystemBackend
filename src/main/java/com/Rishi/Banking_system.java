@@ -7,13 +7,40 @@ import org.apache.logging.log4j.LogManager;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.Calendar;
 import java.util.Map;
 import org.json.JSONObject;
+import org.json.JSONException;
 
 import javax.mail.MessagingException;
 
 public class Banking_system {
     private static final Logger logger = LogManager.getLogger(Banking_system.class);
+
+    // Helper methods for consistent responses
+    private static String successResponse(String message) {
+        return new JSONObject()
+                .put("status", "success")
+                .put("message", message)
+                .toString();
+    }
+
+    private static String errorResponse(String message) {
+        return new JSONObject()
+                .put("status", "error")
+                .put("message", message)
+                .toString();
+    }
+
+    private static String getAccountEmail(Connection conn, String accountNumber) throws SQLException {
+        String query = "SELECT email FROM bank_accounts WHERE account_number = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, accountNumber);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() ? rs.getString("email") : null;
+            }
+        }
+    }
 
     public static void main(String[] args) {
         Spark.port(8080);
@@ -22,11 +49,38 @@ public class Banking_system {
 
         Spark.get("/", (req, res) -> "Banking System is running on port 8080!");
 
-        // Registration endpoint (unchanged)
-        Spark.post("/register", (req, res) -> {
+        // Registration Initiation (Request OTP)
+        Spark.post("/register/init", (req, res) -> {
             res.type("application/json");
             String accountNumber = req.queryParams("accountNumber");
-            String userOtp = req.queryParams("otp");
+            String email = req.queryParams("email");
+
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                // Verify account exists in bank_accounts first
+                String checkQuery = "SELECT 1 FROM bank_accounts WHERE account_number = ?";
+                try (PreparedStatement ps = conn.prepareStatement(checkQuery)) {
+                    ps.setString(1, accountNumber);
+                    try (ResultSet rs = ps.executeQuery()) {
+                        if (!rs.next()) {
+                            return errorResponse("Account not found in our records");
+                        }
+                    }
+                }
+
+                // Send OTP to email (stores in users table)
+                OTPService.sendOTP(accountNumber, email, conn);
+                return successResponse("OTP sent to your email");
+            } catch (SQLException | MessagingException e) {
+                logger.error("Registration initiation failed: {}", e.getMessage());
+                return errorResponse("Failed to send OTP: " + e.getMessage());
+            }
+        });
+
+        // Registration Completion (Verify OTP and Create Account)
+        Spark.post("/register/complete", (req, res) -> {
+            res.type("application/json");
+            String accountNumber = req.queryParams("accountNumber");
+            String otp = req.queryParams("otp");
             int securityQuestionChoice = Integer.parseInt(req.queryParams("securityQuestionChoice"));
             String securityAnswer = req.queryParams("securityAnswer");
             String password1 = req.queryParams("password1");
@@ -35,17 +89,18 @@ public class Banking_system {
 
             Registration registration = new Registration();
             try (Connection conn = DatabaseConfig.getConnection()) {
-                registration.reg(accountNumber, userOtp, securityQuestionChoice, securityAnswer, password1, password2, email, conn);
-                return "{\"status\": \"success\", \"message\": \"Registration successful\"}";
+                registration.reg(accountNumber, otp, securityQuestionChoice, securityAnswer,
+                        password1, password2, email, conn);
+                return successResponse("Registration successful");
             } catch (SQLException | MessagingException e) {
                 logger.error("Registration failed: {}", e.getMessage());
-                return "{\"status\": \"error\", \"message\": \"Registration failed: " + e.getMessage() + "\"}";
+                return errorResponse("Registration failed: " + e.getMessage());
             } catch (IllegalArgumentException e) {
-                return "{\"status\": \"error\", \"message\": \"" + e.getMessage() + "\"}";
+                return errorResponse(e.getMessage());
             }
         });
 
-        // Login: Request OTP (unchanged)
+        // Login: Request OTP
         Spark.post("/login/request-otp", (req, res) -> {
             res.type("application/json");
             String accNumber = req.queryParams("accnumber");
@@ -61,7 +116,7 @@ public class Banking_system {
                     try (ResultSet rs = ps.executeQuery()) {
                         if (!rs.next()) {
                             logger.warn("Account {} does not exist", accNumber);
-                            return "{\"status\": \"error\", \"message\": \"Account does not exist!\"}";
+                            return errorResponse("Account does not exist!");
                         }
                         String storedHash = rs.getString("password_hash");
                         email = rs.getString("email");
@@ -83,12 +138,12 @@ public class Banking_system {
                                             lockPs.executeUpdate();
                                         }
                                         logger.warn("Account {} locked due to too many failed attempts", accNumber);
-                                        return "{\"status\": \"error\", \"message\": \"Account locked due to too many failed attempts!\"}";
+                                        return errorResponse("Account locked due to too many failed attempts!");
                                     }
                                 }
                             }
                             logger.warn("Incorrect password for account: {}", accNumber);
-                            return "{\"status\": \"error\", \"message\": \"Incorrect password!\"}";
+                            return errorResponse("Incorrect password!");
                         }
                     }
                 }
@@ -103,14 +158,14 @@ public class Banking_system {
                 }
                 loginService.sendEmail(email, "Your OTP for login", "Your OTP is: " + otp + "\nThis OTP will expire in 5 minutes.");
                 logger.info("OTP sent to email: {} for account: {}", email, accNumber);
-                return "{\"status\": \"success\", \"message\": \"OTP sent to your email. Please verify.\"}";
+                return successResponse("OTP sent to your email. Please verify.");
             } catch (SQLException | MessagingException e) {
                 logger.error("OTP request failed for account {}: {}", accNumber, e.getMessage());
-                return "{\"status\": \"error\", \"message\": \"OTP request failed: " + e.getMessage() + "\"}";
+                return errorResponse("OTP request failed: " + e.getMessage());
             }
         });
 
-        // Login: Verify OTP (unchanged)
+        // Login: Verify OTP
         Spark.post("/login/verify", (req, res) -> {
             res.type("application/json");
             String accNumber = req.queryParams("accnumber");
@@ -124,14 +179,14 @@ public class Banking_system {
                 return new JSONObject(result).toString();
             } catch (SQLException e) {
                 logger.error("Login failed for account {}: {}", accNumber, e.getMessage());
-                return "{\"status\": \"error\", \"message\": \"Login failed: " + e.getMessage() + "\"}";
+                return errorResponse("Login failed: " + e.getMessage());
             } catch (MessagingException e) {
                 logger.error("MessagingException during login for account {}: {}", accNumber, e.getMessage());
-                return "{\"status\": \"error\", \"message\": \"Login failed: " + e.getMessage() + "\"}";
+                return errorResponse("Login failed: " + e.getMessage());
             }
         });
 
-        // Transfer: Request OTP (unchanged)
+        // Transfer: Request OTP
         Spark.post("/transfer/request-otp", (req, res) -> {
             res.type("application/json");
             String fromAccount = req.queryParams("fromAccount");
@@ -147,7 +202,7 @@ public class Banking_system {
                     ps.setString(1, fromAccount);
                     try (ResultSet rs = ps.executeQuery()) {
                         if (!rs.next()) {
-                            return "{\"status\": \"error\", \"message\": \"Sender account does not exist!\"}";
+                            return errorResponse("Sender account does not exist!");
                         }
                         balance = rs.getDouble("balance");
                         email = rs.getString("email");
@@ -157,92 +212,150 @@ public class Banking_system {
                     ps.setString(1, toAccount);
                     try (ResultSet rs = ps.executeQuery()) {
                         if (!rs.next()) {
-                            return "{\"status\": \"error\", \"message\": \"Recipient account does not exist!\"}";
+                            return errorResponse("Recipient account does not exist!");
                         }
                     }
                 }
                 if (balance < amount) {
-                    return "{\"status\": \"error\", \"message\": \"Insufficient balance!\"}";
+                    return errorResponse("Insufficient balance!");
                 }
                 if (fromAccount.equals(toAccount)) {
-                    return "{\"status\": \"error\", \"message\": \"Cannot transfer to same account!\"}";
+                    return errorResponse("Cannot transfer to same account!");
                 }
-                Online_Transaction ot = new Online_Transaction(conn, fromAccount, balance, email);
-                OTPService.sendOTP(fromAccount, conn);
-                return "{\"status\": \"success\", \"message\": \"OTP sent to your email. Please verify.\"}";
+                OTPService.sendOTP(fromAccount, email, conn);
+                return successResponse("OTP sent to your email. Please verify.");
             } catch (SQLException | MessagingException e) {
                 logger.error("Transfer OTP request failed: {}", e.getMessage());
-                return "{\"status\": \"error\", \"message\": \"OTP request failed: " + e.getMessage() + "\"}";
+                return errorResponse("OTP request failed: " + e.getMessage());
+            } catch (NumberFormatException e) {
+                return errorResponse("Invalid amount format");
             }
         });
 
-        // Transfer: Verify and Execute (unchanged)
+        // Transfer: Verify and Execute
         Spark.post("/transfer", (req, res) -> {
             res.type("application/json");
-            String fromAccount = req.queryParams("fromAccount");
-            String toAccount = req.queryParams("toAccount");
-            double amount = Double.parseDouble(req.queryParams("amount"));
-            String otp = req.queryParams("otp");
-            logger.info("Transfer attempt from {} to {} for amount {}", fromAccount, toAccount, amount);
 
-            try (Connection conn = DatabaseConfig.getConnection()) {
-                String balanceQuery = "SELECT balance, email FROM bank_accounts WHERE account_number = ?";
-                double balance;
-                String email;
-                try (PreparedStatement ps = conn.prepareStatement(balanceQuery)) {
-                    ps.setString(1, fromAccount);
-                    try (ResultSet rs = ps.executeQuery()) {
-                        if (!rs.next()) {
-                            return "{\"status\": \"error\", \"message\": \"Sender account does not exist!\"}";
-                        }
-                        balance = rs.getDouble("balance");
-                        email = rs.getString("email");
-                    }
+            try {
+                JSONObject json = new JSONObject(req.body());
+
+                String fromAccount = json.getString("fromAccount");
+                String toAccount = json.getString("toAccount");
+                double amount = json.getDouble("amount");
+                String otp = json.getString("otp");
+                String token = req.headers("Authorization");
+
+                if (token == null || !token.startsWith("Bearer ")) {
+                    res.status(401);
+                    return errorResponse("Authorization token required");
                 }
-                Online_Transaction ot = new Online_Transaction(conn, fromAccount, balance, email);
-                ot.fundTransfer(toAccount, amount, otp, conn);
-                return "{\"status\": \"success\", \"message\": \"Transfer successful\"}";
-            } catch (SQLException | MessagingException e) {
-                logger.error("Transfer failed: {}", e.getMessage());
-                return "{\"status\": \"error\", \"message\": \"Transfer failed: " + e.getMessage() + "\"}";
+                token = token.substring(7);
+
+                logger.info("Transfer attempt from {} to {} for amount {}", fromAccount, toAccount, amount);
+
+                try (Connection conn = DatabaseConfig.getConnection()) {
+                    TransferService transferService = new TransferService();
+                    transferService.transferFunds(fromAccount, toAccount, amount, otp, token, conn);
+                    return successResponse("Transfer successful");
+                } catch (SQLException | MessagingException e) {
+                    res.status(500);
+                    logger.error("Transfer failed: {}", e.getMessage());
+                    return errorResponse(e.getMessage().replace("\"", "'"));
+                } catch (IllegalArgumentException e) {
+                    res.status(400);
+                    return errorResponse(e.getMessage().replace("\"", "'"));
+                }
+            } catch (JSONException e) {
+                res.status(400);
+                return errorResponse("Invalid request format");
+            } catch (Exception e) {
+                res.status(500);
+                logger.error("Unexpected error in transfer: {}", e.getMessage());
+                return errorResponse("Internal server error");
             }
         });
 
-        // Send Statement via Email (unchanged)
+        // Send Statement via Email
         Spark.post("/send-statement", (req, res) -> {
             res.type("application/json");
-            String accountNumber = req.queryParams("accountNumber");
-            int month = Integer.parseInt(req.queryParams("month"));
-            int year = Integer.parseInt(req.queryParams("year"));
-            logger.info("Request to send statement for account: {}, month: {}, year: {}", accountNumber, month, year);
-
-            try (Connection conn = DatabaseConfig.getConnection()) {
-                String balanceQuery = "SELECT balance, email FROM bank_accounts WHERE account_number = ?";
-                double balance;
-                String email;
-                try (PreparedStatement ps = conn.prepareStatement(balanceQuery)) {
-                    ps.setString(1, accountNumber);
-                    try (ResultSet rs = ps.executeQuery()) {
-                        if (!rs.next()) {
-                            return "{\"status\": \"error\", \"message\": \"Account does not exist!\"}";
-                        }
-                        balance = rs.getDouble("balance");
-                        email = rs.getString("email");
-                    }
+            try {
+                // 1. Check Authorization Header
+                String authHeader = req.headers("Authorization");
+                if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+                    res.status(401);
+                    return errorResponse("Authorization token required");
                 }
-                String pdfFilePath = PDFStatementGenerator.generatePDFStatement(accountNumber, month, year, conn);
-                PDFStatementGenerator.sendEmailWithPDF(email, pdfFilePath);
-                return "{\"status\": \"success\", \"message\": \"Statement sent to your email.\"}";
-            } catch (SQLException e) {
-                logger.error("Failed to generate statement for account {}: {}", accountNumber, e.getMessage());
-                return "{\"status\": \"error\", \"message\": \"Failed to generate statement: " + e.getMessage() + "\"}";
-            } catch (IOException | MessagingException e) {
-                logger.error("Failed to send statement for account {}: {}", accountNumber, e.getClass());
-                return "{\"status\": \"error\", \"message\": \"Failed to send statement: " + e.getClass() + "\"}";
+                String token = authHeader.substring(7);
+
+                // Get and validate parameters
+                String accountNumber = req.queryParams("accountNumber");
+                int month = Integer.parseInt(req.queryParams("month"));
+                int year = Integer.parseInt(req.queryParams("year"));
+
+                logger.info("Generating statement for account: {}, month: {}, year: {}",
+                        accountNumber, month, year);
+
+                // Validate month/year
+                if (month < 1 || month > 12) {
+                    return errorResponse("Invalid month (1-12)");
+                }
+                if (year < 2000 || year > Calendar.getInstance().get(Calendar.YEAR) + 1) {
+                    return errorResponse("Invalid year");
+                }
+
+                try (Connection conn = DatabaseConfig.getConnection()) {
+                    // Verify token matches the requesting account
+                    String tokenCheckQuery = "SELECT account_number FROM user_sessions WHERE token = ? AND expires_at > NOW()";
+                    try (PreparedStatement ps = conn.prepareStatement(tokenCheckQuery)) {
+                        ps.setString(1, token);
+                        ResultSet rs = ps.executeQuery();
+                        if (!rs.next() || !rs.getString("account_number").equals(accountNumber)) {
+                            res.status(403);
+                            return errorResponse("Unauthorized access");
+                        }
+                    }
+
+                    // Set transaction isolation to ensure we see latest data
+                    conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+
+                    // Verify account exists and get email
+                    String email = getAccountEmail(conn, accountNumber);
+                    if (email == null) {
+                        return errorResponse("Account not found");
+                    }
+
+                    // Generate PDF statement
+                    String pdfFilePath = PDFStatementGenerator.generatePDFStatement(
+                            accountNumber,
+                            month,
+                            year,
+                            conn
+                    );
+
+                    // Send email with PDF attachment
+                    PDFStatementGenerator.sendEmailWithPDF(email, pdfFilePath);
+
+                    return successResponse("Statement sent to " + email);
+
+                } catch (SQLException e) {
+                    logger.error("Database error generating statement for {}: {}", accountNumber, e.getMessage());
+                    return errorResponse("Database error generating statement");
+                } catch (IOException e) {
+                    logger.error("File error generating statement for {}: {}", accountNumber, e.getMessage());
+                    return errorResponse("Error creating PDF file");
+                } catch (MessagingException e) {
+                    logger.error("Email error for {}: {}", accountNumber, e.getMessage());
+                    return errorResponse("Error sending email");
+                }
+            } catch (NumberFormatException e) {
+                return errorResponse("Invalid month/year format");
+            } catch (Exception e) {
+                logger.error("Unexpected error in send-statement: {}", e.getMessage());
+                return errorResponse("Internal server error");
             }
         });
 
-        // Forgot Password: Request OTP (new)
+        // Forgot Password: Request OTP
         Spark.post("/forgot-password/request-otp", (req, res) -> {
             res.type("application/json");
             String accountNumber = req.queryParams("accountNumber");
@@ -252,7 +365,6 @@ public class Banking_system {
 
             try (Connection conn = DatabaseConfig.getConnection()) {
                 Registration registration = new Registration();
-                // Trigger OTP generation without resetting password yet
                 String query = "SELECT phone, security_answer_hash FROM users WHERE account_number = ?";
                 String registeredPhone;
                 String hashedAnswer;
@@ -262,30 +374,30 @@ public class Banking_system {
                     try (ResultSet rs = ps.executeQuery()) {
                         if (!rs.next()) {
                             logger.warn("Account number not found: {}", accountNumber);
-                            return "{\"status\": \"error\", \"message\": \"Account number not found!\"}";
+                            return errorResponse("Account number not found!");
                         }
                         registeredPhone = rs.getString("phone");
                         hashedAnswer = rs.getString("security_answer_hash");
                         if (!BCrypt.checkpw(securityAnswer, hashedAnswer)) {
                             logger.warn("Incorrect security answer for account: {}", accountNumber);
-                            return "{\"status\": \"error\", \"message\": \"Incorrect security answer!\"}";
+                            return errorResponse("Incorrect security answer!");
                         }
                         if (!registeredPhone.equals(phoneNumber)) {
                             logger.warn("Incorrect phone number for account: {}", accountNumber);
-                            return "{\"status\": \"error\", \"message\": \"Incorrect phone number!\"}";
+                            return errorResponse("Incorrect phone number!");
                         }
                     }
                 }
                 OTPService.sendOTP(accountNumber, conn);
                 logger.info("OTP sent for forgot password to account: {}", accountNumber);
-                return "{\"status\": \"success\", \"message\": \"OTP sent to your email. Please verify.\"}";
+                return successResponse("OTP sent to your email. Please verify.");
             } catch (SQLException | MessagingException e) {
                 logger.error("Forgot password OTP request failed for account {}: {}", accountNumber, e.getMessage());
-                return "{\"status\": \"error\", \"message\": \"OTP request failed: " + e.getMessage() + "\"}";
+                return errorResponse("OTP request failed: " + e.getMessage());
             }
         });
 
-        // Forgot Password: Reset Password (new)
+        // Forgot Password: Reset Password
         Spark.post("/forgot-password/reset", (req, res) -> {
             res.type("application/json");
             String accountNumber = req.queryParams("accountNumber");
@@ -299,16 +411,16 @@ public class Banking_system {
             try (Connection conn = DatabaseConfig.getConnection()) {
                 Registration registration = new Registration();
                 registration.forgotPassword(accountNumber, phoneNumber, securityAnswer, userOtp, newPassword1, newPassword2, conn);
-                return "{\"status\": \"success\", \"message\": \"Password reset successful\"}";
+                return successResponse("Password reset successful");
             } catch (SQLException e) {
                 logger.error("Forgot password reset failed for account {}: {}", accountNumber, e.getMessage());
-                return "{\"status\": \"error\", \"message\": \"Reset failed: " + e.getMessage() + "\"}";
+                return errorResponse("Reset failed: " + e.getMessage());
             } catch (MessagingException e) {
                 logger.error("MessagingException during forgot password reset for account {}: {}", accountNumber, e.getMessage());
-                return "{\"status\": \"error\", \"message\": \"Reset failed: " + e.getMessage() + "\"}";
+                return errorResponse("Reset failed: " + e.getMessage());
             } catch (IllegalArgumentException e) {
                 logger.error("Invalid input during forgot password reset for account {}: {}", accountNumber, e.getMessage());
-                return "{\"status\": \"error\", \"message\": \"" + e.getMessage() + "\"}";
+                return errorResponse(e.getMessage());
             }
         });
     }

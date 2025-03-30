@@ -129,6 +129,13 @@ public class Login {
                 tokenPs.executeUpdate();
                 logger.info("Generated and stored session token for account: {}", account);
             }
+            // Add to user_sessions table
+            String sessionQuery = "INSERT INTO user_sessions (account_number, token, expires_at) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 1 HOUR))";
+            try (PreparedStatement sessionPs = con.prepareStatement(sessionQuery)) {
+                sessionPs.setString(1, account);
+                sessionPs.setString(2, token);
+                sessionPs.executeUpdate();
+            }
 
             con.commit();
 

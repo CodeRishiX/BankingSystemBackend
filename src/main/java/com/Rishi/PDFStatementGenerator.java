@@ -44,11 +44,13 @@ public class PDFStatementGenerator {
             }
 
             // Step 3: Fetch Transactions from Database (Only Completed Transactions)
-            String query = "SELECT id, sender_account, receiver_account, transaction_type, amount, timestamp " +
+            String query = "SELECT id, sender_account, receiver_account, transaction_type, " +
+                    "amount, timestamp, status " +
                     "FROM transactions " +
                     "WHERE (sender_account = ? OR receiver_account = ?) " +
-                    "AND status = 'Completed' " +
-                    "AND MONTH(timestamp) = ? AND YEAR(timestamp) = ? " +
+                    "AND MONTH(timestamp) = ? " +
+                    "AND YEAR(timestamp) = ? " +
+                    "AND timestamp <= NOW() " +  // Include up to current moment
                     "ORDER BY timestamp DESC";
 
             try (PreparedStatement pstmt = con.prepareStatement(query)) {

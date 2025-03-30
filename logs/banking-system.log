@@ -4631,3 +4631,849 @@ Caused by: com.Rishi.FraudDetectionService$FraudDetectionException: Fraud Detect
 
 2025-03-29 11:25:48 [qtp1569448808-39] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.01
 2025-03-29 11:25:48 [qtp1569448808-39] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 11:41:48 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 11:41:48 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 11:42:20 [qtp1506212836-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 987654321012345
+2025-03-29 11:42:20 [qtp1506212836-48] INFO  com.Rishi.Login - Generated OTP: 747106
+2025-03-29 11:42:20 [qtp1506212836-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 987654321012345
+2025-03-29 11:42:27 [qtp1506212836-48] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 11:42:27 [qtp1506212836-48] INFO  com.Rishi.Banking_system - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.Banking_system - Transfer attempt from 987654321012345 to 987654321014364 for amount 100.0
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.Online_Transaction - 💰 Sender's current balance: 5610.0 for account: 987654321012345
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":100,"oldbalanceDest":56755,"newbalanceOrig":5510,"oldbalanceOrg":5610,"transaction_type":"TRANSFER","newbalanceDest":56855}
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.01,
+  "is_fraud": false
+}
+
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.01
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.OTPService - Cleared OTP for account: 987654321012345
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.Online_Transaction - OTP Verified Successfully for account: 987654321012345
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.Online_Transaction - 📌 Transaction ID: 58 for account: 987654321012345
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.Online_Transaction - Money Transferred Successfully for account: 987654321012345
+2025-03-29 11:42:34 [qtp1506212836-41] INFO  com.Rishi.Online_Transaction - Your current balance is 5510.0 for account: 987654321012345
+2025-03-29 11:42:40 [qtp1506212836-41] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 11:42:40 [qtp1506212836-41] INFO  com.Rishi.Online_Transaction - Transaction alert sent to debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 11:42:46 [qtp1506212836-41] INFO  com.Rishi.OTPService - Email sent to: hawks4296@gmail.com
+2025-03-29 11:42:46 [qtp1506212836-41] INFO  com.Rishi.Online_Transaction - Transaction alert sent to hawks4296@gmail.com
+2025-03-29 12:01:42 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 12:01:42 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 12:01:55 [qtp1848540829-48] INFO  com.Rishi.Registration - Starting registration for account: 123456789012345
+2025-03-29 12:01:55 [qtp1848540829-48] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 362758
+2025-03-29 12:01:55 [qtp1848540829-48] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 123456789012345
+2025-03-29 12:02:01 [qtp1848540829-48] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 12:02:01 [qtp1848540829-48] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 12:07:10 [qtp1848540829-53] INFO  com.Rishi.Registration - Starting registration for account: 123456789012345
+2025-03-29 12:07:10 [qtp1848540829-53] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 630985
+2025-03-29 12:07:10 [qtp1848540829-53] INFO  com.Rishi.OTPService - Stored OTP in bank_accounts for account: 123456789012345
+2025-03-29 12:07:15 [qtp1848540829-53] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 12:07:15 [qtp1848540829-53] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 12:07:39 [qtp1848540829-41] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 12:07:39 [qtp1848540829-41] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 12:07:39 [qtp1848540829-41] WARN  com.Rishi.Login - Account number not found in users table: 123456789012345
+2025-03-29 12:07:39 [qtp1848540829-41] ERROR com.Rishi.Login - SQLException during login for account 123456789012345: Account number not found!
+java.sql.SQLException: Account number not found!
+	at com.Rishi.Login.verifyLogin(Login.java:41) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$3(Banking_system.java:123) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 12:07:40 [qtp1848540829-41] ERROR com.Rishi.Banking_system - Login failed for account 123456789012345: Account number not found!
+2025-03-29 12:08:14 [qtp1848540829-42] INFO  com.Rishi.Registration - Starting registration for account: 987654321012348
+2025-03-29 12:08:14 [qtp1848540829-42] ERROR com.Rishi.Registration - Error during registration: Account not found in bank records.
+java.sql.SQLException: Account not found in bank records.
+	at com.Rishi.Registration.reg(Registration.java:45) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$1(Banking_system.java:38) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 12:08:14 [qtp1848540829-42] ERROR com.Rishi.Banking_system - Registration failed: Account not found in bank records.
+2025-03-29 13:19:26 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 13:19:26 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 13:20:53 [qtp2110394756-48] INFO  com.Rishi.Registration - Starting registration for account: 987654321012348
+2025-03-29 13:20:53 [qtp2110394756-48] ERROR com.Rishi.Registration - Error during registration: Account not found in bank records.
+java.sql.SQLException: Account not found in bank records.
+	at com.Rishi.Registration.reg(Registration.java:45) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$1(Banking_system.java:38) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 13:20:53 [qtp2110394756-48] ERROR com.Rishi.Banking_system - Registration failed: Account not found in bank records.
+2025-03-29 13:21:57 [qtp2110394756-44] INFO  com.Rishi.Registration - Starting registration for account: 123456789012345
+2025-03-29 13:21:57 [qtp2110394756-44] ERROR com.Rishi.Registration - Error during registration: Unknown column 'otp' in 'field list'
+java.sql.SQLSyntaxErrorException: Unknown column 'otp' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.Rishi.Registration.reg(Registration.java:58) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$1(Banking_system.java:38) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 13:21:57 [qtp2110394756-44] ERROR com.Rishi.Banking_system - Registration failed: Unknown column 'otp' in 'field list'
+2025-03-29 13:25:13 [qtp2110394756-41] INFO  com.Rishi.Registration - Starting registration for account: 123456789012345
+2025-03-29 13:25:13 [qtp2110394756-41] ERROR com.Rishi.Registration - Error during registration: Unknown column 'otp' in 'field list'
+java.sql.SQLSyntaxErrorException: Unknown column 'otp' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.Rishi.Registration.reg(Registration.java:58) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$1(Banking_system.java:38) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 13:25:13 [qtp2110394756-41] ERROR com.Rishi.Banking_system - Registration failed: Unknown column 'otp' in 'field list'
+2025-03-29 13:29:49 [qtp2110394756-56] INFO  com.Rishi.Banking_system - Login OTP request for account: 987654321012345
+2025-03-29 13:29:49 [qtp2110394756-56] INFO  com.Rishi.Login - Generated OTP: 536870
+2025-03-29 13:29:49 [qtp2110394756-56] INFO  com.Rishi.Banking_system - Stored new OTP for account: 987654321012345
+2025-03-29 13:29:59 [qtp2110394756-56] INFO  com.Rishi.Login - Email sent successfully to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 13:29:59 [qtp2110394756-56] INFO  com.Rishi.Banking_system - OTP sent to email: debangshu.bhattacharjee.fiem.cse21@teamfuture.in for account: 987654321012345
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.Banking_system - Transfer attempt from 987654321012345 to 123456789012345 for amount 100.0
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.Online_Transaction - 💰 Sender's current balance: 5510.0 for account: 987654321012345
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":100,"oldbalanceDest":5000,"newbalanceOrig":5410,"oldbalanceOrg":5510,"transaction_type":"TRANSFER","newbalanceDest":5100}
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.02,
+  "is_fraud": false
+}
+
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 0.02
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.OTPService - Cleared OTP for account: 987654321012345
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.Online_Transaction - OTP Verified Successfully for account: 987654321012345
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.Online_Transaction - 📌 Transaction ID: 59 for account: 987654321012345
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.Online_Transaction - Money Transferred Successfully for account: 987654321012345
+2025-03-29 13:30:59 [qtp2110394756-37] INFO  com.Rishi.Online_Transaction - Your current balance is 5410.0 for account: 987654321012345
+2025-03-29 13:31:07 [qtp2110394756-37] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 13:31:07 [qtp2110394756-37] INFO  com.Rishi.Online_Transaction - Transaction alert sent to debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 13:31:16 [qtp2110394756-37] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 13:31:16 [qtp2110394756-37] INFO  com.Rishi.Online_Transaction - Transaction alert sent to gopal6291441556@gmail.com
+2025-03-29 13:46:42 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 13:46:42 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 13:47:35 [qtp308968596-48] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 952358
+2025-03-29 13:47:35 [qtp308968596-48] INFO  com.Rishi.OTPService - Stored OTP in users for account: 123456789012345
+2025-03-29 13:47:42 [qtp308968596-48] INFO  com.Rishi.OTPService - Email sent to: test@example.com
+2025-03-29 13:47:42 [qtp308968596-48] INFO  com.Rishi.OTPService - OTP sent to email: test@example.com for account: 123456789012345
+2025-03-29 13:49:35 [qtp308968596-44] INFO  com.Rishi.Registration - Starting registration for account: 123456789012345
+2025-03-29 13:49:35 [qtp308968596-44] ERROR com.Rishi.Registration - Error during registration: Account not found: 123456789012345
+java.sql.SQLException: Account not found: 123456789012345
+	at com.Rishi.OTPService.verifyOTP(OTPService.java:106) ~[classes/:?]
+	at com.Rishi.Registration.reg(Registration.java:53) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$2(Banking_system.java:65) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 13:49:35 [qtp308968596-44] ERROR com.Rishi.Banking_system - Registration failed: Account not found: 123456789012345
+2025-03-29 13:50:09 [qtp308968596-41] INFO  com.Rishi.Registration - Starting registration for account: 123456789012345
+2025-03-29 13:50:09 [qtp308968596-41] ERROR com.Rishi.Registration - Error during registration: Account not found: 123456789012345
+java.sql.SQLException: Account not found: 123456789012345
+	at com.Rishi.OTPService.verifyOTP(OTPService.java:106) ~[classes/:?]
+	at com.Rishi.Registration.reg(Registration.java:53) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$2(Banking_system.java:65) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 13:50:09 [qtp308968596-41] ERROR com.Rishi.Banking_system - Registration failed: Account not found: 123456789012345
+2025-03-29 13:51:41 [qtp308968596-44] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 765619
+2025-03-29 13:51:41 [qtp308968596-44] INFO  com.Rishi.OTPService - Stored OTP in users for account: 123456789012345
+2025-03-29 13:51:47 [qtp308968596-44] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 13:51:47 [qtp308968596-44] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 13:53:03 [qtp308968596-44] INFO  com.Rishi.Registration - Starting registration for account: 123456789012345
+2025-03-29 13:53:03 [qtp308968596-44] ERROR com.Rishi.Registration - Error during registration: Account not found: 123456789012345
+java.sql.SQLException: Account not found: 123456789012345
+	at com.Rishi.OTPService.verifyOTP(OTPService.java:106) ~[classes/:?]
+	at com.Rishi.Registration.reg(Registration.java:53) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$2(Banking_system.java:65) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 13:53:03 [qtp308968596-44] ERROR com.Rishi.Banking_system - Registration failed: Account not found: 123456789012345
+2025-03-29 13:55:46 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 13:55:46 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 13:56:02 [qtp620290428-48] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 788497
+2025-03-29 13:56:02 [qtp620290428-48] INFO  com.Rishi.OTPService - Stored OTP in users for account: 123456789012345
+2025-03-29 13:56:08 [qtp620290428-48] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 13:56:08 [qtp620290428-48] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 13:56:29 [qtp620290428-39] INFO  com.Rishi.Registration - Starting registration for account: 123456789012345
+2025-03-29 13:56:29 [qtp620290428-39] ERROR com.Rishi.Registration - Error during registration: Account not found: 123456789012345
+java.sql.SQLException: Account not found: 123456789012345
+	at com.Rishi.OTPService.verifyOTP(OTPService.java:106) ~[classes/:?]
+	at com.Rishi.Registration.reg(Registration.java:53) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$2(Banking_system.java:65) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 13:56:29 [qtp620290428-39] ERROR com.Rishi.Banking_system - Registration failed: Account not found: 123456789012345
+2025-03-29 14:11:12 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 14:11:12 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 14:11:37 [qtp308968596-48] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 756936
+2025-03-29 14:11:37 [qtp308968596-48] INFO  com.Rishi.OTPService - Stored OTP in pre_registration table for account: 123456789012345
+2025-03-29 14:11:43 [qtp308968596-48] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 14:11:43 [qtp308968596-48] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 14:11:54 [qtp308968596-40] INFO  com.Rishi.Registration - Starting registration for account: 123456789012345
+2025-03-29 14:11:54 [qtp308968596-40] INFO  com.Rishi.Registration - Registration successful for account: 123456789012345
+2025-03-29 14:13:59 [qtp308968596-53] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 14:13:59 [qtp308968596-53] INFO  com.Rishi.Login - Generated OTP: 788860
+2025-03-29 14:13:59 [qtp308968596-53] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 14:14:06 [qtp308968596-53] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 14:14:06 [qtp308968596-53] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 14:14:44 [qtp308968596-42] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 14:14:44 [qtp308968596-42] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 14:14:44 [qtp308968596-42] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 14:14:44 [qtp308968596-42] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 14:14:44 [qtp308968596-42] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 14:14:44 [qtp308968596-42] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 14:17:34 [qtp308968596-38] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 14:17:34 [qtp308968596-38] INFO  com.Rishi.Login - Generated OTP: 342930
+2025-03-29 14:17:34 [qtp308968596-38] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 14:17:40 [qtp308968596-38] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 14:17:40 [qtp308968596-38] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 14:24:57 [qtp308968596-58] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 14:24:57 [qtp308968596-58] INFO  com.Rishi.Login - Generated OTP: 298634
+2025-03-29 14:24:57 [qtp308968596-58] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 14:25:03 [qtp308968596-58] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 14:25:03 [qtp308968596-58] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 14:25:40 [qtp308968596-44] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 100.0
+2025-03-29 14:25:40 [qtp308968596-44] INFO  com.Rishi.Online_Transaction - 💰 Sender's current balance: 50000.0 for account: 123456789012345
+2025-03-29 14:25:40 [qtp308968596-44] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 14:25:41 [qtp308968596-44] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":100,"oldbalanceDest":5410,"newbalanceOrig":49900,"oldbalanceOrg":50000,"transaction_type":"TRANSFER","newbalanceDest":5510}
+2025-03-29 14:25:41 [qtp308968596-44] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 14:25:41 [qtp308968596-44] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.0001,
+  "is_fraud": false
+}
+
+2025-03-29 14:25:41 [qtp308968596-44] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 1.0E-4
+2025-03-29 14:25:41 [qtp308968596-44] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 14:25:41 [qtp308968596-44] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-29 14:25:41 [qtp308968596-44] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-29 14:25:41 [qtp308968596-44] INFO  com.Rishi.Online_Transaction - OTP Verified Successfully for account: 123456789012345
+2025-03-29 14:25:41 [qtp308968596-44] INFO  com.Rishi.Online_Transaction - 📌 Transaction ID: 60 for account: 123456789012345
+2025-03-29 14:25:41 [qtp308968596-44] ERROR com.Rishi.Banking_system - Transfer failed: Can't call rollback when autocommit=true
+2025-03-29 17:01:03 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 17:01:03 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 17:01:24 [qtp2110394756-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 17:01:25 [qtp2110394756-48] INFO  com.Rishi.Login - Generated OTP: 961236
+2025-03-29 17:01:25 [qtp2110394756-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 17:01:31 [qtp2110394756-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 17:01:31 [qtp2110394756-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:03:29 [qtp2110394756-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 17:03:29 [qtp2110394756-48] INFO  com.Rishi.Login - Generated OTP: 611471
+2025-03-29 17:03:29 [qtp2110394756-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 17:03:34 [qtp2110394756-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 17:03:34 [qtp2110394756-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:03:52 [qtp2110394756-45] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 17:03:52 [qtp2110394756-45] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 17:03:52 [qtp2110394756-45] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 17:03:52 [qtp2110394756-45] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 17:03:52 [qtp2110394756-45] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 17:03:53 [qtp2110394756-45] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 17:07:01 [qtp2110394756-54] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:07:01 [qtp2110394756-54] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 364719
+2025-03-29 17:07:01 [qtp2110394756-54] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 17:07:07 [qtp2110394756-54] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 17:07:07 [qtp2110394756-54] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:17:51 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 17:17:51 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 17:18:06 [qtp1935377394-48] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:18:06 [qtp1935377394-48] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 558798
+2025-03-29 17:18:06 [qtp1935377394-48] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 17:18:12 [qtp1935377394-48] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 17:18:12 [qtp1935377394-48] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:20:22 [qtp1935377394-44] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:20:22 [qtp1935377394-44] INFO  com.Rishi.TransferService - Initiating transfer from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:20:22 [qtp1935377394-44] ERROR com.Rishi.TransferService - Transfer failed: Table 'bank.user_sessions' doesn't exist
+2025-03-29 17:20:22 [qtp1935377394-44] ERROR com.Rishi.Banking_system - Transfer failed: Table 'bank.user_sessions' doesn't exist
+2025-03-29 17:29:05 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 17:29:05 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 17:29:19 [qtp1716827697-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 17:29:19 [qtp1716827697-48] INFO  com.Rishi.Login - Generated OTP: 406351
+2025-03-29 17:29:19 [qtp1716827697-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 17:29:27 [qtp1716827697-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 17:29:27 [qtp1716827697-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:30:09 [qtp1716827697-37] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 17:30:09 [qtp1716827697-37] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 17:30:09 [qtp1716827697-37] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 17:30:09 [qtp1716827697-37] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 17:30:09 [qtp1716827697-37] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 17:30:09 [qtp1716827697-37] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 17:30:20 [qtp1716827697-40] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:30:20 [qtp1716827697-40] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 348940
+2025-03-29 17:30:20 [qtp1716827697-40] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 17:30:26 [qtp1716827697-40] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 17:30:26 [qtp1716827697-40] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:33:10 [qtp1716827697-53] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:33:10 [qtp1716827697-53] INFO  com.Rishi.TransferService - Initiating transfer from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:33:10 [qtp1716827697-53] ERROR com.Rishi.TransferService - Transfer failed: Table 'bank.user_sessions' doesn't exist
+2025-03-29 17:33:10 [qtp1716827697-53] ERROR com.Rishi.Banking_system - Transfer failed: Table 'bank.user_sessions' doesn't exist
+2025-03-29 17:40:21 [qtp1716827697-55] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:40:22 [qtp1716827697-55] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 319851
+2025-03-29 17:40:22 [qtp1716827697-55] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 17:40:27 [qtp1716827697-55] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 17:40:27 [qtp1716827697-55] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:41:01 [qtp1716827697-39] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:41:01 [qtp1716827697-39] INFO  com.Rishi.TransferService - Initiating transfer from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:41:01 [qtp1716827697-39] ERROR com.Rishi.TransferService - Transfer failed: Invalid or expired token
+2025-03-29 17:41:16 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 17:41:16 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 17:41:28 [qtp1478305601-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 17:41:29 [qtp1478305601-48] INFO  com.Rishi.Login - Generated OTP: 903540
+2025-03-29 17:41:29 [qtp1478305601-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 17:41:35 [qtp1478305601-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 17:41:35 [qtp1478305601-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:42:02 [qtp1478305601-39] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 17:42:02 [qtp1478305601-39] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 17:42:03 [qtp1478305601-39] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 17:42:03 [qtp1478305601-39] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 17:42:03 [qtp1478305601-39] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 17:42:03 [qtp1478305601-39] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 17:42:19 [qtp1478305601-40] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:42:19 [qtp1478305601-40] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 830721
+2025-03-29 17:42:19 [qtp1478305601-40] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 17:42:25 [qtp1478305601-40] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 17:42:25 [qtp1478305601-40] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:43:02 [qtp1478305601-41] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:43:02 [qtp1478305601-41] INFO  com.Rishi.TransferService - Initiating transfer from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:43:02 [qtp1478305601-41] ERROR com.Rishi.TransferService - Transfer failed: Invalid or expired token
+2025-03-29 17:43:34 [qtp1478305601-42] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:43:34 [qtp1478305601-42] INFO  com.Rishi.TransferService - Initiating transfer from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:43:34 [qtp1478305601-42] ERROR com.Rishi.TransferService - Transfer failed: Invalid or expired token
+2025-03-29 17:43:46 [qtp1478305601-37] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 17:43:46 [qtp1478305601-37] INFO  com.Rishi.Login - Generated OTP: 746173
+2025-03-29 17:43:46 [qtp1478305601-37] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 17:43:51 [qtp1478305601-37] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 17:43:51 [qtp1478305601-37] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:44:06 [qtp1478305601-38] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 17:44:06 [qtp1478305601-38] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 17:44:06 [qtp1478305601-38] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 17:44:06 [qtp1478305601-38] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 17:44:06 [qtp1478305601-38] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 17:44:06 [qtp1478305601-38] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 17:44:38 [qtp1478305601-52] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:44:38 [qtp1478305601-52] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 461234
+2025-03-29 17:44:38 [qtp1478305601-52] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 17:44:43 [qtp1478305601-52] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 17:44:43 [qtp1478305601-52] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:44:56 [qtp1478305601-48] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:44:56 [qtp1478305601-48] INFO  com.Rishi.TransferService - Initiating transfer from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:44:56 [qtp1478305601-48] ERROR com.Rishi.TransferService - Transfer failed: Invalid or expired token
+2025-03-29 17:54:17 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 17:54:17 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 17:55:11 [qtp1478305601-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 17:55:11 [qtp1478305601-48] INFO  com.Rishi.Login - Generated OTP: 762155
+2025-03-29 17:55:12 [qtp1478305601-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 17:55:18 [qtp1478305601-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 17:55:18 [qtp1478305601-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:55:36 [qtp1478305601-39] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 17:55:36 [qtp1478305601-39] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 17:55:37 [qtp1478305601-39] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 17:55:37 [qtp1478305601-39] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 17:55:37 [qtp1478305601-39] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 17:55:37 [qtp1478305601-39] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 17:55:46 [qtp1478305601-38] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:55:46 [qtp1478305601-38] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 467701
+2025-03-29 17:55:46 [qtp1478305601-38] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 17:55:52 [qtp1478305601-38] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 17:55:52 [qtp1478305601-38] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 17:56:29 [qtp1478305601-41] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:56:29 [qtp1478305601-41] INFO  com.Rishi.TransferService - Initiating transfer from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 17:56:29 [qtp1478305601-41] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-29 17:56:29 [qtp1478305601-41] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-29 17:56:29 [qtp1478305601-41] ERROR com.Rishi.TransferService - Transfer failed: Unknown column 'from_account' in 'field list'
+2025-03-29 17:56:29 [qtp1478305601-41] ERROR com.Rishi.Banking_system - Transfer failed: Unknown column 'from_account' in 'field list'
+2025-03-29 18:03:27 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 18:03:27 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 18:03:48 [qtp2039398472-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 18:03:48 [qtp2039398472-48] INFO  com.Rishi.Login - Generated OTP: 330112
+2025-03-29 18:03:48 [qtp2039398472-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 18:03:54 [qtp2039398472-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 18:03:54 [qtp2039398472-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 18:04:24 [qtp2039398472-38] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 18:04:24 [qtp2039398472-38] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 18:04:24 [qtp2039398472-38] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 18:04:24 [qtp2039398472-38] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 18:04:24 [qtp2039398472-38] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 18:04:24 [qtp2039398472-38] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 18:04:32 [qtp2039398472-43] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 18:04:32 [qtp2039398472-43] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 461584
+2025-03-29 18:04:32 [qtp2039398472-43] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 18:04:37 [qtp2039398472-43] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 18:04:37 [qtp2039398472-43] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 18:05:15 [qtp2039398472-44] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 18:05:15 [qtp2039398472-44] INFO  com.Rishi.TransferService - Initiating transfer from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 18:05:15 [qtp2039398472-44] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-29 18:05:15 [qtp2039398472-44] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-29 18:05:15 [qtp2039398472-44] INFO  com.Rishi.TransferService - Transaction recorded successfully: 123456789012345 -> 987654321012345 (Amount: 200.0)
+2025-03-29 18:05:15 [qtp2039398472-44] ERROR com.Rishi.TransferService - Transfer failed: Can't call commit when autocommit=true
+2025-03-29 18:05:15 [qtp2039398472-44] ERROR com.Rishi.Banking_system - Transfer failed: Can't call commit when autocommit=true
+2025-03-29 18:09:21 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 18:09:21 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 18:09:30 [qtp2039398472-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 18:09:31 [qtp2039398472-48] INFO  com.Rishi.Login - Generated OTP: 247849
+2025-03-29 18:09:31 [qtp2039398472-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 18:09:37 [qtp2039398472-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 18:09:37 [qtp2039398472-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 18:10:00 [qtp2039398472-40] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 18:10:00 [qtp2039398472-40] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 18:10:00 [qtp2039398472-40] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 18:10:00 [qtp2039398472-40] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 18:10:00 [qtp2039398472-40] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 18:10:00 [qtp2039398472-40] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 18:10:09 [qtp2039398472-38] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 18:10:09 [qtp2039398472-38] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 827902
+2025-03-29 18:10:09 [qtp2039398472-38] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 18:10:14 [qtp2039398472-38] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 18:10:14 [qtp2039398472-38] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 18:10:41 [qtp2039398472-44] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 18:10:41 [qtp2039398472-44] INFO  com.Rishi.TransferService - Initiating transfer from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 18:10:41 [qtp2039398472-44] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-29 18:10:41 [qtp2039398472-44] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-29 18:10:41 [qtp2039398472-44] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 18:10:41 [qtp2039398472-44] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":200,"oldbalanceDest":5910,"newbalanceOrig":49300,"oldbalanceOrg":49500,"transaction_type":"TRANSFER","newbalanceDest":6110}
+2025-03-29 18:10:41 [qtp2039398472-44] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 18:10:41 [qtp2039398472-44] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.0001,
+  "is_fraud": false
+}
+
+2025-03-29 18:10:41 [qtp2039398472-44] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 1.0E-4
+2025-03-29 18:10:41 [qtp2039398472-44] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 18:10:41 [qtp2039398472-44] ERROR com.Rishi.Banking_system - Transfer failed: Can't call commit when autocommit=true
+2025-03-29 19:07:52 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 19:07:52 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 19:08:04 [qtp2039398472-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 19:08:04 [qtp2039398472-48] INFO  com.Rishi.DatabaseConfig - MySQL JDBC Driver loaded successfully
+2025-03-29 19:08:04 [qtp2039398472-48] DEBUG com.Rishi.DatabaseConfig - Database connection established successfully
+2025-03-29 19:08:05 [qtp2039398472-48] INFO  com.Rishi.Login - Generated OTP: 902024
+2025-03-29 19:08:05 [qtp2039398472-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 19:08:11 [qtp2039398472-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 19:08:11 [qtp2039398472-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 19:08:34 [qtp2039398472-40] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 19:08:34 [qtp2039398472-40] DEBUG com.Rishi.DatabaseConfig - Database connection established successfully
+2025-03-29 19:08:34 [qtp2039398472-40] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 19:08:34 [qtp2039398472-40] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 19:08:34 [qtp2039398472-40] WARN  com.Rishi.Login - No valid OTP found for account: 123456789012345
+2025-03-29 19:08:34 [qtp2039398472-40] ERROR com.Rishi.Login - SQLException during login for account 123456789012345: No valid OTP found. Please request a new OTP.
+java.sql.SQLException: No valid OTP found. Please request a new OTP.
+	at com.Rishi.Login.verifyLogin(Login.java:92) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$4(Banking_system.java:152) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 19:08:35 [qtp2039398472-40] ERROR com.Rishi.Banking_system - Login failed for account 123456789012345: No valid OTP found. Please request a new OTP.
+2025-03-29 19:09:02 [qtp2039398472-41] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 19:09:02 [qtp2039398472-41] DEBUG com.Rishi.DatabaseConfig - Database connection established successfully
+2025-03-29 19:09:03 [qtp2039398472-41] INFO  com.Rishi.Login - Generated OTP: 614088
+2025-03-29 19:09:03 [qtp2039398472-41] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 19:09:08 [qtp2039398472-41] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 19:09:08 [qtp2039398472-41] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 19:09:35 [qtp2039398472-42] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 19:09:35 [qtp2039398472-42] DEBUG com.Rishi.DatabaseConfig - Database connection established successfully
+2025-03-29 19:09:35 [qtp2039398472-42] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 19:09:35 [qtp2039398472-42] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 19:09:35 [qtp2039398472-42] WARN  com.Rishi.Login - No valid OTP found for account: 123456789012345
+2025-03-29 19:09:35 [qtp2039398472-42] ERROR com.Rishi.Login - SQLException during login for account 123456789012345: No valid OTP found. Please request a new OTP.
+java.sql.SQLException: No valid OTP found. Please request a new OTP.
+	at com.Rishi.Login.verifyLogin(Login.java:92) ~[classes/:?]
+	at com.Rishi.Banking_system.lambda$main$4(Banking_system.java:152) ~[classes/:?]
+	at spark.RouteImpl$1.handle(RouteImpl.java:72) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.Routes.execute(Routes.java:61) ~[spark-core-2.9.4.jar:?]
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134) ~[spark-core-2.9.4.jar:?]
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50) ~[spark-core-2.9.4.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1598) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.Server.handle(Server.java:516) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277) ~[jetty-server-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104) ~[jetty-io-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034) ~[jetty-util-9.4.48.v20220622.jar:9.4.48.v20220622]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2025-03-29 19:09:35 [qtp2039398472-42] ERROR com.Rishi.Banking_system - Login failed for account 123456789012345: No valid OTP found. Please request a new OTP.
+2025-03-29 19:09:58 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 19:09:58 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 19:10:02 [qtp1478305601-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 19:10:03 [qtp1478305601-48] INFO  com.Rishi.Login - Generated OTP: 701906
+2025-03-29 19:10:03 [qtp1478305601-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 19:10:10 [qtp1478305601-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 19:10:10 [qtp1478305601-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 19:10:21 [qtp1478305601-38] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 19:10:21 [qtp1478305601-38] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 19:10:22 [qtp1478305601-38] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 19:10:22 [qtp1478305601-38] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 19:10:22 [qtp1478305601-38] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 19:10:22 [qtp1478305601-38] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 19:11:03 [qtp1478305601-42] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 19:11:03 [qtp1478305601-42] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 438320
+2025-03-29 19:11:03 [qtp1478305601-42] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 19:11:09 [qtp1478305601-42] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 19:11:09 [qtp1478305601-42] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 19:11:53 [qtp1478305601-41] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 19:11:53 [qtp1478305601-41] INFO  com.Rishi.TransferService - Initiating transfer from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 19:11:53 [qtp1478305601-41] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-29 19:11:53 [qtp1478305601-41] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-29 19:11:53 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 19:11:53 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":200,"oldbalanceDest":6110,"newbalanceOrig":49100,"oldbalanceOrg":49300,"transaction_type":"TRANSFER","newbalanceDest":6310}
+2025-03-29 19:11:54 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 19:11:54 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.0001,
+  "is_fraud": false
+}
+
+2025-03-29 19:11:54 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 1.0E-4
+2025-03-29 19:11:54 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 19:11:54 [qtp1478305601-41] ERROR com.Rishi.Banking_system - Transfer failed: Can't call commit when autocommit=true
+2025-03-29 19:34:20 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 19:34:20 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 19:34:34 [qtp1478305601-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 19:34:35 [qtp1478305601-48] INFO  com.Rishi.Login - Generated OTP: 439693
+2025-03-29 19:34:35 [qtp1478305601-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 19:34:42 [qtp1478305601-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 19:34:42 [qtp1478305601-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 19:35:01 [qtp1478305601-40] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 19:35:01 [qtp1478305601-40] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 19:35:02 [qtp1478305601-40] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 19:35:02 [qtp1478305601-40] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 19:35:02 [qtp1478305601-40] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 19:35:02 [qtp1478305601-40] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 19:35:10 [qtp1478305601-39] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 19:35:10 [qtp1478305601-39] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 761029
+2025-03-29 19:35:10 [qtp1478305601-39] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 19:35:15 [qtp1478305601-39] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 19:35:15 [qtp1478305601-39] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 19:35:49 [qtp1478305601-41] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 19:35:49 [qtp1478305601-41] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-29 19:35:49 [qtp1478305601-41] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-29 19:35:49 [qtp1478305601-41] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-29 19:35:49 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 19:35:49 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":200,"oldbalanceDest":6310,"newbalanceOrig":48900,"oldbalanceOrg":49100,"transaction_type":"TRANSFER","newbalanceDest":6510}
+2025-03-29 19:35:50 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 19:35:50 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.0001,
+  "is_fraud": false
+}
+
+2025-03-29 19:35:50 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 1.0E-4
+2025-03-29 19:35:50 [qtp1478305601-41] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 19:35:50 [qtp1478305601-41] ERROR com.Rishi.TransferService - Transfer failed: Can't call commit when autocommit=true
+2025-03-29 19:35:50 [qtp1478305601-41] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-29 19:35:50 [qtp1478305601-41] ERROR com.Rishi.Banking_system - Transfer failed: Can't call commit when autocommit=true
+2025-03-29 19:47:47 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 19:47:47 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 19:47:57 [qtp2027203453-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 19:47:58 [qtp2027203453-48] INFO  com.Rishi.Login - Generated OTP: 959673
+2025-03-29 19:47:58 [qtp2027203453-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 19:48:04 [qtp2027203453-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 19:48:04 [qtp2027203453-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 19:48:21 [qtp2027203453-39] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 19:48:21 [qtp2027203453-39] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 19:48:21 [qtp2027203453-39] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 19:48:21 [qtp2027203453-39] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 19:48:21 [qtp2027203453-39] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 19:48:21 [qtp2027203453-39] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 19:48:35 [qtp2027203453-40] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 19:48:35 [qtp2027203453-40] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 413948
+2025-03-29 19:48:35 [qtp2027203453-40] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 19:48:41 [qtp2027203453-40] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 19:48:41 [qtp2027203453-40] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 19:49:07 [qtp2027203453-41] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 19:49:07 [qtp2027203453-41] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-29 19:49:07 [qtp2027203453-41] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-29 19:49:07 [qtp2027203453-41] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-29 19:49:07 [qtp2027203453-41] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 19:49:07 [qtp2027203453-41] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":200,"oldbalanceDest":6510,"newbalanceOrig":48700,"oldbalanceOrg":48900,"transaction_type":"TRANSFER","newbalanceDest":6710}
+2025-03-29 19:49:08 [qtp2027203453-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 19:49:08 [qtp2027203453-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.0001,
+  "is_fraud": false
+}
+
+2025-03-29 19:49:08 [qtp2027203453-41] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 1.0E-4
+2025-03-29 19:49:08 [qtp2027203453-41] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 19:49:08 [qtp2027203453-41] INFO  com.Rishi.TransferService - Transfer completed successfully: 123456789012345 to 987654321012345, Amount: 200.0
+2025-03-29 19:49:08 [qtp2027203453-41] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-29 20:06:31 [qtp2027203453-52] INFO  com.Rishi.OTPService - Generated OTP for account 987654321098765: 716791
+2025-03-29 20:06:31 [qtp2027203453-52] INFO  com.Rishi.OTPService - Stored OTP in pre_registration table for account: 987654321098765
+2025-03-29 20:06:38 [qtp2027203453-52] INFO  com.Rishi.OTPService - Email sent to: debangshubhattacharya4@gmail.com
+2025-03-29 20:06:38 [qtp2027203453-52] INFO  com.Rishi.OTPService - OTP sent to email: debangshubhattacharya4@gmail.com for account: 987654321098765
+2025-03-29 20:07:26 [qtp2027203453-48] INFO  com.Rishi.Registration - Starting registration for account: 987654321098765
+2025-03-29 20:07:26 [qtp2027203453-48] INFO  com.Rishi.Registration - Registration successful for account: 987654321098765
+2025-03-29 20:17:44 [qtp2027203453-65] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 20:17:45 [qtp2027203453-65] INFO  com.Rishi.Login - Generated OTP: 413763
+2025-03-29 20:17:45 [qtp2027203453-65] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 20:17:51 [qtp2027203453-65] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 20:17:51 [qtp2027203453-65] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 20:18:23 [qtp2027203453-42] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 20:18:24 [qtp2027203453-42] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 20:18:24 [qtp2027203453-42] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 20:18:24 [qtp2027203453-42] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 20:18:25 [qtp2027203453-42] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 20:18:25 [qtp2027203453-42] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 20:20:45 [qtp2027203453-67] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 500.0
+2025-03-29 20:20:45 [qtp2027203453-67] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 899889
+2025-03-29 20:20:45 [qtp2027203453-67] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 20:20:51 [qtp2027203453-67] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 20:20:51 [qtp2027203453-67] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 20:21:04 [qtp2027203453-38] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 20:21:04 [qtp2027203453-38] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-29 20:21:04 [qtp2027203453-38] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-29 20:21:04 [qtp2027203453-38] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-29 20:21:04 [qtp2027203453-38] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 20:21:04 [qtp2027203453-38] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":200,"oldbalanceDest":6710,"newbalanceOrig":48500,"oldbalanceOrg":48700,"transaction_type":"TRANSFER","newbalanceDest":6910}
+2025-03-29 20:21:05 [qtp2027203453-38] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 20:21:05 [qtp2027203453-38] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.0001,
+  "is_fraud": false
+}
+
+2025-03-29 20:21:05 [qtp2027203453-38] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 1.0E-4
+2025-03-29 20:21:05 [qtp2027203453-38] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 20:21:05 [qtp2027203453-38] INFO  com.Rishi.TransferService - Transfer completed successfully: 123456789012345 to 987654321012345, Amount: 200.0
+2025-03-29 20:21:05 [qtp2027203453-38] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-29 21:16:49 [qtp2027203453-39] INFO  com.Rishi.Banking_system - Request to send statement for account: 123456789012345, month: 3, year: 2024
+2025-03-29 21:16:50 [qtp2027203453-39] INFO  com.Rishi.PDFStatementGenerator - PDF Account Statement Generated: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf for account: 123456789012345
+2025-03-29 21:16:58 [qtp2027203453-39] INFO  com.Rishi.PDFStatementGenerator - Email sent successfully with PDF attachment: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf to gopal6291441556@gmail.com
+2025-03-29 21:16:58 [qtp2027203453-39] INFO  com.Rishi.PDFStatementGenerator - Deleted temporary PDF file: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf
+2025-03-29 21:21:11 [qtp2027203453-94] INFO  com.Rishi.Banking_system - Request to send statement for account: 123456789012345, month: 3, year: 2024
+2025-03-29 21:21:11 [qtp2027203453-94] INFO  com.Rishi.PDFStatementGenerator - PDF Account Statement Generated: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf for account: 123456789012345
+2025-03-29 21:21:18 [qtp2027203453-94] INFO  com.Rishi.PDFStatementGenerator - Email sent successfully with PDF attachment: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf to gopal6291441556@gmail.com
+2025-03-29 21:21:18 [qtp2027203453-94] INFO  com.Rishi.PDFStatementGenerator - Deleted temporary PDF file: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf
+2025-03-29 21:23:11 [qtp2027203453-94] INFO  com.Rishi.Banking_system - Request to send statement for account: 987654321012345, month: 3, year: 2024
+2025-03-29 21:23:11 [qtp2027203453-94] INFO  com.Rishi.PDFStatementGenerator - PDF Account Statement Generated: /tmp/bank_statements/Statement_987654321012345_3_2024.pdf for account: 987654321012345
+2025-03-29 21:23:18 [qtp2027203453-94] INFO  com.Rishi.PDFStatementGenerator - Email sent successfully with PDF attachment: /tmp/bank_statements/Statement_987654321012345_3_2024.pdf to debangshu.bhattacharjee.fiem.cse21@teamfuture.in
+2025-03-29 21:23:18 [qtp2027203453-94] INFO  com.Rishi.PDFStatementGenerator - Deleted temporary PDF file: /tmp/bank_statements/Statement_987654321012345_3_2024.pdf
+2025-03-29 21:26:52 [qtp2027203453-99] INFO  com.Rishi.Banking_system - Request to send statement for account: 123456789012345, month: 3, year: 2024
+2025-03-29 21:26:52 [qtp2027203453-99] INFO  com.Rishi.PDFStatementGenerator - PDF Account Statement Generated: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf for account: 123456789012345
+2025-03-29 21:26:59 [qtp2027203453-99] INFO  com.Rishi.PDFStatementGenerator - Email sent successfully with PDF attachment: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf to gopal6291441556@gmail.com
+2025-03-29 21:26:59 [qtp2027203453-99] INFO  com.Rishi.PDFStatementGenerator - Deleted temporary PDF file: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf
+2025-03-29 21:34:34 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 21:34:34 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 21:50:15 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-29 21:50:15 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-29 21:50:45 [qtp18303716-48] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-29 21:50:45 [qtp18303716-48] INFO  com.Rishi.Login - Generated OTP: 648523
+2025-03-29 21:50:45 [qtp18303716-48] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-29 21:50:56 [qtp18303716-48] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-29 21:50:56 [qtp18303716-48] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 21:51:45 [qtp18303716-44] INFO  com.Rishi.Banking_system - Login verification for account: 123456789012345
+2025-03-29 21:51:45 [qtp18303716-44] INFO  com.Rishi.Login - Login verification for account: 123456789012345
+2025-03-29 21:51:45 [qtp18303716-44] INFO  com.Rishi.Login - Password verified successfully for account: 123456789012345
+2025-03-29 21:51:45 [qtp18303716-44] INFO  com.Rishi.Login - OTP verified successfully for account: 123456789012345
+2025-03-29 21:51:45 [qtp18303716-44] INFO  com.Rishi.Login - Cleared OTP and reset failed attempts for account: 123456789012345
+2025-03-29 21:51:45 [qtp18303716-44] INFO  com.Rishi.Login - Generated and stored session token for account: 123456789012345
+2025-03-29 21:52:10 [qtp18303716-40] INFO  com.Rishi.Banking_system - Transfer OTP request from 123456789012345 to 987654321012345 for amount 500.0
+2025-03-29 21:52:10 [qtp18303716-40] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 612437
+2025-03-29 21:52:10 [qtp18303716-40] INFO  com.Rishi.OTPService - Stored OTP in users table for account: 123456789012345
+2025-03-29 21:52:17 [qtp18303716-40] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-29 21:52:17 [qtp18303716-40] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-29 21:52:45 [qtp18303716-41] INFO  com.Rishi.Banking_system - Transfer attempt from 123456789012345 to 987654321012345 for amount 200.0
+2025-03-29 21:52:45 [qtp18303716-41] DEBUG com.Rishi.TransferService - Transaction started for transfer from 123456789012345 to 987654321012345
+2025-03-29 21:52:45 [qtp18303716-41] DEBUG com.Rishi.OTPService - Found OTP in users table for account: 123456789012345
+2025-03-29 21:52:45 [qtp18303716-41] INFO  com.Rishi.OTPService - Cleared OTP for account: 123456789012345
+2025-03-29 21:52:45 [qtp18303716-41] INFO  com.Rishi.FraudDetectionService - Calling Fraud Detection API at: http://127.0.0.1:5000/predict
+2025-03-29 21:52:45 [qtp18303716-41] INFO  com.Rishi.FraudDetectionService - Sending JSON to Flask API: {"amount":200,"oldbalanceDest":6910,"newbalanceOrig":48300,"oldbalanceOrg":48500,"transaction_type":"TRANSFER","newbalanceDest":7110}
+2025-03-29 21:52:46 [qtp18303716-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response status: 200
+2025-03-29 21:52:46 [qtp18303716-41] INFO  com.Rishi.FraudDetectionService - Fraud Detection API response body: {
+  "fraud_probability": 0.0001,
+  "is_fraud": false
+}
+
+2025-03-29 21:52:46 [qtp18303716-41] INFO  com.Rishi.FraudDetectionService - 📌 Fraud Probability: 1.0E-4
+2025-03-29 21:52:46 [qtp18303716-41] INFO  com.Rishi.FraudDetectionService - 📌 Is Fraudulent? false
+2025-03-29 21:52:46 [qtp18303716-41] INFO  com.Rishi.TransferService - Transfer completed successfully: 123456789012345 to 987654321012345, Amount: 200.0
+2025-03-29 21:52:46 [qtp18303716-41] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-29 21:53:47 [qtp18303716-48] INFO  com.Rishi.Banking_system - Generating statement for account: 123456789012345, month: 3, year: 2024
+2025-03-29 21:53:48 [qtp18303716-48] INFO  com.Rishi.PDFStatementGenerator - PDF Account Statement Generated: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf for account: 123456789012345
+2025-03-29 21:53:53 [qtp18303716-48] INFO  com.Rishi.PDFStatementGenerator - Email sent successfully with PDF attachment: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf to gopal6291441556@gmail.com
+2025-03-29 21:53:53 [qtp18303716-48] INFO  com.Rishi.PDFStatementGenerator - Deleted temporary PDF file: /tmp/bank_statements/Statement_123456789012345_3_2024.pdf
+2025-03-30 10:32:34 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-30 10:32:34 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-30 10:34:04 [qtp1882019091-48] INFO  com.Rishi.Banking_system - Generating statement for account: 123456789012345, month: 3, year: 2025
+2025-03-30 10:34:05 [qtp1882019091-48] INFO  com.Rishi.PDFStatementGenerator - PDF Account Statement Generated: /tmp/bank_statements/Statement_123456789012345_3_2025.pdf for account: 123456789012345
+2025-03-30 10:34:22 [qtp1882019091-48] INFO  com.Rishi.PDFStatementGenerator - Email sent successfully with PDF attachment: /tmp/bank_statements/Statement_123456789012345_3_2025.pdf to gopal6291441556@gmail.com
+2025-03-30 10:34:22 [qtp1882019091-48] INFO  com.Rishi.PDFStatementGenerator - Deleted temporary PDF file: /tmp/bank_statements/Statement_123456789012345_3_2025.pdf
