@@ -5777,3 +5777,4 @@ java.sql.SQLException: No valid OTP found. Please request a new OTP.
 2025-04-01 10:56:09 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
 2025-04-01 10:58:09 [qtp1123713612-49] ERROR com.Rishi.Banking_system - Error getting security question: Account not found
 2025-04-01 10:58:23 [qtp1123713612-41] INFO  com.Rishi.Registration - Sending SMS to 8296408040: Your OTP for password reset is: 390461
+2025-04-01 10:59:01 [qtp1123713612-43] INFO  com.Rishi.Banking_system - Password reset completed for account: 123456789012345

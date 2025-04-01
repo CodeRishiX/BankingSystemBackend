@@ -347,22 +347,23 @@ public class Banking_system {
 
         // ===== FORGOT PASSWORD ENDPOINTS ===== //
 
-        // Step 1: Get Security Question
+        // Step 1: Get Security Question (Updated with phone number verification)
         Spark.get("/get-security-question", (req, res) -> {
             res.type("application/json");
             String accountNumber = req.queryParams("accountNumber");
+            String phoneNumber = req.queryParams("phoneNumber");
             try (Connection conn = DatabaseConfig.getConnection()) {
                 Registration registration = new Registration();
-                Map<String, String> result = registration.getSecurityQuestionAndHash(accountNumber, conn);
+                Map<String, String> result = registration.getSecurityQuestionAndHash(accountNumber, phoneNumber, conn);
                 return new Gson().toJson(result);
             } catch (SQLException e) {
                 logger.error("Error getting security question: {}", e.getMessage());
-                return errorResponse("Failed to get security question");
+                res.status(404);
+                return errorResponse("Account not found or phone number mismatch");
             }
         });
 
-        // Step 2: Verify Security Answer and Request OTP
-        // Updated verify-security-answer endpoint
+        // Step 2: Verify Security Answer and Request OTP (Updated with new method)
         Spark.post("/verify-security-answer", (req, res) -> {
             res.type("application/json");
             try {
@@ -371,53 +372,39 @@ public class Banking_system {
                 String answer = json.getString("answer");
 
                 try (Connection conn = DatabaseConfig.getConnection()) {
-                    // Get stored answer hash from database
-                    String query = "SELECT security_answer_hash FROM users WHERE account_number = ?";
-                    String storedHash = null;
-                    try (PreparedStatement ps = conn.prepareStatement(query)) {
-                        ps.setString(1, accountNumber);
-                        try (ResultSet rs = ps.executeQuery()) {
-                            if (rs.next()) {
-                                storedHash = rs.getString("security_answer_hash");
-                            }
-                        }
-                    }
-
-                    if (storedHash == null) {
-                        return errorResponse("Account not found");
-                    }
-
-                    // Verify the answer
-                    if (BCrypt.checkpw(answer, storedHash)) {
-                        // Generate and send OTP
-                        Registration registration = new Registration();
-                        registration.generatePasswordResetOtp(accountNumber, conn);
-                        return successResponse("OTP sent to registered phone");
-                    } else {
-                        return errorResponse("Incorrect security answer");
-                    }
+                    Registration registration = new Registration();
+                    registration.verifySecurityAnswerAndGenerateOtp(accountNumber, answer, conn);
+                    return successResponse("OTP sent to registered phone");
                 }
             } catch (SQLException e) {
                 logger.error("Database error during verification: {}", e.getMessage());
-                return errorResponse("Verification failed");
+                res.status(404);
+                return errorResponse("Account not found");
             } catch (MessagingException e) {
                 logger.error("Error sending OTP: {}", e.getMessage());
+                res.status(500);
                 return errorResponse("OTP sending failed");
+            } catch (IllegalArgumentException e) {
+                logger.error("Invalid security answer for account: {}", e.getMessage());
+                res.status(400);
+                return errorResponse(e.getMessage());
             } catch (JSONException e) {
+                logger.error("Invalid request format: {}", e.getMessage());
+                res.status(400);
                 return errorResponse("Invalid request format");
             }
         });
 
-        // Step 3: Reset Password
+        // Step 3: Reset Password (Updated with new method)
         Spark.post("/reset-password", (req, res) -> {
             res.type("application/json");
             try {
-                // Parse JSON from request body
                 JSONObject json;
                 try {
                     json = new JSONObject(req.body());
                 } catch (JSONException e) {
                     logger.error("Invalid JSON format: {}", req.body());
+                    res.status(400);
                     return errorResponse("Invalid request format");
                 }
 
@@ -427,51 +414,27 @@ public class Banking_system {
 
                 try (Connection conn = DatabaseConfig.getConnection()) {
                     Registration registration = new Registration();
-
-                    // Verify OTP
-                    String otpQuery = "SELECT otp, otp_timestamp FROM users WHERE account_number = ?";
-                    try (PreparedStatement ps = conn.prepareStatement(otpQuery)) {
-                        ps.setString(1, accountNumber);
-                        try (ResultSet rs = ps.executeQuery()) {
-                            if (rs.next()) {
-                                String storedOtp = rs.getString("otp");
-                                Timestamp otpTimestamp = rs.getTimestamp("otp_timestamp");
-                                if (storedOtp == null || !storedOtp.equals(otp) ||
-                                        registration.isOtpExpired(otpTimestamp)) {
-                                    return errorResponse("Invalid or expired OTP");
-                                }
-                            } else {
-                                return errorResponse("Account not found");
-                            }
-                        }
-                    }
-
-                    // Update password
-                    String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt(12));
-                    String updateQuery = "UPDATE users SET password_hash = ?, otp = NULL, otp_timestamp = NULL WHERE account_number = ?";
-                    try (PreparedStatement ps = conn.prepareStatement(updateQuery)) {
-                        ps.setString(1, hashedPassword);
-                        ps.setString(2, accountNumber);
-                        int rowsUpdated = ps.executeUpdate();
-                        if (rowsUpdated == 0) {
-                            return errorResponse("Password update failed");
-                        }
-                    }
+                    registration.resetPassword(accountNumber, otp, newPassword, conn);
+                    // Invalidate existing sessions
                     String invalidateSessionQuery = "DELETE FROM user_sessions WHERE account_number = ?";
                     try (PreparedStatement ps = conn.prepareStatement(invalidateSessionQuery)) {
                         ps.setString(1, accountNumber);
                         ps.executeUpdate();
-                        logger.info("Password reset completed for account: {}", accountNumber);
                     }
+                    logger.info("Password reset completed for account: {}", accountNumber);
                     return successResponse("Password updated successfully");
-
-
-                } catch (SQLException e) {
-                    logger.error("Database error during password reset: {}", e.getMessage());
-                    return errorResponse("Reset failed: Database error");
                 }
+            } catch (SQLException e) {
+                logger.error("Database error during password reset: {}", e.getMessage());
+                res.status(500);
+                return errorResponse("Reset failed: " + e.getMessage());
+            } catch (IllegalArgumentException e) {
+                logger.error("Invalid input during password reset: {}", e.getMessage());
+                res.status(400);
+                return errorResponse(e.getMessage());
             } catch (JSONException e) {
                 logger.error("JSON parsing error: {}", e.getMessage());
+                res.status(400);
                 return errorResponse("Invalid request format");
             }
         });
