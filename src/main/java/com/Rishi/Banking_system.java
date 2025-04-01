@@ -194,44 +194,72 @@ public class Banking_system {
             res.type("application/json");
             String fromAccount = req.queryParams("fromAccount");
             String toAccount = req.queryParams("toAccount");
-            double amount = Double.parseDouble(req.queryParams("amount"));
-            logger.info("Transfer OTP request from {} to {} for amount {}", fromAccount, toAccount, amount);
-
-            try (Connection conn = DatabaseConfig.getConnection()) {
-                String balanceQuery = "SELECT balance, email FROM bank_accounts WHERE account_number = ?";
-                double balance;
-                String email;
-                try (PreparedStatement ps = conn.prepareStatement(balanceQuery)) {
-                    ps.setString(1, fromAccount);
-                    try (ResultSet rs = ps.executeQuery()) {
-                        if (!rs.next()) {
-                            return errorResponse("Sender account does not exist!");
-                        }
-                        balance = rs.getDouble("balance");
-                        email = rs.getString("email");
-                    }
-                }
-                try (PreparedStatement ps = conn.prepareStatement(balanceQuery)) {
-                    ps.setString(1, toAccount);
-                    try (ResultSet rs = ps.executeQuery()) {
-                        if (!rs.next()) {
-                            return errorResponse("Recipient account does not exist!");
-                        }
-                    }
-                }
-                if (balance < amount) {
-                    return errorResponse("Insufficient balance!");
-                }
-                if (fromAccount.equals(toAccount)) {
-                    return errorResponse("Cannot transfer to same account!");
-                }
-                OTPService.sendOTP(fromAccount, email, conn);
-                return successResponse("OTP sent to your email. Please verify.");
-            } catch (SQLException | MessagingException e) {
-                logger.error("Transfer OTP request failed: {}", e.getMessage());
-                return errorResponse("OTP request failed: " + e.getMessage());
+            double amount;
+            try {
+                amount = Double.parseDouble(req.queryParams("amount"));
             } catch (NumberFormatException e) {
                 return errorResponse("Invalid amount format");
+            }
+
+            logger.info("Requesting OTP for transfer: {} -> {}, Amount: {}", fromAccount, toAccount, amount);
+
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                TransferService transferService = new TransferService();
+
+                // Validate sender account
+                if (!transferService.accountExists(fromAccount, conn)) {
+                    logger.error("Sender account not found: {}", fromAccount);
+                    return errorResponse("Sender account not found");
+                }
+
+                // Validate recipient account
+                if (!transferService.accountExists(toAccount, conn)) {
+                    logger.error("Recipient account not found: {}", toAccount);
+                    return errorResponse("Recipient account not found");
+                }
+
+                // Additional validation (same account check)
+                if (fromAccount.equals(toAccount)) {
+                    logger.error("Cannot transfer to the same account: {}", fromAccount);
+                    return errorResponse("Cannot transfer to the same account");
+                }
+
+                // Validate amount
+                if (amount <= 0) {
+                    logger.error("Invalid amount: {}", amount);
+                    return errorResponse("Amount must be positive");
+                }
+                double senderBalance = transferService.getAccountBalance(fromAccount, conn);
+                if (senderBalance < amount) {
+                    logger.error("Insufficient funds in sender account {}: Balance {}, Requested {}", fromAccount, senderBalance, amount);
+                    return errorResponse("Insufficient funds");
+                }
+
+                // Generate and store OTP
+                String otp = new Login().generateOTP(); // Using Login's OTP generation
+                String updateOtpQuery = "UPDATE users SET otp = ?, otp_timestamp = CURRENT_TIMESTAMP WHERE account_number = ?";
+                try (PreparedStatement ps = conn.prepareStatement(updateOtpQuery)) {
+                    ps.setString(1, otp);
+                    ps.setString(2, fromAccount);
+                    int rowsUpdated = ps.executeUpdate();
+                    if (rowsUpdated == 0) {
+                        logger.error("Failed to store OTP for account: {}", fromAccount);
+                        return errorResponse("Failed to generate OTP");
+                    }
+                }
+
+                // Send OTP
+                String senderEmail = transferService.getAccountEmail(fromAccount, conn);
+                new Login().sendEmail(senderEmail, "Transfer OTP", "Your OTP for transferring ₹" + amount + " to account " + toAccount + " is: " + otp);
+
+                logger.info("OTP sent successfully to {} for transfer from {} to {}", senderEmail, fromAccount, toAccount);
+                return successResponse("OTP sent to registered email");
+            } catch (SQLException e) {
+                logger.error("Database error in transfer/request-otp: {}", e.getMessage());
+                return errorResponse("Database error: " + e.getMessage());
+            } catch (MessagingException e) {
+                logger.error("Failed to send OTP email: {}", e.getMessage());
+                return errorResponse("Failed to send OTP: " + e.getMessage());
             }
         });
 
