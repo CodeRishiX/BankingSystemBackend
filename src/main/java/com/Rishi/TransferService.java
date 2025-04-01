@@ -75,7 +75,7 @@ public class TransferService {
 
     // ========== NEW ALERT-RELATED METHODS ========== //
 
-    private String getAccountEmail(String accountNumber, Connection con) throws SQLException {
+    String getAccountEmail(String accountNumber, Connection con) throws SQLException {
         String query = "SELECT email FROM bank_accounts WHERE account_number = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, accountNumber);
@@ -224,7 +224,7 @@ public class TransferService {
         }
     }
 
-    private boolean accountExists(String accountNumber, Connection con) throws SQLException {
+    boolean accountExists(String accountNumber, Connection con) throws SQLException {
         String query = "SELECT 1 FROM bank_accounts WHERE account_number = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, accountNumber);
@@ -234,7 +234,7 @@ public class TransferService {
         }
     }
 
-    private double getAccountBalance(String accountNumber, Connection con) throws SQLException {
+    double getAccountBalance(String accountNumber, Connection con) throws SQLException {
         String query = "SELECT balance FROM bank_accounts WHERE account_number = ? FOR UPDATE";
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, accountNumber);
