@@ -506,5 +506,47 @@ public class Banking_system {
                 return errorResponse(e.getMessage());
             }
         });
+        // Get Transaction History (Live Display)
+        Spark.get("/get-transaction-history", (req, res) -> {
+            res.type("application/json");
+            try {
+                String authHeader = req.headers("Authorization");
+                if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+                    res.status(401);
+                    return errorResponse("Authorization token required");
+                }
+                String token = authHeader.substring(7);
+
+                String accountNumber = req.queryParams("accountNumber");
+
+                logger.info("Fetching transaction history for account: {}", accountNumber);
+
+                try (Connection conn = DatabaseConfig.getConnection()) {
+                    String tokenCheckQuery = "SELECT account_number FROM user_sessions WHERE token = ? AND expires_at > NOW()";
+                    try (PreparedStatement ps = conn.prepareStatement(tokenCheckQuery)) {
+                        ps.setString(1, token);
+                        ResultSet rs = ps.executeQuery();
+                        if (!rs.next() || !rs.getString("account_number").equals(accountNumber)) {
+                            res.status(403);
+                            return errorResponse("Unauthorized access");
+                        }
+                    }
+
+                    Registration registration = new Registration(); // Assuming displayTransactionHistory is moved here
+                    String history = registration.displayTransactionHistory(accountNumber, conn);
+                    Map<String, String> responseMap = new HashMap<>();
+                    responseMap.put("history", history);
+                    return new Gson().toJson(responseMap);
+                } catch (SQLException e) {
+                    logger.error("Database error fetching transaction history for {}: {}", accountNumber, e.getMessage());
+                    res.status(500);
+                    return errorResponse("Database error fetching transaction history");
+                }
+            } catch (Exception e) {
+                logger.error("Unexpected error in get-transaction-history: {}", e.getMessage());
+                res.status(500);
+                return errorResponse("Internal server error");
+            }
+        });
     }
 }

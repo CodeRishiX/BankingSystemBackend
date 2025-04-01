@@ -246,45 +246,7 @@ public class Online_Transaction extends Login {
         }
     }
 
-    public String displayTransactionHistory(String accnumber, Connection con) throws SQLException {
-        StringBuilder history = new StringBuilder();
-        history.append(String.format("%-15s %-19s %-19s %-20s %-10s %-15s %-20s %-12s\n",
-                "Transaction ID", "Sender", "Receiver", "Transaction Type", "Type", "Amount", "Date", "Status"));
-        history.append("-----------------------------------------------------------------------------------------------------\n");
 
-        String query = "SELECT id, sender_account, receiver_account, transaction_type, amount, timestamp, status, is_fraud " +
-                "FROM transactions " +
-                "WHERE sender_account = ? OR receiver_account = ? " +
-                "ORDER BY timestamp DESC";
-
-        try (PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setString(1, accnumber);
-            pstmt.setString(2, accnumber);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                while (rs.next()) {
-                    int transactionID = rs.getInt("id");
-                    String sender = rs.getString("sender_account");
-                    String receiver = rs.getString("receiver_account");
-                    String transactionType = rs.getString("transaction_type");
-                    double amount = rs.getDouble("amount");
-                    String timestamp = rs.getString("timestamp");
-                    String status = rs.getString("status");
-                    int isFraud = rs.getInt("is_fraud");
-
-                    String type = sender.equals(accnumber) ? "Debit" : "Credit";
-
-                    history.append(String.format("%-15d %-19s %-19s %-20s %-10s %-15.2f %-20s %-12s\n",
-                            transactionID, sender, receiver, transactionType, type, amount, timestamp, status + (isFraud == 1 ? " (Fraud)" : "")));
-                }
-            }
-        } catch (SQLException e) {
-            logger.error("Error displaying transaction history for account {}: {}", accnumber, e.getMessage(), e);
-            throw e;
-        }
-
-        logger.info("Retrieved transaction history for account: {}", accnumber);
-        return history.toString();
-    }
 
     public void sendalert(String recipientEmail, double amount, String otherParty, String type, double newBalance, String role) throws MessagingException {
         if (recipientEmail == null || recipientEmail.trim().isEmpty()) {

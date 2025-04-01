@@ -5789,3 +5789,5 @@ java.sql.SQLException: No valid OTP found. Please request a new OTP.
 2025-04-01 12:50:12 [qtp809433164-40] INFO  com.Rishi.Banking_system - Password reset completed for account: 123456789012345
 2025-04-01 13:44:07 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
 2025-04-01 13:44:07 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-04-01 13:46:24 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-04-01 13:46:24 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
