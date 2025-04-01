@@ -58,7 +58,7 @@ public class OTPService {
             // Send OTP via email if email is provided
             if (email != null && !email.trim().isEmpty()) {
                 sendEmail(email, "🔐 Your OTP Code", "Your OTP is: " + otp +
-                        "\nThis OTP will expire in " + OTP_EXPIRATION_MINUTES + " minutes.");
+                        "\nThis OTP will expire in  😬😬" + OTP_EXPIRATION_MINUTES + " minutes.");
                 logger.info("OTP sent to email: {} for account: {}", email, accnumber);
             } else {
                 logger.warn("No email provided for account {}. OTP generated but not sent: {}", accnumber, otp);
@@ -141,7 +141,7 @@ public class OTPService {
         }
 
         if (!userOtp.equals(storedOtp)) {
-            throw new IllegalArgumentException("Incorrect OTP! Please try again.");
+            throw new IllegalArgumentException("Incorrect OTP  Please try again.");
         }
 
         // Clear OTP after successful verification

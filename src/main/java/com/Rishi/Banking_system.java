@@ -57,14 +57,19 @@ public class Banking_system {
             String email = req.queryParams("email");
 
             try (Connection conn = DatabaseConfig.getConnection()) {
-                String checkQuery = "SELECT 1 FROM bank_accounts WHERE account_number = ?";
+                String checkQuery = "SELECT email FROM bank_accounts WHERE account_number = ?";
+                String storedEmail = null;
                 try (PreparedStatement ps = conn.prepareStatement(checkQuery)) {
                     ps.setString(1, accountNumber);
                     try (ResultSet rs = ps.executeQuery()) {
                         if (!rs.next()) {
                             return errorResponse("Account not found in our records");
                         }
+                        storedEmail = rs.getString("email");
                     }
+                }
+                if (!email.equals(storedEmail)) {
+                    return errorResponse("Email does not match the registered email for this account");
                 }
                 OTPService.sendOTP(accountNumber, email, conn);
                 return successResponse("OTP sent to your email");
