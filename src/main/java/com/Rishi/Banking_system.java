@@ -374,7 +374,7 @@ public class Banking_system {
                 try (Connection conn = DatabaseConfig.getConnection()) {
                     Registration registration = new Registration();
                     registration.verifySecurityAnswerAndGenerateOtp(accountNumber, answer, conn);
-                    return successResponse("OTP sent to registered phone");
+                    return successResponse("OTP sent to registered email"); // Updated message
                 }
             } catch (SQLException e) {
                 logger.error("Database error during verification: {}", e.getMessage());

@@ -5778,3 +5778,14 @@ java.sql.SQLException: No valid OTP found. Please request a new OTP.
 2025-04-01 10:58:09 [qtp1123713612-49] ERROR com.Rishi.Banking_system - Error getting security question: Account not found
 2025-04-01 10:58:23 [qtp1123713612-41] INFO  com.Rishi.Registration - Sending SMS to 8296408040: Your OTP for password reset is: 390461
 2025-04-01 10:59:01 [qtp1123713612-43] INFO  com.Rishi.Banking_system - Password reset completed for account: 123456789012345
+2025-04-01 12:46:59 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-04-01 12:46:59 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-04-01 12:49:23 [qtp809433164-39] INFO  com.Rishi.Registration - Verifying security answer for account: 123456789012345
+2025-04-01 12:49:23 [qtp809433164-39] INFO  com.Rishi.Registration - Sending SMS to 8296408040: Your OTP for password reset is: 033224
+2025-04-01 12:49:23 [qtp809433164-39] INFO  com.Rishi.Registration - OTP generated and sent for account: 123456789012345
+2025-04-01 12:50:12 [qtp809433164-40] INFO  com.Rishi.Registration - Resetting password for account: 123456789012345
+2025-04-01 12:50:12 [qtp809433164-40] DEBUG com.Rishi.Registration - Password strength check result: true
+2025-04-01 12:50:12 [qtp809433164-40] INFO  com.Rishi.Registration - Password reset successful for account: 123456789012345
+2025-04-01 12:50:12 [qtp809433164-40] INFO  com.Rishi.Banking_system - Password reset completed for account: 123456789012345
+2025-04-01 13:44:07 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-04-01 13:44:07 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080

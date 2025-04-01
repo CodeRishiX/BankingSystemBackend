@@ -125,7 +125,7 @@ public class Registration {
         }
     }
 
-    // Updated method for /get-security-question with phone number verification
+    // Updated method for /get-security-question with phone number verification (unchanged)
     public Map<String, String> getSecurityQuestionAndHash(String accountNumber, String phoneNumber, Connection con) throws SQLException {
         Map<String, String> result = new HashMap<>();
         String query = "SELECT security_question, security_answer_hash, phone FROM users WHERE account_number = ?";
@@ -147,17 +147,19 @@ public class Registration {
         throw new SQLException("Account not found");
     }
 
-    // Updated method for /verify-security-answer with OTP generation
+    // Updated method for /verify-security-answer with OTP sent to email instead of SMS
     public String verifySecurityAnswerAndGenerateOtp(String accountNumber, String providedAnswer, Connection con) throws SQLException, MessagingException {
         logger.info("Verifying security answer for account: {}", accountNumber);
 
-        String query = "SELECT security_answer_hash FROM users WHERE account_number = ?";
+        String query = "SELECT security_answer_hash, email FROM users WHERE account_number = ?";
         String storedHash = null;
+        String email = null;
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, accountNumber);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     storedHash = rs.getString("security_answer_hash");
+                    email = rs.getString("email");
                 } else {
                     throw new SQLException("Account not found");
                 }
@@ -180,15 +182,14 @@ public class Registration {
             }
         }
 
-        // Send OTP via SMS
-        String phone = getPhoneNumber(accountNumber, con);
-        sendSms(phone, "Your OTP for password reset is: " + otp);
+        // Send OTP via email instead of SMS
+        sendEmail(email, "Your OTP for Password Reset", "Your OTP is: " + otp + "\nThis OTP will expire in 5 minutes.");
 
-        logger.info("OTP generated and sent for account: {}", accountNumber);
+        logger.info("OTP generated and sent to email {} for account: {}", email, accountNumber);
         return otp;
     }
 
-    // Updated method for /reset-password
+    // Updated method for /reset-password (unchanged)
     public void resetPassword(String accountNumber, String userOtp, String newPassword, Connection con) throws SQLException {
         logger.info("Resetting password for account: {}", accountNumber);
 
@@ -244,7 +245,7 @@ public class Registration {
         }
     }
 
-    // Helper method to get phone number
+    // Helper method to get phone number (unchanged)
     private String getPhoneNumber(String accountNumber, Connection con) throws SQLException {
         String query = "SELECT phone FROM users WHERE account_number = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
@@ -258,13 +259,15 @@ public class Registration {
         throw new SQLException("Phone number not found");
     }
 
-    // SMS sending method (placeholder)
-    private void sendSms(String phoneNumber, String message) throws MessagingException {
-        logger.info("Sending SMS to {}: {}", phoneNumber, message);
-        // Implement actual SMS gateway logic here
+    // New method to send email (aligned with registration flow)
+    private void sendEmail(String email, String subject, String message) throws MessagingException {
+        logger.info("Sending email to {}: {}", email, message);
+        // Assuming Login class has a sendEmail method similar to what’s used elsewhere
+        new Login().sendEmail(email, subject, message); // Reuse existing email logic
     }
 
-    // Helper method to check if OTP is expired
+    // Removed sendSms since it’s no longer needed
+    // Helper method to check if OTP is expired (unchanged)
     boolean isOtpExpired(Timestamp otpTimestamp) {
         if (otpTimestamp == null) return true;
         long currentTime = System.currentTimeMillis();
@@ -272,7 +275,7 @@ public class Registration {
         return (currentTime - otpTime) > (5 * 60 * 1000); // 5 minutes expiration
     }
 
-    // Helper method to get security question
+    // Helper method to get security question (unchanged)
     private String getSecurityQuestion(int choice) {
         switch (choice) {
             case 1: return "What is your pet's name?";
@@ -282,7 +285,7 @@ public class Registration {
         }
     }
 
-    // Password strength checker
+    // Password strength checker (unchanged)
     public static boolean isPasswordStrong(String password) {
         String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
         boolean isStrong = password.matches(regex);
@@ -290,7 +293,7 @@ public class Registration {
         return isStrong;
     }
 
-    // Deprecated methods (kept for reference but not used in new flow)
+    // Deprecated methods (updated to reflect email change)
     @Deprecated
     public Map<String, String> getSecurityQuestionAndHash(String accountNumber, Connection con) throws SQLException {
         return getSecurityQuestionAndHash(accountNumber, getPhoneNumber(accountNumber, con), con);
