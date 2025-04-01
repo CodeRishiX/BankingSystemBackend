@@ -5744,3 +5744,36 @@ java.sql.SQLException: No valid OTP found. Please request a new OTP.
 2025-03-30 14:09:26 [qtp139712631-41] INFO  com.Rishi.OTPService - Email sent to: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
 2025-03-30 14:09:26 [qtp139712631-41] INFO  com.Rishi.TransferService - Sent alert to recipient: debangshu.bhattacharjee.fiem.cse21@teamfuture.in
 2025-03-30 14:09:26 [qtp139712631-41] DEBUG com.Rishi.TransferService - Auto-commit reset to true
+2025-03-31 21:11:50 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-31 21:11:50 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-31 21:17:17 [qtp1650937082-49] INFO  com.Rishi.OTPService - Generated OTP for account 123456789012345: 214222
+2025-03-31 21:17:17 [qtp1650937082-49] INFO  com.Rishi.OTPService - Stored OTP in pre_registration table for account: 123456789012345
+2025-03-31 21:17:26 [qtp1650937082-49] INFO  com.Rishi.OTPService - Email sent to: gopal6291441556@gmail.com
+2025-03-31 21:17:26 [qtp1650937082-49] INFO  com.Rishi.OTPService - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-31 21:18:06 [qtp1650937082-40] INFO  com.Rishi.Registration - Starting registration for account: 123456789012345
+2025-03-31 21:18:06 [qtp1650937082-40] INFO  com.Rishi.Registration - Registration successful for account: 123456789012345
+2025-03-31 21:52:09 [qtp1650937082-56] INFO  com.Rishi.Banking_system - Login OTP request for account: 123456789012345
+2025-03-31 21:52:10 [qtp1650937082-56] INFO  com.Rishi.Login - Generated OTP: 954917
+2025-03-31 21:52:10 [qtp1650937082-56] INFO  com.Rishi.Banking_system - Stored new OTP for account: 123456789012345
+2025-03-31 21:52:16 [qtp1650937082-56] INFO  com.Rishi.Login - Email sent successfully to: gopal6291441556@gmail.com
+2025-03-31 21:52:16 [qtp1650937082-56] INFO  com.Rishi.Banking_system - OTP sent to email: gopal6291441556@gmail.com for account: 123456789012345
+2025-03-31 21:55:26 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-31 21:55:26 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-03-31 22:50:20 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-03-31 22:50:20 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-04-01 10:12:03 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-04-01 10:12:03 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-04-01 10:14:16 [qtp1994905016-48] ERROR com.Rishi.Banking_system - Error getting security question: Account not found
+2025-04-01 10:17:20 [qtp1994905016-53] ERROR com.Rishi.Banking_system - Error verifying answer: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 2 path $
+2025-04-01 10:17:56 [qtp1994905016-43] ERROR com.Rishi.Banking_system - Error verifying answer: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 2 path $
+2025-04-01 10:22:38 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-04-01 10:22:38 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-04-01 10:29:42 [qtp1001632753-44] INFO  com.Rishi.Registration - Sending SMS to 8296408040: Your OTP for password reset is: 945679
+2025-04-01 10:32:24 [qtp1001632753-56] ERROR com.Rishi.Banking_system - Password reset failed: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2025-04-01 10:36:03 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-04-01 10:36:03 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-04-01 10:36:41 [qtp178907885-38] INFO  com.Rishi.Registration - Sending SMS to 8296408040: Your OTP for password reset is: 913603
+2025-04-01 10:56:09 [main] INFO  com.Rishi.Banking_system - Database connected successfully!
+2025-04-01 10:56:09 [main] INFO  com.Rishi.Banking_system - Banking System server started on port 8080
+2025-04-01 10:58:09 [qtp1123713612-49] ERROR com.Rishi.Banking_system - Error getting security question: Account not found
+2025-04-01 10:58:23 [qtp1123713612-41] INFO  com.Rishi.Registration - Sending SMS to 8296408040: Your OTP for password reset is: 390461

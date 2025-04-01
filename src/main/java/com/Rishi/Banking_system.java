@@ -9,15 +9,16 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Calendar;
 import java.util.Map;
+import java.util.HashMap;
 import org.json.JSONObject;
 import org.json.JSONException;
+import com.google.gson.Gson;
 
 import javax.mail.MessagingException;
 
 public class Banking_system {
     private static final Logger logger = LogManager.getLogger(Banking_system.class);
 
-    // Helper methods for consistent responses
     private static String successResponse(String message) {
         return new JSONObject()
                 .put("status", "success")
@@ -56,7 +57,6 @@ public class Banking_system {
             String email = req.queryParams("email");
 
             try (Connection conn = DatabaseConfig.getConnection()) {
-                // Verify account exists in bank_accounts first
                 String checkQuery = "SELECT 1 FROM bank_accounts WHERE account_number = ?";
                 try (PreparedStatement ps = conn.prepareStatement(checkQuery)) {
                     ps.setString(1, accountNumber);
@@ -66,8 +66,6 @@ public class Banking_system {
                         }
                     }
                 }
-
-                // Send OTP to email (stores in users table)
                 OTPService.sendOTP(accountNumber, email, conn);
                 return successResponse("OTP sent to your email");
             } catch (SQLException | MessagingException e) {
@@ -279,7 +277,6 @@ public class Banking_system {
         Spark.post("/send-statement", (req, res) -> {
             res.type("application/json");
             try {
-                // 1. Check Authorization Header
                 String authHeader = req.headers("Authorization");
                 if (authHeader == null || !authHeader.startsWith("Bearer ")) {
                     res.status(401);
@@ -287,7 +284,6 @@ public class Banking_system {
                 }
                 String token = authHeader.substring(7);
 
-                // Get and validate parameters
                 String accountNumber = req.queryParams("accountNumber");
                 int month = Integer.parseInt(req.queryParams("month"));
                 int year = Integer.parseInt(req.queryParams("year"));
@@ -295,7 +291,6 @@ public class Banking_system {
                 logger.info("Generating statement for account: {}, month: {}, year: {}",
                         accountNumber, month, year);
 
-                // Validate month/year
                 if (month < 1 || month > 12) {
                     return errorResponse("Invalid month (1-12)");
                 }
@@ -304,7 +299,6 @@ public class Banking_system {
                 }
 
                 try (Connection conn = DatabaseConfig.getConnection()) {
-                    // Verify token matches the requesting account
                     String tokenCheckQuery = "SELECT account_number FROM user_sessions WHERE token = ? AND expires_at > NOW()";
                     try (PreparedStatement ps = conn.prepareStatement(tokenCheckQuery)) {
                         ps.setString(1, token);
@@ -315,16 +309,13 @@ public class Banking_system {
                         }
                     }
 
-                    // Set transaction isolation to ensure we see latest data
                     conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
-                    // Verify account exists and get email
                     String email = getAccountEmail(conn, accountNumber);
                     if (email == null) {
                         return errorResponse("Account not found");
                     }
 
-                    // Generate PDF statement
                     String pdfFilePath = PDFStatementGenerator.generatePDFStatement(
                             accountNumber,
                             month,
@@ -332,7 +323,6 @@ public class Banking_system {
                             conn
                     );
 
-                    // Send email with PDF attachment
                     PDFStatementGenerator.sendEmailWithPDF(email, pdfFilePath);
 
                     return successResponse("Statement sent to " + email);
@@ -355,7 +345,138 @@ public class Banking_system {
             }
         });
 
-        // Forgot Password: Request OTP
+        // ===== FORGOT PASSWORD ENDPOINTS ===== //
+
+        // Step 1: Get Security Question
+        Spark.get("/get-security-question", (req, res) -> {
+            res.type("application/json");
+            String accountNumber = req.queryParams("accountNumber");
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                Registration registration = new Registration();
+                Map<String, String> result = registration.getSecurityQuestionAndHash(accountNumber, conn);
+                return new Gson().toJson(result);
+            } catch (SQLException e) {
+                logger.error("Error getting security question: {}", e.getMessage());
+                return errorResponse("Failed to get security question");
+            }
+        });
+
+        // Step 2: Verify Security Answer and Request OTP
+        // Updated verify-security-answer endpoint
+        Spark.post("/verify-security-answer", (req, res) -> {
+            res.type("application/json");
+            try {
+                JSONObject json = new JSONObject(req.body());
+                String accountNumber = json.getString("accountNumber");
+                String answer = json.getString("answer");
+
+                try (Connection conn = DatabaseConfig.getConnection()) {
+                    // Get stored answer hash from database
+                    String query = "SELECT security_answer_hash FROM users WHERE account_number = ?";
+                    String storedHash = null;
+                    try (PreparedStatement ps = conn.prepareStatement(query)) {
+                        ps.setString(1, accountNumber);
+                        try (ResultSet rs = ps.executeQuery()) {
+                            if (rs.next()) {
+                                storedHash = rs.getString("security_answer_hash");
+                            }
+                        }
+                    }
+
+                    if (storedHash == null) {
+                        return errorResponse("Account not found");
+                    }
+
+                    // Verify the answer
+                    if (BCrypt.checkpw(answer, storedHash)) {
+                        // Generate and send OTP
+                        Registration registration = new Registration();
+                        registration.generatePasswordResetOtp(accountNumber, conn);
+                        return successResponse("OTP sent to registered phone");
+                    } else {
+                        return errorResponse("Incorrect security answer");
+                    }
+                }
+            } catch (SQLException e) {
+                logger.error("Database error during verification: {}", e.getMessage());
+                return errorResponse("Verification failed");
+            } catch (MessagingException e) {
+                logger.error("Error sending OTP: {}", e.getMessage());
+                return errorResponse("OTP sending failed");
+            } catch (JSONException e) {
+                return errorResponse("Invalid request format");
+            }
+        });
+
+        // Step 3: Reset Password
+        Spark.post("/reset-password", (req, res) -> {
+            res.type("application/json");
+            try {
+                // Parse JSON from request body
+                JSONObject json;
+                try {
+                    json = new JSONObject(req.body());
+                } catch (JSONException e) {
+                    logger.error("Invalid JSON format: {}", req.body());
+                    return errorResponse("Invalid request format");
+                }
+
+                String accountNumber = json.getString("accountNumber");
+                String otp = json.getString("otp");
+                String newPassword = json.getString("newPassword");
+
+                try (Connection conn = DatabaseConfig.getConnection()) {
+                    Registration registration = new Registration();
+
+                    // Verify OTP
+                    String otpQuery = "SELECT otp, otp_timestamp FROM users WHERE account_number = ?";
+                    try (PreparedStatement ps = conn.prepareStatement(otpQuery)) {
+                        ps.setString(1, accountNumber);
+                        try (ResultSet rs = ps.executeQuery()) {
+                            if (rs.next()) {
+                                String storedOtp = rs.getString("otp");
+                                Timestamp otpTimestamp = rs.getTimestamp("otp_timestamp");
+                                if (storedOtp == null || !storedOtp.equals(otp) ||
+                                        registration.isOtpExpired(otpTimestamp)) {
+                                    return errorResponse("Invalid or expired OTP");
+                                }
+                            } else {
+                                return errorResponse("Account not found");
+                            }
+                        }
+                    }
+
+                    // Update password
+                    String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt(12));
+                    String updateQuery = "UPDATE users SET password_hash = ?, otp = NULL, otp_timestamp = NULL WHERE account_number = ?";
+                    try (PreparedStatement ps = conn.prepareStatement(updateQuery)) {
+                        ps.setString(1, hashedPassword);
+                        ps.setString(2, accountNumber);
+                        int rowsUpdated = ps.executeUpdate();
+                        if (rowsUpdated == 0) {
+                            return errorResponse("Password update failed");
+                        }
+                    }
+                    String invalidateSessionQuery = "DELETE FROM user_sessions WHERE account_number = ?";
+                    try (PreparedStatement ps = conn.prepareStatement(invalidateSessionQuery)) {
+                        ps.setString(1, accountNumber);
+                        ps.executeUpdate();
+                        logger.info("Password reset completed for account: {}", accountNumber);
+                    }
+                    return successResponse("Password updated successfully");
+
+
+                } catch (SQLException e) {
+                    logger.error("Database error during password reset: {}", e.getMessage());
+                    return errorResponse("Reset failed: Database error");
+                }
+            } catch (JSONException e) {
+                logger.error("JSON parsing error: {}", e.getMessage());
+                return errorResponse("Invalid request format");
+            }
+        });
+
+        // Original Forgot Password Endpoints (maintained for backward compatibility)
         Spark.post("/forgot-password/request-otp", (req, res) -> {
             res.type("application/json");
             String accountNumber = req.queryParams("accountNumber");
@@ -397,7 +518,6 @@ public class Banking_system {
             }
         });
 
-        // Forgot Password: Reset Password
         Spark.post("/forgot-password/reset", (req, res) -> {
             res.type("application/json");
             String accountNumber = req.queryParams("accountNumber");

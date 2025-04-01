@@ -5,6 +5,9 @@ import javax.mail.MessagingException;
 import org.mindrot.jbcrypt.BCrypt;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 public class Registration {
     private static final Logger logger = LogManager.getLogger(Registration.class);
@@ -124,33 +127,73 @@ public class Registration {
         }
     }
 
-    // Helper method to check if OTP is expired
-    private boolean isOtpExpired(Timestamp otpTimestamp) {
-        if (otpTimestamp == null) return true;
-        long currentTime = System.currentTimeMillis();
-        long otpTime = otpTimestamp.getTime();
-        return (currentTime - otpTime) > (5 * 60 * 1000); // 5 minutes expiration
-    }
+    // New method to get security question and answer hash
+    public Map<String, String> getSecurityQuestionAndHash(String accountNumber, Connection con) throws SQLException {
+        Map<String, String> result = new HashMap<>();
+        String query = "SELECT security_question, security_answer_hash FROM users WHERE account_number = ?";
 
-    // Helper method to get security question
-    private String getSecurityQuestion(int choice) {
-        switch (choice) {
-            case 1: return "What is your pet's name?";
-            case 2: return "What is your mother's maiden name?";
-            case 3: return "What is the name of your first school?";
-            default: throw new IllegalArgumentException("Invalid security question choice.");
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, accountNumber);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    result.put("question", rs.getString("security_question"));
+                    result.put("answerHash", rs.getString("security_answer_hash"));
+                    return result;
+                }
+            }
         }
+        throw new SQLException("Account not found");
     }
 
-    // Password strength checker
-    public static boolean isPasswordStrong(String password) {
-        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
-        boolean isStrong = password.matches(regex);
-        logger.debug("Password strength check result: {}", isStrong);
-        return isStrong;
+    // New method to verify security answer
+    public boolean verifySecurityAnswer(String providedAnswer, String storedHash) {
+        return BCrypt.checkpw(providedAnswer, storedHash);
     }
 
-    // Forgot password method (updated to use new OTP verification)
+    // New method to generate and send password reset OTP
+    public String generatePasswordResetOtp(String accountNumber, Connection con) throws SQLException, MessagingException {
+        // Generate random 6-digit OTP
+        String otp = String.format("%06d", new Random().nextInt(999999));
+
+        // Store OTP in database with timestamp
+        String updateQuery = "UPDATE users SET otp = ?, otp_timestamp = CURRENT_TIMESTAMP WHERE account_number = ?";
+        try (PreparedStatement ps = con.prepareStatement(updateQuery)) {
+            ps.setString(1, otp);
+            ps.setString(2, accountNumber);
+            ps.executeUpdate();
+        }
+
+        // Get user's phone number to send OTP
+        String phone = getPhoneNumber(accountNumber, con);
+
+        // Send OTP via SMS (implementation depends on your SMS gateway)
+        sendSms(phone, "Your OTP for password reset is: " + otp);
+
+        return otp;
+    }
+
+    // Helper method to get phone number
+    private String getPhoneNumber(String accountNumber, Connection con) throws SQLException {
+        String query = "SELECT phone FROM users WHERE account_number = ?";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, accountNumber);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("phone");
+                }
+            }
+        }
+        throw new SQLException("Phone number not found");
+    }
+
+    // SMS sending method (implement according to your SMS gateway)
+    private void sendSms(String phoneNumber, String message) throws MessagingException {
+        // Implementation depends on your SMS gateway
+        // This is just a placeholder
+        logger.info("Sending SMS to {}: {}", phoneNumber, message);
+    }
+
+    // Enhanced forgot password method with proper flow using new methods
     public void forgotPassword(String accountNumber, String phoneNumber, String securityAnswer,
                                String userOtp, String newPassword1, String newPassword2,
                                Connection con) throws SQLException, MessagingException {
@@ -173,35 +216,23 @@ public class Registration {
         try {
             con.setAutoCommit(false);
 
-            // Get user details
-            String query = "SELECT * FROM users WHERE account_number = ?";
-            String registeredPhone = null;
-            String email = null;
-            String hashedAnswer = null;
-            try (PreparedStatement ps = con.prepareStatement(query)) {
-                ps.setString(1, accountNumber);
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) {
-                        registeredPhone = rs.getString("phone");
-                        email = rs.getString("email");
-                        hashedAnswer = rs.getString("security_answer_hash");
-                    } else {
-                        throw new SQLException("Account number not found!");
-                    }
-                }
-            }
+            // 1. Verify account exists and get security details
+            Map<String, String> securityDetails = getSecurityQuestionAndHash(accountNumber, con);
+            String storedQuestion = securityDetails.get("question");
+            String storedHash = securityDetails.get("answerHash");
 
-            // Verify security answer
-            if (!BCrypt.checkpw(securityAnswer, hashedAnswer)) {
-                throw new IllegalArgumentException("Incorrect security answer!");
-            }
-
-            // Verify phone number
+            // 2. Verify phone number matches
+            String registeredPhone = getPhoneNumber(accountNumber, con);
             if (!registeredPhone.equals(phoneNumber)) {
                 throw new IllegalArgumentException("Incorrect phone number!");
             }
 
-            // Verify OTP (using the new verification logic)
+            // 3. Verify security answer
+            if (!verifySecurityAnswer(securityAnswer, storedHash)) {
+                throw new IllegalArgumentException("Incorrect security answer!");
+            }
+
+            // 4. Verify OTP
             String verifyQuery = "SELECT otp, otp_timestamp FROM users WHERE account_number = ?";
             String storedOtp = null;
             Timestamp otpTimestamp = null;
@@ -219,12 +250,12 @@ public class Registration {
                 throw new IllegalArgumentException("Invalid or expired OTP!");
             }
 
-            // Check password strength
+            // 5. Check password strength
             if (!isPasswordStrong(newPassword1)) {
                 throw new IllegalArgumentException("Password is weak. It must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.");
             }
 
-            // Update password
+            // 6. Update password
             String hashedPassword = BCrypt.hashpw(newPassword1, BCrypt.gensalt(12));
             String updateQuery = "UPDATE users SET password_hash = ? WHERE account_number = ?";
             try (PreparedStatement ps = con.prepareStatement(updateQuery)) {
@@ -235,7 +266,7 @@ public class Registration {
                 }
             }
 
-            // Clear OTP
+            // 7. Clear OTP
             String clearOtpQuery = "UPDATE users SET otp = NULL, otp_timestamp = NULL WHERE account_number = ?";
             try (PreparedStatement clearOtpPs = con.prepareStatement(clearOtpQuery)) {
                 clearOtpPs.setString(1, accountNumber);
@@ -245,12 +276,38 @@ public class Registration {
             con.commit();
             logger.info("Password reset successful for account: {}", accountNumber);
 
-        } catch (SQLException e) {
+        } catch (SQLException | IllegalArgumentException e) {
             con.rollback();
             logger.error("Error during password reset: {}", e.getMessage(), e);
             throw e;
         } finally {
             con.setAutoCommit(true);
         }
+    }
+
+    // Helper method to check if OTP is expired
+    boolean isOtpExpired(Timestamp otpTimestamp) {
+        if (otpTimestamp == null) return true;
+        long currentTime = System.currentTimeMillis();
+        long otpTime = otpTimestamp.getTime();
+        return (currentTime - otpTime) > (5 * 60 * 1000); // 5 minutes expiration
+    }
+
+    // Helper method to get security question
+    private String getSecurityQuestion(int choice) {
+        switch (choice) {
+            case 1: return "What is your pet's name?";
+            case 2: return "What is your mother's maiden name?";
+            case 3: return "What is the name of your first school?";
+            default: throw new IllegalArgumentException("Invalid security question choice.");
+        }
+    }
+
+    // Password strength checker
+    public static boolean isPasswordStrong(String password) {
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+        boolean isStrong = password.matches(regex);
+        logger.debug("Password strength check result: {}", isStrong);
+        return isStrong;
     }
 }
