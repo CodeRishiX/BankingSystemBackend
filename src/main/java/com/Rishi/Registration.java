@@ -196,20 +196,29 @@ public class Registration {
         try {
             con.setAutoCommit(false);
 
-            // Verify OTP
-            String verifyQuery = "SELECT otp, otp_timestamp FROM users WHERE account_number = ?";
+            // Verify OTP and security answer
+            String verifyQuery = "SELECT otp, otp_timestamp, security_answer_hash FROM users WHERE account_number = ?";
             String storedOtp = null;
             Timestamp otpTimestamp = null;
+            String storedHash = null;
             try (PreparedStatement verifyPs = con.prepareStatement(verifyQuery)) {
                 verifyPs.setString(1, accountNumber);
                 try (ResultSet rs = verifyPs.executeQuery()) {
                     if (rs.next()) {
                         storedOtp = rs.getString("otp");
                         otpTimestamp = rs.getTimestamp("otp_timestamp");
+                        storedHash = rs.getString("security_answer_hash");
                     } else {
                         throw new SQLException("Account not found");
                     }
                 }
+            }
+
+            // Assuming security answer is passed separately (e.g., from a prior step)
+            // For now, this is a placeholder; adjust based on frontend input
+            String providedAnswer = "dummy_answer"; // Replace with actual input from frontend
+            if (storedHash != null && !BCrypt.checkpw(providedAnswer, storedHash)) {
+                throw new IllegalArgumentException("Incorrect security answer");
             }
 
             if (storedOtp == null || !userOtp.equals(storedOtp) || isOtpExpired(otpTimestamp)) {

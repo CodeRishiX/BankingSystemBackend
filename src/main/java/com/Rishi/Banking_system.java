@@ -476,67 +476,67 @@ public class Banking_system {
         Spark.post("/forgot-password/request-otp", (req, res) -> {
             res.type("application/json");
             String accountNumber = req.queryParams("accountNumber");
-            String phoneNumber = req.queryParams("phoneNumber");
-            String securityAnswer = req.queryParams("securityAnswer");
+            String email = req.queryParams("email");
             logger.info("Forgot password OTP request for account: {}", accountNumber);
 
             try (Connection conn = DatabaseConfig.getConnection()) {
                 Registration registration = new Registration();
-                String query = "SELECT phone, security_answer_hash FROM users WHERE account_number = ?";
-                String registeredPhone;
-                String hashedAnswer;
-
-                try (PreparedStatement ps = conn.prepareStatement(query)) {
+                // Verify account and email (no security answer check here)
+                String verifyQuery = "SELECT email FROM users WHERE account_number = ?";
+                try (PreparedStatement ps = conn.prepareStatement(verifyQuery)) {
                     ps.setString(1, accountNumber);
                     try (ResultSet rs = ps.executeQuery()) {
-                        if (!rs.next()) {
-                            logger.warn("Account number not found: {}", accountNumber);
-                            return errorResponse("Account number not found!");
-                        }
-                        registeredPhone = rs.getString("phone");
-                        hashedAnswer = rs.getString("security_answer_hash");
-                        if (!BCrypt.checkpw(securityAnswer, hashedAnswer)) {
-                            logger.warn("Incorrect security answer for account: {}", accountNumber);
-                            return errorResponse("Incorrect security answer!");
-                        }
-                        if (!registeredPhone.equals(phoneNumber)) {
-                            logger.warn("Incorrect phone number for account: {}", accountNumber);
-                            return errorResponse("Incorrect phone number!");
+                        if (!rs.next() || !rs.getString("email").equals(email)) {
+                            logger.warn("Account not found or email mismatch for account: {}", accountNumber);
+                            return errorResponse("Account not found or email mismatch!");
                         }
                     }
                 }
-                OTPService.sendOTP(accountNumber, conn);
-                logger.info("OTP sent for forgot password to account: {}", accountNumber);
-                return successResponse("OTP sent to your email. Please verify.");
-            } catch (SQLException | MessagingException e) {
-                logger.error("Forgot password OTP request failed for account {}: {}", accountNumber, e.getMessage());
-                return errorResponse("OTP request failed: " + e.getMessage());
+                // Generate and send OTP without security answer check
+                registration.verifySecurityAnswerAndGenerateOtp(accountNumber, "", conn); // Empty answer to skip validation
+                logger.info("OTP sent to email for account: {}", accountNumber);
+                return successResponse("OTP sent to registered email. Please verify.");
+            } catch (SQLException e) {
+                logger.error("Database error during OTP request for account {}: {}", accountNumber, e.getMessage());
+                return errorResponse("Database error: " + e.getMessage());
+            } catch (MessagingException e) {
+                logger.error("Error sending OTP for account {}: {}", accountNumber, e.getMessage());
+                return errorResponse("OTP sending failed: " + e.getMessage());
             }
         });
 
         Spark.post("/forgot-password/reset", (req, res) -> {
             res.type("application/json");
-            String accountNumber = req.queryParams("accountNumber");
-            String phoneNumber = req.queryParams("phoneNumber");
-            String securityAnswer = req.queryParams("securityAnswer");
-            String userOtp = req.queryParams("otp");
-            String newPassword1 = req.queryParams("newPassword1");
-            String newPassword2 = req.queryParams("newPassword2");
-            logger.info("Forgot password reset attempt for account: {}", accountNumber);
+            try {
+                JSONObject json = new JSONObject(req.body());
+                String accountNumber = json.getString("accountNumber");
+                String otp = json.getString("otp");
+                String newPassword = json.getString("newPassword");
 
-            try (Connection conn = DatabaseConfig.getConnection()) {
-                Registration registration = new Registration();
-                registration.forgotPassword(accountNumber, phoneNumber, securityAnswer, userOtp, newPassword1, newPassword2, conn);
-                return successResponse("Password reset successful");
+                try (Connection conn = DatabaseConfig.getConnection()) {
+                    Registration registration = new Registration();
+                    registration.resetPassword(accountNumber, otp, newPassword, conn);
+                    // Invalidate sessions
+                    String invalidateSessionQuery = "DELETE FROM user_sessions WHERE account_number = ?";
+                    try (PreparedStatement ps = conn.prepareStatement(invalidateSessionQuery)) {
+                        ps.setString(1, accountNumber);
+                        ps.executeUpdate();
+                    }
+                    logger.info("Password reset completed for account: {}", accountNumber);
+                    return successResponse("Password updated successfully");
+                }
             } catch (SQLException e) {
-                logger.error("Forgot password reset failed for account {}: {}", accountNumber, e.getMessage());
-                return errorResponse("Reset failed: " + e.getMessage());
-            } catch (MessagingException e) {
-                logger.error("MessagingException during forgot password reset for account {}: {}", accountNumber, e.getMessage());
+                logger.error("Database error during password reset: {}", e.getMessage());
+                res.status(500);
                 return errorResponse("Reset failed: " + e.getMessage());
             } catch (IllegalArgumentException e) {
-                logger.error("Invalid input during forgot password reset for account {}: {}", accountNumber, e.getMessage());
+                logger.error("Invalid input during password reset: {}", e.getMessage());
+                res.status(400);
                 return errorResponse(e.getMessage());
+            } catch (JSONException e) {
+                logger.error("JSON parsing error: {}", e.getMessage());
+                res.status(400);
+                return errorResponse("Invalid request format");
             }
         });
         // Get Transaction History (Live Display)
