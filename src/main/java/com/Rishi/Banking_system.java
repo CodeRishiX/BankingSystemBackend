@@ -481,27 +481,26 @@ public class Banking_system {
 
             try (Connection conn = DatabaseConfig.getConnection()) {
                 Registration registration = new Registration();
-                // Verify account and email (no security answer check here)
+                // Verify account and email
                 String verifyQuery = "SELECT email FROM users WHERE account_number = ?";
                 try (PreparedStatement ps = conn.prepareStatement(verifyQuery)) {
                     ps.setString(1, accountNumber);
                     try (ResultSet rs = ps.executeQuery()) {
                         if (!rs.next() || !rs.getString("email").equals(email)) {
                             logger.warn("Account not found or email mismatch for account: {}", accountNumber);
-                            return errorResponse("Account not found or email mismatch!");
+                            return "{\"status\": \"error\", \"message\": \"Account not found or email mismatch\"}";
                         }
                     }
                 }
-                // Generate and send OTP without security answer check
-                registration.verifySecurityAnswerAndGenerateOtp(accountNumber, "", conn); // Empty answer to skip validation
-                logger.info("OTP sent to email for account: {}", accountNumber);
-                return successResponse("OTP sent to registered email. Please verify.");
+                // Generate and send OTP (no security answer needed here)
+                String result = registration.verifySecurityAnswerAndGenerateOtp(accountNumber, "", conn);
+                return result; // Already JSON-formatted
             } catch (SQLException e) {
                 logger.error("Database error during OTP request for account {}: {}", accountNumber, e.getMessage());
-                return errorResponse("Database error: " + e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"Database error: " + e.getMessage() + "\"}";
             } catch (MessagingException e) {
                 logger.error("Error sending OTP for account {}: {}", accountNumber, e.getMessage());
-                return errorResponse("OTP sending failed: " + e.getMessage());
+                return "{\"status\": \"error\", \"message\": \"OTP sending failed: " + e.getMessage() + "\"}";
             }
         });
 
