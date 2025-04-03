@@ -12,6 +12,43 @@ import java.util.Random;
 public class Registration {
     private static final Logger logger = LogManager.getLogger(Registration.class);
 
+    // Helper method to send email (aligned with registration flow)
+    private void sendEmail(String email, String subject, String message) throws MessagingException {
+        logger.info("Sending email to {}: {}", email, message);
+        // Assuming Login class has a sendEmail method similar to what’s used elsewhere
+        new Login().sendEmail(email, subject, message); // Reuse existing email logic
+    }
+
+    // Helper method to check if OTP is expired
+    private boolean isOtpExpired(Timestamp otpTimestamp) {
+        if (otpTimestamp == null) return true;
+        long currentTime = System.currentTimeMillis();
+        long otpTime = otpTimestamp.getTime();
+        return (currentTime - otpTime) > (5 * 60 * 1000); // 5 minutes expiration
+    }
+
+    // Helper method to get security question
+    private String getSecurityQuestion(int choice) {
+        switch (choice) {
+            case 1:
+                return "What is your pet's name?";
+            case 2:
+                return "What is your mother's maiden name?";
+            case 3:
+                return "What is the name of your first school?";
+            default:
+                throw new IllegalArgumentException("Invalid security question choice.");
+        }
+    }
+
+    // Password strength checker
+    public static boolean isPasswordStrong(String password) {
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+        boolean isStrong = password.matches(regex);
+        logger.debug("Password strength check result: {}", isStrong);
+        return isStrong;
+    }
+
     public void reg(String accountNumber, String userOtp, int securityQuestionChoice,
                     String securityAnswer, String password1, String password2,
                     String email, Connection con) throws SQLException, MessagingException {
@@ -36,6 +73,9 @@ public class Registration {
 
         try {
             con.setAutoCommit(false);
+            if (con == null) {
+                throw new SQLException("Database connection is null.");
+            }
 
             // 1. Check if account exists in bank_accounts
             String checkBankQuery = "SELECT email, phone FROM bank_accounts WHERE account_number = ?";
@@ -85,11 +125,12 @@ public class Registration {
             String securityQuestion = getSecurityQuestion(securityQuestionChoice);
             String hashedAnswer = BCrypt.hashpw(securityAnswer, BCrypt.gensalt());
             String hashedPassword = BCrypt.hashpw(password1, BCrypt.gensalt(12));
-
             String insertUserQuery = "INSERT INTO users (account_number, email, phone, password_hash, " +
                     "security_question, security_answer_hash, otp_verified, registered_at) " +
                     "VALUES (?, ?, ?, ?, ?, ?, 1, CURRENT_TIMESTAMP)";
-            try (PreparedStatement insertUserPs = con.prepareStatement(insertUserQuery)) {
+            PreparedStatement insertUserPs = null; // Initialize here
+            try {
+                insertUserPs = con.prepareStatement(insertUserQuery);
                 insertUserPs.setString(1, accountNumber);
                 insertUserPs.setString(2, storedEmail != null ? storedEmail : email);
                 insertUserPs.setString(3, phone != null ? phone : "");
@@ -97,7 +138,17 @@ public class Registration {
                 insertUserPs.setString(5, securityQuestion);
                 insertUserPs.setString(6, hashedAnswer);
                 insertUserPs.executeUpdate();
+            } finally { // Use a finally block to ensure closing
+                if (insertUserPs != null) {
+                    try {
+                        insertUserPs.close();
+                    } catch (SQLException e) {
+                        // Log the exception, but don't throw it again.  We don't want to mask the original exception.
+                        logger.error("Error closing PreparedStatement: {}", e.getMessage());
+                    }
+                }
             }
+
 
             // Clean up pre-registration data
             String clearPreRegQuery = "DELETE FROM pre_registration WHERE account_number = ?";
@@ -117,15 +168,27 @@ public class Registration {
             logger.info("Registration successful for account: {}", accountNumber);
 
         } catch (SQLException | IllegalArgumentException e) {
-            con.rollback();
+            if (con != null) {
+                try {
+                    con.rollback();
+                } catch (SQLException rollbackEx) {
+                    logger.error("Error during rollback: {}", rollbackEx.getMessage(), rollbackEx);
+                }
+            }
             logger.error("Error during registration: {}", e.getMessage(), e);
-            throw e;
+            throw e; // Re-throw the exception for the caller to handle
         } finally {
-            con.setAutoCommit(true);
+            if (con != null) {
+                try {
+                    con.setAutoCommit(true);
+                } catch (SQLException autoCommitEx) {
+                    logger.error("Error setting auto-commit to true: {}", autoCommitEx.getMessage(), autoCommitEx);
+                }
+            }
         }
     }
 
-    // Updated method for /get-security-question with phone number verification (unchanged)
+    // Updated method for /get-security-question with phone number verification
     public Map<String, String> getSecurityQuestionAndHash(String accountNumber, String phoneNumber, Connection con) throws SQLException {
         Map<String, String> result = new HashMap<>();
         String query = "SELECT security_question, security_answer_hash, phone FROM users WHERE account_number = ?";
@@ -141,10 +204,14 @@ public class Registration {
                     result.put("question", rs.getString("security_question"));
                     result.put("answerHash", rs.getString("security_answer_hash"));
                     return result;
+                } else {
+                    throw new SQLException("Account not found");
                 }
             }
+        } catch (SQLException e) {
+            logger.error("Error in getSecurityQuestionAndHash: {}", e.getMessage(), e);
+            throw e;
         }
-        throw new SQLException("Account not found");
     }
 
     // Updated method for /verify-security-answer with OTP sent to email instead of SMS
@@ -189,36 +256,30 @@ public class Registration {
         return otp;
     }
 
-    // Updated method for /reset-password (unchanged)
+    // Updated method for /reset-password
     public void resetPassword(String accountNumber, String userOtp, String newPassword, Connection con) throws SQLException {
         logger.info("Resetting password for account: {}", accountNumber);
 
         try {
             con.setAutoCommit(false);
+            if (con == null) {
+                throw new SQLException("Database connection is null.");
+            }
 
-            // Verify OTP and security answer
-            String verifyQuery = "SELECT otp, otp_timestamp, security_answer_hash FROM users WHERE account_number = ?";
+            // Verify OTP
+            String verifyQuery = "SELECT otp, otp_timestamp FROM users WHERE account_number = ?";
             String storedOtp = null;
             Timestamp otpTimestamp = null;
-            String storedHash = null;
             try (PreparedStatement verifyPs = con.prepareStatement(verifyQuery)) {
                 verifyPs.setString(1, accountNumber);
                 try (ResultSet rs = verifyPs.executeQuery()) {
                     if (rs.next()) {
                         storedOtp = rs.getString("otp");
                         otpTimestamp = rs.getTimestamp("otp_timestamp");
-                        storedHash = rs.getString("security_answer_hash");
                     } else {
                         throw new SQLException("Account not found");
                     }
                 }
-            }
-
-            // Assuming security answer is passed separately (e.g., from a prior step)
-            // For now, this is a placeholder; adjust based on frontend input
-            String providedAnswer = "dummy_answer"; // Replace with actual input from frontend
-            if (storedHash != null && !BCrypt.checkpw(providedAnswer, storedHash)) {
-                throw new IllegalArgumentException("Incorrect security answer");
             }
 
             if (storedOtp == null || !userOtp.equals(storedOtp) || isOtpExpired(otpTimestamp)) {
@@ -246,15 +307,27 @@ public class Registration {
             logger.info("Password reset successful for account: {}", accountNumber);
 
         } catch (SQLException | IllegalArgumentException e) {
-            con.rollback();
+            if (con != null) {
+                try {
+                    con.rollback();
+                } catch (SQLException rollbackEx) {
+                    logger.error("Error during rollback: {}", rollbackEx.getMessage(), rollbackEx);
+                }
+            }
             logger.error("Error during password reset: {}", e.getMessage(), e);
-            throw e;
+            throw e; // Re-throw for caller
         } finally {
-            con.setAutoCommit(true);
+            if (con != null) {
+                try {
+                    con.setAutoCommit(true);
+                } catch (SQLException autoCommitEx) {
+                    logger.error("Error setting auto-commit to true: {}", autoCommitEx.getMessage(), autoCommitEx);
+                }
+            }
         }
     }
 
-    // Helper method to get phone number (unchanged)
+    // Helper method to get phone number
     private String getPhoneNumber(String accountNumber, Connection con) throws SQLException {
         String query = "SELECT phone FROM users WHERE account_number = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
@@ -264,45 +337,14 @@ public class Registration {
                     return rs.getString("phone");
                 }
             }
+        } catch (SQLException e) {
+            logger.error("Error getting phone number: {}", e.getMessage(), e);
+            throw e;
         }
         throw new SQLException("Phone number not found");
     }
 
-    // New method to send email (aligned with registration flow)
-    private void sendEmail(String email, String subject, String message) throws MessagingException {
-        logger.info("Sending email to {}: {}", email, message);
-        // Assuming Login class has a sendEmail method similar to what’s used elsewhere
-        new Login().sendEmail(email, subject, message); // Reuse existing email logic
-    }
-
-    // Removed sendSms since it’s no longer needed
-    // Helper method to check if OTP is expired (unchanged)
-    boolean isOtpExpired(Timestamp otpTimestamp) {
-        if (otpTimestamp == null) return true;
-        long currentTime = System.currentTimeMillis();
-        long otpTime = otpTimestamp.getTime();
-        return (currentTime - otpTime) > (5 * 60 * 1000); // 5 minutes expiration
-    }
-
-    // Helper method to get security question (unchanged)
-    private String getSecurityQuestion(int choice) {
-        switch (choice) {
-            case 1: return "What is your pet's name?";
-            case 2: return "What is your mother's maiden name?";
-            case 3: return "What is the name of your first school?";
-            default: throw new IllegalArgumentException("Invalid security question choice.");
-        }
-    }
-
-    // Password strength checker (unchanged)
-    public static boolean isPasswordStrong(String password) {
-        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
-        boolean isStrong = password.matches(regex);
-        logger.debug("Password strength check result: {}", isStrong);
-        return isStrong;
-    }
-
-    // Deprecated methods (updated to reflect email change)
+    // Deprecated methods
     @Deprecated
     public Map<String, String> getSecurityQuestionAndHash(String accountNumber, Connection con) throws SQLException {
         return getSecurityQuestionAndHash(accountNumber, getPhoneNumber(accountNumber, con), con);
@@ -327,11 +369,14 @@ public class Registration {
         }
         resetPassword(accountNumber, userOtp, newPassword1, con);
     }
+
     public String displayTransactionHistory(String accnumber, Connection con) throws SQLException {
         StringBuilder history = new StringBuilder();
-        history.append(String.format("%-15s %-19s %-19s %-20s %-10s %-15s %-20s %-12s\n",
-                "Transaction ID", "Sender", "Receiver", "Transaction Type", "Type", "Amount", "Date", "Status"));
-        history.append("-----------------------------------------------------------------------------------------------------\n");
+        // Improved formatting and added headers.
+        history.append(String.format("%-20s | %-20s | %-20s | %-20s | %-10s | %-15s | %-25s | %-15s%n",
+                "Transaction ID", "Sender", "Receiver", "Transaction Type", "Type", "Amount", "Date and Time", "Status"));
+        history.append(String.format("%-20s-|-%-20s-|-%-20s-|-%-20s-|-%-10s-|-%-15s-|-%-25s-|-%-15s%n",
+                "--------------------", "--------------------", "--------------------", "--------------------", "----------", "---------------", "-------------------------", "---------------"));
 
         String query = "SELECT id, sender_account, receiver_account, transaction_type, amount, timestamp, status, is_fraud " +
                 "FROM transactions " +
@@ -343,19 +388,20 @@ public class Registration {
             pstmt.setString(2, accnumber);
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                    int transactionID = rs.getInt("id");
+                    long transactionID = rs.getLong("id"); // Use long for transaction ID
                     String sender = rs.getString("sender_account");
                     String receiver = rs.getString("receiver_account");
                     String transactionType = rs.getString("transaction_type");
                     double amount = rs.getDouble("amount");
-                    String timestamp = rs.getString("timestamp");
+                    Timestamp timestamp = rs.getTimestamp("timestamp");  // Use Timestamp
                     String status = rs.getString("status");
                     int isFraud = rs.getInt("is_fraud");
 
                     String type = sender.equals(accnumber) ? "Debit" : "Credit";
+                    String formattedTimestamp = (timestamp != null) ? timestamp.toString() : "N/A"; // Handle null
 
-                    history.append(String.format("%-15d %-19s %-19s %-20s %-10s %-15.2f %-20s %-12s\n",
-                            transactionID, sender, receiver, transactionType, type, amount, timestamp, status + (isFraud == 1 ? " (Fraud)" : "")));
+                    history.append(String.format("%-20d | %-20s | %-20s | %-20s | %-10s | %-15.2f | %-25s | %-15s%n",
+                            transactionID, sender, receiver, transactionType, type, amount, formattedTimestamp, status + (isFraud == 1 ? " (Fraud)" : "")));
                 }
             }
         } catch (SQLException e) {
