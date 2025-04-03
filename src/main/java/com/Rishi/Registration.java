@@ -161,16 +161,13 @@ public class Registration {
                     storedHash = rs.getString("security_answer_hash");
                     email = rs.getString("email");
                 } else {
-                    return "{\"status\": \"error\", \"message\": \"Account not found\"}";
+                    throw new SQLException("Account not found");
                 }
             }
         }
 
-        // Skip security answer check if providedAnswer is null or empty
-        if (providedAnswer != null && !providedAnswer.isEmpty()) {
-            if (!BCrypt.checkpw(providedAnswer, storedHash)) {
-                return "{\"status\": \"error\", \"message\": \"Incorrect security answer\"}";
-            }
+        if (!BCrypt.checkpw(providedAnswer, storedHash)) {
+            throw new IllegalArgumentException("Incorrect security answer");
         }
 
         // Generate and store OTP
@@ -181,15 +178,15 @@ public class Registration {
             ps.setString(2, accountNumber);
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated == 0) {
-                return "{\"status\": \"error\", \"message\": \"Failed to store OTP\"}";
+                throw new SQLException("Failed to store OTP");
             }
         }
 
-        // Send OTP via email
+        // Send OTP via email instead of SMS
         sendEmail(email, "Your OTP for Password Reset", "Your OTP is: " + otp + "\nThis OTP will expire in 5 minutes.");
 
         logger.info("OTP generated and sent to email {} for account: {}", email, accountNumber);
-        return "{\"status\": \"success\", \"message\": \"OTP sent to email\"}";
+        return otp;
     }
 
     // Updated method for /reset-password (unchanged)
